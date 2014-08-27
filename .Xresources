@@ -1,0 +1,7 @@
+xterm*locale: true
+xterm*termName: xterm-256color
+xterm*saveLines: 4096
+xterm*reverseVideo: on 
+xterm*faceName: Source Code Pro Medium:size=9:antialias=true
+xterm*borderWidth: 1
+xterm*cursorColor: #ffffff
