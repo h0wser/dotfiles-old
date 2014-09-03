@@ -1,5 +1,6 @@
 " h0wser's extremely cool and awesome .vimrc file
 " most of it is copied...
+
 " ------------- MISC -----------"
 syntax on
 set tabstop=4
@@ -19,7 +20,7 @@ highlight! link MatchParens StatusLine
 
 " ---------------- COLOR SETTINGS -----------"
 set t_Co=256
-colorscheme distinguished
+colorscheme cotton_candy
 
 " ----------------- KEY MAPPINGS ---------------
 "	matching braces/parens etc...
