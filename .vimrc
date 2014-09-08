@@ -20,7 +20,7 @@ highlight! link MatchParens StatusLine
 
 " ---------------- COLOR SETTINGS -----------"
 set t_Co=256
-colorscheme cotton_candy
+colorscheme distinguished
 
 " ----------------- KEY MAPPINGS ---------------
 "	matching braces/parens etc...
