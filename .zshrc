@@ -66,16 +66,16 @@ alias c='clear'
 
 alias pac='yaourt'
 
-alias music='ncmpcpp'
-
 alias runescape='java -jar ~/Orion/OSBuddy.jar > /dev/null 2>&1 &'
 
 alias tmux="tmux -2" # forces 256 colors in tmux :) 
+alias tmux-dev="~/dotfiles/tmux-dev.sh"
 
 # media control via command line
 alias play="playerctl play-pause"
 alias next="playerctl next"
 alias prev="playerctl previous"
+
 
 # Use good compilers
 export CC=clang
@@ -83,6 +83,7 @@ export CXX=clang++
 
 # Editor
 export EDITOR=vim
+
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
