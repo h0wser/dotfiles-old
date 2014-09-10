@@ -15,6 +15,7 @@ set scrolloff=10
 set cursorline
 set wrap
 set linebreak
+set autochdir
 
 highlight! link MatchParens StatusLine
 

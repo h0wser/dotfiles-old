@@ -20,13 +20,26 @@ if test "$PS1" && test "$BASH" && test -r /etc/bash.bashrc; then
 	. /etc/bash.bashrc
 fi
 
+# PROMPT N SHIT
 autoload -U colors && colors
-
 autoload -U promptinit
 promptinit
+
+setopt prompt_subst
+
 # Set prompt
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git*'	formats "%{$fg[yellow]%}(%b) %{$reset_color%}"
+
+precmd() {
+	vcs_info
+	RPROMPT="${vcs_info_msg_0_}[%?] %*"
+}
+
+
+
 PROMPT="%{$fg[red]%}%n@%M %{$reset_color%}- %{$fg[red]%}[%3~]%{$reset_color%} > "
-RPROMPT="[%?] %*"
 
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP
