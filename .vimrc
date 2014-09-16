@@ -25,9 +25,10 @@ colorscheme distinguished
 
 " ----------------- KEY MAPPINGS ---------------
 "	matching braces/parens etc...
-inoremap { {}<Esc>i
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
+" not using this atm cuz it's annoyying
+"inoremap { {}<Esc>i
+"inoremap ( ()<Esc>i
+"inoremap [ []<Esc>i
 
 inoremap <NL> <CR><CR><Esc>ki<Tab>
 
@@ -41,6 +42,10 @@ inoremap ö {
 inoremap ä }
 inoremap Ö [
 inoremap Ä ]
+
+" Switching between header and source quickly
+source ~/dotfiles/a.vim
+nnoremap ö :w<CR>:A<CR>
 
 " Rust syntax m8
 au BufRead,BufNewFile *.rs,*.rc set filetype=rust
