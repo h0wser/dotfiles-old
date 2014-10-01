@@ -22,6 +22,7 @@ highlight! link MatchParens StatusLine
 " ---------------- COLOR SETTINGS -----------"
 set t_Co=256
 colorscheme molokai
+set t_ut=
 
 " ----------------- KEY MAPPINGS ---------------
 "	matching braces/parens etc...
