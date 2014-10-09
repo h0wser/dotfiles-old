@@ -6,7 +6,7 @@ xterm*faceName: Source Code Pro Medium:size=9:antialias=true
 xterm*borderWidth: 1
 xterm*cursorColor: #ffffff
 
-*background: rgb:1b/1d/1e
+*background: rgb:1b/1b/1b
 *foreground: rgb:ff/ff/ff
 *color0: rgb:01/0f/13
 *color1: rgb:c1/00/66
