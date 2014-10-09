@@ -1,0 +1,4 @@
+Better copypast in xterm
+faster keyboard repeat
+laptop widgets in awesome
+popup windows being wierd
