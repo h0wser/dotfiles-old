@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/h0wser/Documents/projects/adventure'
 let g:netrw_dirhist_2='/home/h0wser/Documents/projects/adventure/src'
 let g:netrw_dirhist_3='/home/h0wser/Documents/projects/3dGame'
 let g:netrw_dirhist_4='/home/h0wser/Documents/projects/3dGame/src'
 let g:netrw_dirhist_5='/home/h0wser/Documents/projects/betteropengl/src'
+let g:netrw_dirhist_6='/home/h0wser/dotfiles/.vim'
+let g:netrw_dirhist_7='/home/h0wser/dotfiles'

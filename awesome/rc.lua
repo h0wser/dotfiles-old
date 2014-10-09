@@ -10,9 +10,9 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-
--- Widget lib
 local vicious = require("vicious")
+local blingbling = require("blingbling")
+local bashets = require("bashets")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -39,17 +39,19 @@ do
 end
 -- }}}
 
+local base_cfg = "/home/h0wser/.config/awesome/"
+
+--- bashets config
+bashets.set_script_path("~/.config/awesome/")
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
+beautiful.init("~/.config/awesome/theme/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal =  "xterm"
-editor = os.getenv("EDITOR") or "vim"
+terminal = "xterm"
+editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
-
--- Start compton to vsync for us
-awful.util.spawn_with_shell("compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --unredir-if-possible")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -64,9 +66,10 @@ local layouts =
     awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
-    awful.layout.suit.tile.top,
+    awful.layout.suit.fair,
+    awful.layout.suit.fair.horizontal,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen
+    awful.layout.suit.max.fullscreen,
 }
 -- }}}
 
@@ -80,13 +83,10 @@ end
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
-tags = {
-	names = { "main", "web", "term", "media", "IM", "misc" },
-	layout = { layouts[1], layouts[3], layouts[3], layouts[3], layouts[3], layouts[1] }
-}
+tags = {}
 for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag(tags.names, s, tags.layout)
+-- Each screen has its own tag table.
+tags[s] = awful.tag({ "01", "02", "03", "04", "05", "06" }, s, layouts[2])
 end
 -- }}}
 
@@ -99,22 +99,8 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
 
--- Helper function to set colors of numbers for widgets
--- if input_nr is smaller than green, that's the color returned 
--- same for yellow, if the number is larger than yellow the function
--- returns red
-function nr_color(input_nr, green, yellow)
-	if input_nr < green then return 'green' 
-	else if input_nr < yellow then return 'yellow' 
-	end
-	return 'red'
-	end
-end
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -124,39 +110,67 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
--- CPU load widget
-cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, 
-	function(widget, args)
-		return string.format("<span color='%s'>CPU: %d %%</span>", nr_color(args[1], 30, 90), args[1])	
-	end)
-
--- Basic spacer widget
+-- WIDGETS
+-- Spacer thingy
+-- Put inbetween stuff and stuff and it'll be fine
+-- its ok
 spacer = wibox.widget.textbox()
-spacer:set_text("  ")
+spacer:set_text(" ")
 
--- RAM usage widget
-ramwidget = wibox.widget.textbox()
-vicious.register(ramwidget, vicious.widgets.mem, 
-	function(widget, args)
-		return string.format("<span color='%s'>RAM: %dMB %d%%</span>", nr_color(args[1], 30, 90), args[2], args[1])
-	end)
+-- Player thingy
+musicicon = wibox.widget.imagebox()
+musicicon:set_image(base_cfg .. "theme/icons/spotify.png")
 
--- Uptime widget
-uptimewidget = wibox.widget.textbox()
-vicious.register(uptimewidget, vicious.widgets.uptime,
-	function(widget, args) 
-		return string.format("<span color='%s'>Uptime: %02d:%02d</span>", "#D66B31", args[2], args[3])
-	end
-)
+musicdata = wibox.widget.textbox()
+bashets.register("musicdata.sh", {widget = musicdata, 
+	format = '<span foreground="#FFA347"> $1 - $2 </span>', 
+	separator = "\n", 
+	update_time = 1 })
 
+-- CPU graph
+cpu_graph = blingbling.line_graph({ width = 100, height = 20})
+cpu_graph:set_background_color("#000066")
+cpu_graph:set_graph_line_color("#6699ff")
+cpu_graph:set_rounded_size(0.5)
+cpu_graph:set_show_text(true)
+cpu_graph:set_h_margin(0)
+cpu_graph:set_label("CPU: $percent %")
+vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 0.5)
+
+-- RAM graph
+ram_graph = blingbling.line_graph({ width = 100, height = 20})
+ram_graph:set_background_color("#4C0F3D")
+ram_graph:set_graph_line_color("#FF33CC")
+ram_graph:set_rounded_size(0.5)
+ram_graph:set_show_text(true)
+ram_graph:set_h_margin(0)
+ram_graph:set_label("RAM: $percent %")
+vicious.register(ram_graph, vicious.widgets.mem, '$1', 0.5)
+
+-- Volume widget
+volume_widget = blingbling.volume({
+	bar = true, 
+	show_text = true,
+	label = "$percent %",
+	width = 50,
+	height = 20,
+	})
+volume_widget:set_graph_color("#66bb33")
+volume_widget:update_master()
+volume_widget:set_master_control()
+
+volume_icon = wibox.widget.imagebox()
+volume_icon:set_image(base_cfg .. "theme/icons/volume.png")
+
+-- Net widget
+net_widget = blingbling.net({interface = "enp3s0", show_text = true})
+net_widget:set_ippopup()
+net_widget:set_graph_color("#00ff00")
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
-mytasklist = {}
-mystatusbar = {}
 mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 1, awful.tag.viewonly),
                     awful.button({ modkey }, 1, awful.client.movetotag),
@@ -165,6 +179,43 @@ mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 4, function(t) awful.tag.viewnext(awful.tag.getscreen(t)) end),
                     awful.button({ }, 5, function(t) awful.tag.viewprev(awful.tag.getscreen(t)) end)
                     )
+mytasklist = {}
+mytasklist.buttons = awful.util.table.join(
+                     awful.button({ }, 1, function (c)
+                                              if c == client.focus then
+                                                  c.minimized = true
+                                              else
+                                                  -- Without this, the following
+                                                  -- :isvisible() makes no sense
+                                                  c.minimized = false
+                                                  if not c:isvisible() then
+                                                      awful.tag.viewonly(c:tags()[1])
+                                                  end
+                                                  -- This will also un-minimize
+                                                  -- the client, if needed
+                                                  client.focus = c
+                                                  c:raise()
+                                              end
+                                          end),
+                     awful.button({ }, 3, function ()
+                                              if instance then
+                                                  instance:hide()
+                                                  instance = nil
+                                              else
+                                                  instance = awful.menu.clients({
+                                                      theme = { width = 250 }
+                                                  })
+                                              end
+                                          end),
+                     awful.button({ }, 4, function ()
+                                              awful.client.focus.byidx(1)
+                                              if client.focus then client.focus:raise() end
+                                          end),
+                     awful.button({ }, 5, function ()
+                                              awful.client.focus.byidx(-1)
+                                              if client.focus then client.focus:raise() end
+                                          end))
+
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
@@ -176,39 +227,43 @@ for s = 1, screen.count() do
                            awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
+
     -- Create a taglist widget
     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
+    -- Create a tasklist widget
+    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
+
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s})
-
-	-- Create a tasklist widget
-	mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.focused)
-
-	-- Create a statusbar
+    mywibox[s] = awful.wibox({ position = "top", align = "center", screen = s })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(mytaglist[s])
+	left_layout:add(spacer)
+    left_layout:add(mylayoutbox[s])
+	left_layout:add(spacer)
     left_layout:add(mypromptbox[s])
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
+	right_layout:add(ram_graph)
 	right_layout:add(spacer)
-	right_layout:add(uptimewidget)
+	right_layout:add(cpu_graph)
 	right_layout:add(spacer)
-	right_layout:add(cpuwidget)
+	right_layout:add(musicicon)
+	right_layout:add(musicdata)
 	right_layout:add(spacer)
-	right_layout:add(ramwidget)
+	right_layout:add(volume_icon)
+	right_layout:add(volume_widget)
 	right_layout:add(spacer)
+	right_layout:add(net_widget)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(mytextclock)
-    right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
-	layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
     mywibox[s]:set_widget(layout)
@@ -217,7 +272,6 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -239,7 +293,6 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -370,14 +423,13 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-	{ rule = { class = "Firefox" },
-       properties = { tag = tags[mouse.screen][2] } },
-	{ rule = { class = "Spotify" },
-		properties = { tag = tags[mouse.screen][4] } },
-	{ rule = { class = "xterm" },
-		properties = { tag = tags[mouse.screen][3] } },
-	{ rule = { class = "conky" }, 
-		properties = { sticky = true, skip_taskbar = true } },
+	{ rule = { class = "XTerm" },
+		properties = {
+			opacity = 0.95
+		} },
+    -- Set Firefox to always map on tags number 2 of screen 1.
+    -- { rule = { class = "Firefox" },
+    --   properties = { tag = tags[1][2] } },
 }
 -- }}}
 
@@ -450,12 +502,8 @@ client.connect_signal("manage", function (c, startup)
     end
 end)
 
-client.connect_signal("focus", function(c) 
-	c.border_color = beautiful.border_focus 
-end)
-
-client.connect_signal("unfocus", function(c) 
-	c.border_color = beautiful.border_normal 
-end)
-
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal  end)
 -- }}}
+
+bashets.start()

@@ -4,24 +4,22 @@
 
 theme = {}
 
-theme.font          = "Source Code Pro 8"
+theme.font          = "Inconsolata 9"
 
-theme.base_color    = "#D66B31"
-
-theme.bg_normal     = "#222222"
-theme.bg_focus      = theme.base_color
-theme.bg_urgent     = "#ff0000"
+theme.bg_normal     = "#050505"
+theme.bg_focus      = "#151515"
+theme.bg_urgent     = "#cccccc"
 theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
+theme.bg_systray    = "#121212"
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
+theme.fg_normal     = "#888888"
+theme.fg_focus      = "#ff00ff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.border_width  = 1
-theme.border_normal = "#555555"
-theme.border_focus  = "#aaaaaa"
+theme.border_normal = "#222222"
+theme.border_focus  = "#333333"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -36,14 +34,14 @@ theme.border_marked = "#91231c"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Display the taglist squares
-theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
-theme.taglist_squares_unsel = "/usr/share/awesome/themes/default/taglist/squarew.png"
+-- theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
+theme.taglist_squares_unsel = "~/.config/awesome/theme/taglist/squarew.png"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = "/usr/share/awesome/themes/default/submenu.png"
-theme.menu_height = 15
+theme.menu_height = 20
 theme.menu_width  = 100
 
 -- You can add as many variables as

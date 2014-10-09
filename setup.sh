@@ -16,3 +16,4 @@ ln -fs ~/dotfiles/.zshrc ~/.zshrc
 ln -fs ~/dotfiles/awesome/ ~/.config/awesome
 ln -fs ~/dotfiles/.Xresources ~/.Xresources
 ln -fs ~/dotfiles/.compton.conf ~/.compton.conf
+ln -fs ~/dotfiles/.xinitrc ~/.xinitrc
