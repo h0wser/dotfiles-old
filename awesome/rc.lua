@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+-- Widgets
 local vicious = require("vicious")
 local blingbling = require("blingbling")
 local bashets = require("bashets")
@@ -128,7 +129,7 @@ bashets.register("musicdata.sh", {widget = musicdata,
 	update_time = 1 })
 
 -- CPU graph
-cpu_graph = blingbling.line_graph({ width = 100, height = 20})
+cpu_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
 cpu_graph:set_background_color("#000066")
 cpu_graph:set_graph_line_color("#6699ff")
 cpu_graph:set_rounded_size(0.5)
@@ -138,7 +139,7 @@ cpu_graph:set_label("CPU: $percent %")
 vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 0.5)
 
 -- RAM graph
-ram_graph = blingbling.line_graph({ width = 100, height = 20})
+ram_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
 ram_graph:set_background_color("#4C0F3D")
 ram_graph:set_graph_line_color("#FF33CC")
 ram_graph:set_rounded_size(0.5)
@@ -153,7 +154,9 @@ volume_widget = blingbling.volume({
 	show_text = true,
 	label = "$percent %",
 	width = 50,
-	height = 20,
+	height = 20, 
+	font="Inconsolata", 
+	font_size = 12
 	})
 volume_widget:set_graph_color("#66bb33")
 volume_widget:update_master()
@@ -163,9 +166,23 @@ volume_icon = wibox.widget.imagebox()
 volume_icon:set_image(base_cfg .. "theme/icons/volume.png")
 
 -- Net widget
-net_widget = blingbling.net({interface = "enp3s0", show_text = true})
+local intr
+if io.popen("uname -n"):read() == "uranus" then 
+	intr = "wlp3s0"
+else 
+	intr = "enp3s0"
+end
+net_widget = blingbling.net({interface = intr, show_text = true, font="Inconsolata", font_size = 12})
 net_widget:set_ippopup()
 net_widget:set_graph_color("#00ff00")
+
+-- Battery widget
+-- dont know why this doesn't work with other stuff
+bat_widget = blingbling.value_text_box({width = 70, height = 20, font="Inconsolata", font_size = 12})
+bat_widget:set_label("BAT: $percent %")
+bat_widget:set_text_color("#ffdc00")
+vicious.register(bat_widget, vicious.widgets.bat, "$2", 10, "BAT0")
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -253,6 +270,8 @@ for s = 1, screen.count() do
 	right_layout:add(spacer)
 	right_layout:add(musicicon)
 	right_layout:add(musicdata)
+	right_layout:add(spacer)
+	right_layout:add(bat_widget)
 	right_layout:add(spacer)
 	right_layout:add(volume_icon)
 	right_layout:add(volume_widget)
@@ -422,7 +441,8 @@ awful.rules.rules = {
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
-                     buttons = clientbuttons } },
+                     buttons = clientbuttons,
+					 size_hints_honor = false} },
 	{ rule = { class = "XTerm" },
 		properties = {
 			opacity = 0.95

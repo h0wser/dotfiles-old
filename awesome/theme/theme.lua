@@ -1,8 +1,15 @@
 ---------------------------
--- Default awesome theme --
+-- h0wser's awesome theme --
 ---------------------------
 
 theme = {}
+
+-- This doesn't load for some reason
+theme.blingbling = 
+{ 
+    font = "Inconsolata", 
+    font_size = 12
+}
 
 theme.font          = "Inconsolata 9"
 
