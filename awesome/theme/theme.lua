@@ -15,7 +15,7 @@ theme.font          = "Inconsolata 9"
 
 theme.bg_normal     = "#050505"
 theme.bg_focus      = "#151515"
-theme.bg_urgent     = "#cccccc"
+theme.bg_urgent     = "#cc00cc"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = "#121212"
 
