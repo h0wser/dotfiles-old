@@ -38,6 +38,8 @@ do
         in_error = false
     end)
 end
+
+naughty.suspend()
 -- }}}
 
 local base_cfg = "/home/h0wser/.config/awesome/"
@@ -87,7 +89,7 @@ end
 tags = {}
 for s = 1, screen.count() do
 -- Each screen has its own tag table.
-tags[s] = awful.tag({ "01", "02", "03", "04", "05", "06" }, s, layouts[2])
+tags[s] = awful.tag({ "01", "02", "03", "04", "05", "06", "07", "08", "09" }, s, layouts[2])
 end
 -- }}}
 
