@@ -132,9 +132,8 @@ bashets.register("musicdata.sh", {widget = musicdata,
 cpu_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
 cpu_graph:set_background_color("#000066")
 cpu_graph:set_graph_line_color("#6699ff")
-cpu_graph:set_rounded_size(0.5)
 cpu_graph:set_show_text(true)
-cpu_graph:set_h_margin(0)
+cpu_graph:set_h_margin(2)
 cpu_graph:set_label("CPU: $percent %")
 vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 0.5)
 
@@ -142,9 +141,8 @@ vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 0.5)
 ram_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
 ram_graph:set_background_color("#4C0F3D")
 ram_graph:set_graph_line_color("#FF33CC")
-ram_graph:set_rounded_size(0.5)
 ram_graph:set_show_text(true)
-ram_graph:set_h_margin(0)
+ram_graph:set_h_margin(2)
 ram_graph:set_label("RAM: $percent %")
 vicious.register(ram_graph, vicious.widgets.mem, '$1', 0.5)
 
@@ -449,6 +447,10 @@ awful.rules.rules = {
 	{ rule = { class = "XTerm" },
 		properties = {
 			opacity = 0.95
+		} },
+	{ rule = { class = "heimdallr-client" },
+		properties = {
+			floating = true
 		} },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
