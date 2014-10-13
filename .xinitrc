@@ -26,6 +26,7 @@ xset b 0 0 0
 # Not sure if the --no-argb arg is helping or not..
 # It's used to prevent screen tearing
 compton &
+xscreensaver -nosplash &
 exec awesome --no-argb
 
 # exec startxfce4
