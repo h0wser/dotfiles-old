@@ -448,7 +448,7 @@ awful.rules.rules = {
 					 size_hints_honor = false} },
 	{ rule = { class = "XTerm" },
 		properties = {
-			opacity = 0.95
+			opacity = 0.85
 		} },
 	{ rule = { class = "heimdallr-client" },
 		properties = {
