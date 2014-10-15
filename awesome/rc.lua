@@ -39,7 +39,7 @@ do
     end)
 end
 
-naughty.suspend()
+-- naughty.suspend()
 -- }}}
 
 local base_cfg = "/home/h0wser/.config/awesome/"
@@ -132,8 +132,8 @@ bashets.register("musicdata.sh", {widget = musicdata,
 
 -- CPU graph
 cpu_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
-cpu_graph:set_background_color("#000066")
-cpu_graph:set_graph_line_color("#6699ff")
+cpu_graph:set_background_color("#0D98BA")
+cpu_graph:set_graph_line_color("#C9FFE5")
 cpu_graph:set_show_text(true)
 cpu_graph:set_h_margin(2)
 cpu_graph:set_label("CPU: $percent %")
@@ -141,8 +141,8 @@ vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 0.5)
 
 -- RAM graph
 ram_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
-ram_graph:set_background_color("#4C0F3D")
-ram_graph:set_graph_line_color("#FF33CC")
+ram_graph:set_background_color("#660066")
+ram_graph:set_graph_line_color("#A366A3")
 ram_graph:set_show_text(true)
 ram_graph:set_h_margin(2)
 ram_graph:set_label("RAM: $percent %")
@@ -178,10 +178,8 @@ net_widget:set_graph_color("#00ff00")
 
 -- Battery widget
 -- dont know why this doesn't work with other stuff
-bat_widget = blingbling.value_text_box({width = 70, height = 20, font="Inconsolata", font_size = 12})
-bat_widget:set_label("BAT: $percent %")
-bat_widget:set_text_color("#ffdc00")
-vicious.register(bat_widget, vicious.widgets.bat, "$2", 10, "BAT0")
+bat_widget = wibox.widget.textbox()
+vicious.register(bat_widget, vicious.widgets.bat, '<span foreground="#ffaaff">BAT: $2% $1</span>', 12, "BAT0")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
