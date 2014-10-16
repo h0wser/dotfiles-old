@@ -13,7 +13,7 @@ honey.layout.thin = { name = "honey_thin" }
 function honey.layout.thin.arrange(p) 
 	local area = p.workarea
 	local clients = p.clients
-	local gap = 40
+	local gap = 30
 	local max_cols = 3
 	local cols = math.min(#clients, max_cols)
 	local max_width = math.min((area.width - gap * cols) / cols, 600)
