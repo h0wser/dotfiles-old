@@ -133,10 +133,12 @@ musicicon = wibox.widget.imagebox()
 musicicon:set_image(base_cfg .. "theme/icons/spotify.png")
 
 musicdata = wibox.widget.textbox()
-bashets.register("musicdata.sh", {widget = musicdata, 
-	format = '<span foreground="#FFA347"> $1 - $2 </span>', 
-	separator = "\n", 
-	update_time = 1 })
+vicious.register(musicdata, vicious.widgets.mpd,
+	function (widget, args)
+		if args["{state}"] == "Stop" then return ""
+		else return '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
+		end
+	end)
 
 -- CPU graph
 cpu_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
