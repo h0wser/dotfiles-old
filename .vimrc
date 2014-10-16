@@ -56,3 +56,9 @@ au BufRead,BufNewFile *.rs,*.rc set filetype=rust
 let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_enable_diagnostic_signs = 0
+
+filetype plugin indent on
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor = "latex"
+
+set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after

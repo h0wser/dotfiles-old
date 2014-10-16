@@ -80,7 +80,7 @@ local layouts =
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-	honey.testlayout
+	honey.layout.thin
 }
 -- }}}
 
