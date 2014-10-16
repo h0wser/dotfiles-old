@@ -14,6 +14,10 @@ local menubar = require("menubar")
 local vicious = require("vicious")
 local blingbling = require("blingbling")
 local bashets = require("bashets")
+--Sexy stuff
+local revelation = require("revelation")
+
+local honey = require("honey")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -43,6 +47,7 @@ end
 -- }}}
 
 local base_cfg = "/home/h0wser/.config/awesome/"
+local hostname = io.popen("uname -n"):read()
 
 --- bashets config
 bashets.set_script_path("~/.config/awesome/")
@@ -50,6 +55,8 @@ bashets.set_script_path("~/.config/awesome/")
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/theme/theme.lua")
+
+revelation.init()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -73,6 +80,7 @@ local layouts =
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
+	honey.testlayout
 }
 -- }}}
 
@@ -167,11 +175,12 @@ volume_icon:set_image(base_cfg .. "theme/icons/volume.png")
 
 -- Net widget
 local intr
-if io.popen("uname -n"):read() == "uranus" then 
+if hostname == "uranus" then 
 	intr = "wlp3s0"
 else 
 	intr = "enp3s0"
 end
+
 net_widget = blingbling.net({interface = intr, show_text = true, font="Inconsolata", font_size = 12})
 net_widget:set_ippopup()
 net_widget:set_graph_color("#00ff00")
@@ -269,8 +278,12 @@ for s = 1, screen.count() do
 	right_layout:add(musicicon)
 	right_layout:add(musicdata)
 	right_layout:add(spacer)
-	right_layout:add(bat_widget)
-	right_layout:add(spacer)
+
+	if hostname == "uranus" then 
+		right_layout:add(bat_widget) 
+		right_layout:add(spacer)
+	end
+
 	right_layout:add(volume_icon)
 	right_layout:add(volume_widget)
 	right_layout:add(spacer)
@@ -299,6 +312,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+	awful.key({ modkey,			  }, "e",	   revelation),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -453,8 +467,6 @@ awful.rules.rules = {
 			floating = true
 		} },
     -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
 }
 -- }}}
 
@@ -481,50 +493,6 @@ client.connect_signal("manage", function (c, startup)
         end
     end
 
-    local titlebars_enabled = false
-    if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
-        -- buttons for the titlebar
-        local buttons = awful.util.table.join(
-                awful.button({ }, 1, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.move(c)
-                end),
-                awful.button({ }, 3, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.resize(c)
-                end)
-                )
-
-        -- Widgets that are aligned to the left
-        local left_layout = wibox.layout.fixed.horizontal()
-        left_layout:add(awful.titlebar.widget.iconwidget(c))
-        left_layout:buttons(buttons)
-
-        -- Widgets that are aligned to the right
-        local right_layout = wibox.layout.fixed.horizontal()
-        right_layout:add(awful.titlebar.widget.floatingbutton(c))
-        right_layout:add(awful.titlebar.widget.maximizedbutton(c))
-        right_layout:add(awful.titlebar.widget.stickybutton(c))
-        right_layout:add(awful.titlebar.widget.ontopbutton(c))
-        right_layout:add(awful.titlebar.widget.closebutton(c))
-
-        -- The title goes in the middle
-        local middle_layout = wibox.layout.flex.horizontal()
-        local title = awful.titlebar.widget.titlewidget(c)
-        title:set_align("center")
-        middle_layout:add(title)
-        middle_layout:buttons(buttons)
-
-        -- Now bring it all together
-        local layout = wibox.layout.align.horizontal()
-        layout:set_left(left_layout)
-        layout:set_right(right_layout)
-        layout:set_middle(middle_layout)
-
-        awful.titlebar(c):set_widget(layout)
-    end
 end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
