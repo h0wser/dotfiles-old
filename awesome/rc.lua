@@ -136,7 +136,9 @@ musicdata = wibox.widget.textbox()
 vicious.register(musicdata, vicious.widgets.mpd,
 	function (widget, args)
 		if args["{state}"] == "Stop" then return ""
+		elseif args["{state}"] == "Pause" then return '<span foreground="#FFA347">(paused) ' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
 		else return '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
+	
 		end
 	end)
 
