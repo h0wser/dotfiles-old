@@ -78,12 +78,8 @@ alias prev="playerctl previous"
 
 alias title="printf '\033];%s\07\n' 'hello world'"
 
-# Use good compilers
-export CC=clang
-export CXX=clang++
-
-# Editor
 export EDITOR=vim
+export BROWSER=chromium
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile

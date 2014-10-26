@@ -470,6 +470,11 @@ awful.rules.rules = {
 		properties = {
 			floating = true
 		} },
+	{ rule = { class = "Plugin-container" },
+		properties = {
+			floating = true,
+			fullscreen = true
+		} },
     -- Set Firefox to always map on tags number 2 of screen 1.
 }
 -- }}}
