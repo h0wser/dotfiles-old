@@ -2,7 +2,7 @@ xterm*locale: true
 xterm*termName: xterm-256color
 xterm*saveLines: 4096
 xterm*reverseVideo: off
-xterm*faceName: Inconsolata:size=9:antialias=false
+xterm*faceName: Inconsolata:size=10:antialias=false
 xterm*borderWidth: 1
 xterm*cursorColor: #ffffff
 

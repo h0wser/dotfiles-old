@@ -81,8 +81,8 @@ alias title="printf '\033];%s\07\n'"
 alias start="sudo systemctl start "
 alias status="sudo systemctl status "
 
-# Editor
 export EDITOR=vim
+export BROWSER=chromium
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
