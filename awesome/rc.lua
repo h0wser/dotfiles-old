@@ -75,12 +75,10 @@ local layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
     awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-	honey.layout.thin
+	honey.layout.thin,
+	honey.layout.focus
 }
 -- }}}
 
