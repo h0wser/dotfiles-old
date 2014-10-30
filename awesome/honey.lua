@@ -23,12 +23,13 @@ function honey.layout.thin.arrange(p)
 	local rows = 1
 	local y_offset = gap
 	local max_height = area.height - gap
-	local max_fullscreen_height = max_height
 	if cols == max_cols then 
 		rows = math.ceil(#clients / max_cols)
 		max_height = (area.height) / rows - gap
 		y_offset = (area.height / rows)
 	end
+
+	local max_fullscreen_height = max_height * 2 + gap
 
 	local current_row = 0
 	local current_col = 0
