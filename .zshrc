@@ -37,7 +37,7 @@ precmd() {
 	RPROMPT="${vcs_info_msg_0_}[%?] %*"
 }
 
-
+bindkey -v
 
 PROMPT="%{$fg[red]%}%n@%M %{$reset_color%}- %{$fg[red]%}[%3~]%{$reset_color%} > "
 
@@ -76,11 +76,10 @@ alias play="playerctl play-pause"
 alias next="playerctl next"
 alias prev="playerctl previous"
 
-alias title="printf '\033];%s\07\n' 'hello world'"
+alias title="printf '\033];%s\07\n'"
 
-# Use good compilers
-export CC=clang
-export CXX=clang++
+alias start="sudo systemctl start "
+alias status="sudo systemctl status "
 
 # Editor
 export EDITOR=vim
