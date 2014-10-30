@@ -23,6 +23,7 @@ function honey.layout.thin.arrange(p)
 	local rows = 1
 	local y_offset = gap
 	local max_height = area.height - gap
+	local max_fullscreen_height = max_height
 	if cols == max_cols then 
 		rows = math.ceil(#clients / max_cols)
 		max_height = (area.height) / rows - gap
@@ -31,6 +32,8 @@ function honey.layout.thin.arrange(p)
 
 	local current_row = 0
 	local current_col = 0
+	local extra_clients = #clients % cols
+	if extra_clients == 0 then extra_clients = rows + 10 end -- So that clients dont be wierd
 
 	for i, c in ipairs(p.clients) do
 		
@@ -40,6 +43,11 @@ function honey.layout.thin.arrange(p)
 			width = max_width,
 			height = max_height
 		}
+
+		if current_row == rows - 2 and current_col > extra_clients - 1 then
+			g.height = max_fullscreen_height
+		end
+		
 		c:geometry(g)
 
 		current_col = current_col + 1
