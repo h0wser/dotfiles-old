@@ -11,6 +11,12 @@ theme.blingbling =
     font_size = 12
 }
 
+theme.honey = 
+{
+    gap = 30,
+    thin_nr_columns = 3
+}
+
 theme.font          = "Inconsolata 9"
 
 theme.bg_normal     = "#050505"

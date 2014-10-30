@@ -2,6 +2,11 @@ local math = math
 local ipair = ipair
 
 local awful = require("awful")
+local beautiful = require("beautiful")
+
+beautiful.init("~/.config/awesome/theme/theme.lua")
+
+local gap = beautiful.honey.gap
 
 honey = {}
 
@@ -15,8 +20,7 @@ honey.layout.thin = { name = "honey_thin" }
 function honey.layout.thin.arrange(p) 
 	local area = p.workarea
 	local clients = p.clients
-	local gap = 30
-	local max_cols = 3
+	local max_cols = beautiful.honey.thin_nr_columns
 	local cols = math.min(#clients, max_cols)
 	local max_width = math.min((area.width - gap * cols) / cols, 600)
 
@@ -68,7 +72,6 @@ honey.layout.focus = { name = "honey_focus" }
 function honey.layout.focus.arrange(p)
 	local area = p.workarea
 	local clients = p.clients 
-	local gap = 30
 
 	local side_width = area.width / 4 - gap
 	local side_height = (area.height - gap) / 2 - gap
