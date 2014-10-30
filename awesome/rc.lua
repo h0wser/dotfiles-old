@@ -9,13 +9,10 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
 -- Widgets
 local vicious = require("vicious")
-local blingbling = require("blingbling")
-local bashets = require("bashets")
---Sexy stuff
 local revelation = require("revelation")
+local blingbling = require("blingbling")
 
 local honey = require("honey")
 
@@ -50,7 +47,7 @@ local base_cfg = "/home/h0wser/.config/awesome/"
 local hostname = io.popen("uname -n"):read()
 
 --- bashets config
-bashets.set_script_path("~/.config/awesome/")
+-- bashets.set_script_path("~/.config/awesome/")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
@@ -97,22 +94,6 @@ for s = 1, screen.count() do
 -- Each screen has its own tag table.
 tags[s] = awful.tag({ "01", "02", "03", "04", "05", "06", "07", "08", "09" }, s, layouts[2])
 end
--- }}}
-
--- {{{ Menu
--- Create a laucher widget and a main menu
-myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
-}
-
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon })
-
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- {{{ Wibox
@@ -367,8 +348,6 @@ globalkeys = awful.util.table.join(
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
               end),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end),
 	
 	-- Lock screen
 	awful.key({modkey, "Control"}, "l", function() awful.util.spawn("xscreensaver-command -lock") end) 
@@ -506,4 +485,3 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal  end)
 -- }}}
 
-bashets.start()
