@@ -107,6 +107,11 @@ theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
 theme.layout_honey_thin = "~/.config/awesome/themes/pluto/layouts/honey_thin.png"
 theme.layout_honey_focus = "~/.config/awesome/themes/pluto/layouts/honey_focus.png"
 
+-- Widget icons and backgrounds
+theme.cpu_bg = "~/.config/awesome/themes/pluto/cpu_bg.png"
+theme.cpu_icon = "~/.config/awesome/theme/pluto/cpu.png"
+theme.mem_bg = "~/.config/awesome/themes/pluto/mem_bg.png"
+theme.mem_icon = "~/.config/awesome/themes/pluto/mem.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 

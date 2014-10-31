@@ -108,7 +108,7 @@ spacer:set_text(" ")
 
 -- Player thingy
 musicicon = wibox.widget.imagebox()
-musicicon:set_image(base_cfg .. "theme/icons/spotify.png")
+musicicon:set_image(base_cfg .. "themes/pluto/icons/spotify.png")
 
 musicdata = wibox.widget.textbox()
 vicious.register(musicdata, vicious.widgets.mpd,
@@ -120,23 +120,44 @@ vicious.register(musicdata, vicious.widgets.mpd,
 		end
 	end)
 
--- CPU graph
-cpu_graph = blingbling.line_graph({ width = 100, height = 20})
-cpu_graph:set_graph_line_color("#d9FFf5")
-cpu_graph:set_graph_color("#C9FFE5")
-cpu_graph:set_show_text(true)
-cpu_graph:set_h_margin(2)
-cpu_graph:set_label("CPU: $percent %")
-vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 0.5)
+--CPU graph
+cpu_icon = wibox.widget.imagebox()
+cpu_icon:set_resize(false)
+cpu_icon:set_image(base_cfg .. "themes/pluto/cpu.png")
 
--- RAM graph
-ram_graph = blingbling.line_graph({ width = 100, height = 20})
-ram_graph:set_graph_line_color("#b376b3")
-ram_graph:set_graph_color("#A366A3")
-ram_graph:set_show_text(true)
-ram_graph:set_h_margin(2)
-ram_graph:set_label("RAM: $percent %")
-vicious.register(ram_graph, vicious.widgets.mem, '$1', 0.5)
+cpu_graph = awful.widget.progressbar()
+cpu_graph:set_width(85)
+cpu_graph:set_ticks(true)
+cpu_graph:set_ticks_size(10)
+cpu_graph:set_color("#a366a3")
+vicious.register(cpu_graph, vicious.widgets.cpu, '$1')
+
+cpu_margin = wibox.layout.margin(cpu_graph, 7, 12)
+cpu_margin:set_top(7)
+cpu_margin:set_bottom(8)
+
+cpu_graph = wibox.widget.background(cpu_margin)
+cpu_graph:set_bgimage(beautiful.cpu_bg)
+
+-- mem graph
+mem_icon = wibox.widget.imagebox()
+mem_icon:set_resize(false)
+mem_icon:set_image(base_cfg .. "themes/pluto/mem.png")
+
+mem_graph = awful.widget.progressbar()
+mem_graph:set_width(85)
+mem_graph:set_height(5)
+mem_graph:set_ticks(true)
+mem_graph:set_ticks_size(10)
+mem_graph:set_color("#4bcdd2")
+vicious.register(mem_graph, vicious.widgets.mem, '$1')
+
+mem_margin = wibox.layout.margin(mem_graph, 7, 12)
+mem_margin:set_top(7)
+mem_margin:set_bottom(8)
+
+mem_graph = wibox.widget.background(mem_margin)
+mem_graph:set_bgimage(beautiful.mem_bg)
 
 -- Volume widget
 volume_widget = blingbling.volume({
@@ -253,8 +274,9 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-	right_layout:add(ram_graph)
-	right_layout:add(spacer)
+	right_layout:add(mem_icon)
+	right_layout:add(mem_graph)
+	right_layout:add(cpu_icon)
 	right_layout:add(cpu_graph)
 	right_layout:add(spacer)
 	right_layout:add(musicicon)
