@@ -101,6 +101,9 @@ theme.layout_tile = "/usr/share/awesome/themes/default/layouts/tilew.png"
 theme.layout_tiletop = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
 theme.layout_spiral  = "/usr/share/awesome/themes/default/layouts/spiralw.png"
 theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
+theme.layout_honey_thin = "~/.config/awesome/theme/layouts/honey_thin.png"
+theme.layout_honey_focus = "~/.config/awesome/theme/layouts/honey_focus.png"
+
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 
