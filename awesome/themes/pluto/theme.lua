@@ -8,7 +8,9 @@ theme = {}
 theme.blingbling = 
 { 
     font = "Inconsolata", 
-    font_size = 12
+    font_size = 12,
+    graph_background_color = "#111111",
+    background_color = "#111111",
 }
 
 theme.honey = 
@@ -48,7 +50,7 @@ theme.border_marked = "#91231c"
 
 -- Display the taglist squares
 -- theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
-theme.taglist_squares_unsel = "~/.config/awesome/theme/taglist/squarew.png"
+theme.taglist_squares_unsel = "~/.config/awesome/themes/pluto/taglist/squarew.png"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
@@ -86,7 +88,7 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/.config/awesome/theme/background.png"
+theme.wallpaper = "~/.config/awesome/themes/pluto/background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
@@ -101,8 +103,9 @@ theme.layout_tile = "/usr/share/awesome/themes/default/layouts/tilew.png"
 theme.layout_tiletop = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
 theme.layout_spiral  = "/usr/share/awesome/themes/default/layouts/spiralw.png"
 theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
-theme.layout_honey_thin = "~/.config/awesome/theme/layouts/honey_thin.png"
-theme.layout_honey_focus = "~/.config/awesome/theme/layouts/honey_focus.png"
+
+theme.layout_honey_thin = "~/.config/awesome/themes/pluto/layouts/honey_thin.png"
+theme.layout_honey_focus = "~/.config/awesome/themes/pluto/layouts/honey_focus.png"
 
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"

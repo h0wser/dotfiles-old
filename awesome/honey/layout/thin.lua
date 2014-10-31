@@ -4,7 +4,7 @@ local ipairs = ipairs
 local awful = require("awful")
 local beautiful = require("beautiful")
 
-beautiful.init("~/.config/awesome/theme/theme.lua")
+beautiful.init("~/.config/awesome/themes/pluto/theme.lua")
 
 module("honey.layout.thin")
 

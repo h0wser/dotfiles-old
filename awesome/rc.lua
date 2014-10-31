@@ -12,9 +12,13 @@ local naughty = require("naughty")
 -- Widgets
 local vicious = require("vicious")
 local revelation = require("revelation")
-local blingbling = require("blingbling")
 
 local honey = require("honey")
+
+beautiful.init("~/.config/awesome/themes/pluto/theme.lua")
+revelation.init()
+
+local blingbling = require("blingbling")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -49,11 +53,6 @@ local hostname = io.popen("uname -n"):read()
 --- bashets config
 -- bashets.set_script_path("~/.config/awesome/")
 
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/theme/theme.lua")
-
-revelation.init()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -122,18 +121,18 @@ vicious.register(musicdata, vicious.widgets.mpd,
 	end)
 
 -- CPU graph
-cpu_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
-cpu_graph:set_background_color("#0D98BA")
-cpu_graph:set_graph_line_color("#C9FFE5")
+cpu_graph = blingbling.line_graph({ width = 100, height = 20})
+cpu_graph:set_graph_line_color("#d9FFf5")
+cpu_graph:set_graph_color("#C9FFE5")
 cpu_graph:set_show_text(true)
 cpu_graph:set_h_margin(2)
 cpu_graph:set_label("CPU: $percent %")
 vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 0.5)
 
 -- RAM graph
-ram_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
-ram_graph:set_background_color("#660066")
-ram_graph:set_graph_line_color("#A366A3")
+ram_graph = blingbling.line_graph({ width = 100, height = 20})
+ram_graph:set_graph_line_color("#b376b3")
+ram_graph:set_graph_color("#A366A3")
 ram_graph:set_show_text(true)
 ram_graph:set_h_margin(2)
 ram_graph:set_label("RAM: $percent %")
