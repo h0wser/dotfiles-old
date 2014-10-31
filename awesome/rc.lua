@@ -123,7 +123,7 @@ vicious.register(musicdata, vicious.widgets.mpd,
 --CPU graph
 cpu_icon = wibox.widget.imagebox()
 cpu_icon:set_resize(false)
-cpu_icon:set_image(base_cfg .. "themes/pluto/cpu.png")
+cpu_icon:set_image(beautiful.cpu_icon)
 
 cpu_graph = awful.widget.progressbar()
 cpu_graph:set_width(85)
@@ -142,7 +142,7 @@ cpu_graph:set_bgimage(beautiful.cpu_bg)
 -- mem graph
 mem_icon = wibox.widget.imagebox()
 mem_icon:set_resize(false)
-mem_icon:set_image(base_cfg .. "themes/pluto/mem.png")
+mem_icon:set_image(beautiful.mem_icon)
 
 mem_graph = awful.widget.progressbar()
 mem_graph:set_width(85)

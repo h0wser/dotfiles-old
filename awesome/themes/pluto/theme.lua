@@ -1,8 +1,11 @@
 ---------------------------
 -- h0wser's awesome theme --
 ---------------------------
+local awful = require("awful")
 
 theme = {}
+
+local confdir = awful.util.getdir("config") .. "/themes/pluto/"
 
 -- This doesn't load for some reason
 theme.blingbling = 
@@ -49,8 +52,7 @@ theme.border_marked = "#91231c"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Display the taglist squares
--- theme.taglist_squares_sel   = "/usr/share/awesome/themes/default/taglist/squarefw.png"
-theme.taglist_squares_unsel = "~/.config/awesome/themes/pluto/taglist/squarew.png"
+theme.taglist_squares_unsel = confdir .. "taglist/squarew.png"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
@@ -88,7 +90,7 @@ theme.titlebar_maximized_button_focus_inactive  = "/usr/share/awesome/themes/def
 theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = "~/.config/awesome/themes/pluto/background.png"
+theme.wallpaper = confdir .. "background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"
@@ -104,14 +106,14 @@ theme.layout_tiletop = "/usr/share/awesome/themes/default/layouts/tiletopw.png"
 theme.layout_spiral  = "/usr/share/awesome/themes/default/layouts/spiralw.png"
 theme.layout_dwindle = "/usr/share/awesome/themes/default/layouts/dwindlew.png"
 
-theme.layout_honey_thin = "~/.config/awesome/themes/pluto/layouts/honey_thin.png"
-theme.layout_honey_focus = "~/.config/awesome/themes/pluto/layouts/honey_focus.png"
+theme.layout_honey_thin = confdir .. "layouts/honey_thin.png"
+theme.layout_honey_focus = confdir .. "layouts/honey_focus.png"
 
 -- Widget icons and backgrounds
-theme.cpu_bg = "~/.config/awesome/themes/pluto/cpu_bg.png"
-theme.cpu_icon = "~/.config/awesome/theme/pluto/cpu.png"
-theme.mem_bg = "~/.config/awesome/themes/pluto/mem_bg.png"
-theme.mem_icon = "~/.config/awesome/themes/pluto/mem.png"
+theme.cpu_bg = confdir .. "cpu_bg.png"
+theme.cpu_icon = confdir .. "cpu.png"
+theme.mem_bg = confdir .. "mem_bg.png"
+theme.mem_icon = confdir .. "mem.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 
