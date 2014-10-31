@@ -452,7 +452,14 @@ awful.rules.rules = {
 			floating = true,
 			fullscreen = true
 		} },
-    -- Set Firefox to always map on tags number 2 of screen 1.
+	{ rule = { class = "Chromium" },
+		properties = {
+			tag = tags[mouse.screen][2]
+		} },
+	{ rule = { class = "Skype" },
+		properties = {
+			tag = tags[mouse.screen][3]
+		} },
 }
 -- }}}
 
