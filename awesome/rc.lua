@@ -147,6 +147,28 @@ cpu_margin:set_bottom(8)
 cpu_widget = wibox.widget.background(cpu_margin)
 cpu_widget:set_bgimage(beautiful.cpu_bg)
 
+-- cputemp widget
+cputemp_icon = wibox.widget.imagebox()
+cputemp_icon:set_resize(false)
+cputemp_icon:set_image(beautiful.temp_icon)
+
+cputemp_widget = wibox.widget.textbox()
+local cputemp_timer = timer({timeout = 2})
+cputemp_timer:connect_signal("timeout", function() 
+	local f = io.popen("sensors | grep 'Core'")
+	local colors = { "#ff9900", "#33ccff", "#66ff66", "#cc33ff" }
+	local widget_string = ""
+	for i=1,4,1 do
+		local output = f:read()
+		local value = string.match(output, "%+(%d+%.%d)")
+		widget_string = widget_string .. "<span foreground='" .. colors[i] .. "'>"  .. value .. "°C </span>"
+	end
+	f:close()
+		
+	cputemp_widget:set_markup(widget_string)
+end)
+cputemp_timer:start()
+
 -- mem widget
 mem_icon = wibox.widget.imagebox()
 mem_icon:set_resize(false)
@@ -295,6 +317,8 @@ for s = 1, screen.count() do
 	right_layout:add(mem_widget)
 	right_layout:add(cpu_icon)
 	right_layout:add(cpu_widget)
+	right_layout:add(cputemp_icon)
+	right_layout:add(cputemp_widget)
 	right_layout:add(music_icon)
 	right_layout:add(music_widget)
 	right_layout:add(spacer)
