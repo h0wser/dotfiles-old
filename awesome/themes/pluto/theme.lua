@@ -111,9 +111,14 @@ theme.layout_honey_focus = confdir .. "layouts/honey_focus.png"
 
 -- Widget icons and backgrounds
 theme.cpu_bg = confdir .. "cpu_bg.png"
-theme.cpu_icon = confdir .. "cpu.png"
+theme.cpu_icon = confdir .. "icons/cpu.png"
 theme.mem_bg = confdir .. "mem_bg.png"
-theme.mem_icon = confdir .. "mem.png"
+theme.mem_icon = confdir .. "icons/mem.png"
+theme.music_icon = confdir .. "icons/spotify.png"
+theme.volume_icon = confdir .. "icons/volume.png"
+theme.play_icon = confdir .. "icons/play.png"
+theme.pause_icon = confdir .. "icons/pause.png"
+theme.stop_icon = confdir .. "icons/stop.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 

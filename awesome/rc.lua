@@ -107,59 +107,71 @@ spacer = wibox.widget.textbox()
 spacer:set_text(" ")
 
 -- Player thingy
-musicicon = wibox.widget.imagebox()
-musicicon:set_image(base_cfg .. "themes/pluto/icons/spotify.png")
+music_icon = wibox.widget.imagebox()
+music_icon:set_image(theme.stop_icon)
+music_icon:set_resize(false)
 
-musicdata = wibox.widget.textbox()
-vicious.register(musicdata, vicious.widgets.mpd,
+music_widget = wibox.widget.textbox()
+vicious.register(music_widget, vicious.widgets.mpd,
 	function (widget, args)
-		if args["{state}"] == "Stop" then return ""
-		elseif args["{state}"] == "Pause" then return '<span foreground="#FFA347">(paused) ' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
-		else return '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
-	
+		local ret_text = ""
+		if args["{state}"] == "Stop" then 
+			ret_text = "" 
+			music_icon:set_image(theme.stop_icon)
+		elseif args["{state}"] == "Pause" then
+			ret_text = '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
+			music_icon:set_image(theme.pause_icon)
+		else 
+			ret_text = '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
+			music_icon:set_image(theme.play_icon)
 		end
+		return ret_text	
 	end)
 
---CPU graph
+--CPU widget
 cpu_icon = wibox.widget.imagebox()
 cpu_icon:set_resize(false)
 cpu_icon:set_image(beautiful.cpu_icon)
 
-cpu_graph = awful.widget.progressbar()
-cpu_graph:set_width(85)
-cpu_graph:set_ticks(true)
-cpu_graph:set_ticks_size(10)
-cpu_graph:set_color("#a366a3")
-vicious.register(cpu_graph, vicious.widgets.cpu, '$1')
+cpu_widget = awful.widget.progressbar()
+cpu_widget:set_width(85)
+cpu_widget:set_ticks(true)
+cpu_widget:set_ticks_size(10)
+cpu_widget:set_color("#a366a3")
+vicious.register(cpu_widget, vicious.widgets.cpu, '$1')
 
-cpu_margin = wibox.layout.margin(cpu_graph, 7, 12)
+cpu_margin = wibox.layout.margin(cpu_widget, 7, 12)
 cpu_margin:set_top(7)
 cpu_margin:set_bottom(8)
 
-cpu_graph = wibox.widget.background(cpu_margin)
-cpu_graph:set_bgimage(beautiful.cpu_bg)
+cpu_widget = wibox.widget.background(cpu_margin)
+cpu_widget:set_bgimage(beautiful.cpu_bg)
 
--- mem graph
+-- mem widget
 mem_icon = wibox.widget.imagebox()
 mem_icon:set_resize(false)
 mem_icon:set_image(beautiful.mem_icon)
 
-mem_graph = awful.widget.progressbar()
-mem_graph:set_width(85)
-mem_graph:set_height(5)
-mem_graph:set_ticks(true)
-mem_graph:set_ticks_size(10)
-mem_graph:set_color("#4bcdd2")
-vicious.register(mem_graph, vicious.widgets.mem, '$1')
+mem_widget = awful.widget.progressbar()
+mem_widget:set_width(85)
+mem_widget:set_height(5)
+mem_widget:set_ticks(true)
+mem_widget:set_ticks_size(10)
+mem_widget:set_color("#4bcdd2")
+vicious.register(mem_widget, vicious.widgets.mem, '$1')
 
-mem_margin = wibox.layout.margin(mem_graph, 7, 12)
+mem_margin = wibox.layout.margin(mem_widget, 7, 12)
 mem_margin:set_top(7)
 mem_margin:set_bottom(8)
 
-mem_graph = wibox.widget.background(mem_margin)
-mem_graph:set_bgimage(beautiful.mem_bg)
+mem_widget = wibox.widget.background(mem_margin)
+mem_widget:set_bgimage(beautiful.mem_bg)
 
 -- Volume widget
+volume_icon = wibox.widget.imagebox()
+volume_icon:set_resize(false)
+volume_icon:set_image(theme.volume_icon)
+
 volume_widget = blingbling.volume({
 	bar = true, 
 	show_text = true,
@@ -169,12 +181,9 @@ volume_widget = blingbling.volume({
 	font="Inconsolata", 
 	font_size = 12
 	})
-volume_widget:set_graph_color("#66bb33")
+volume_widget:set_graph_color("#943561")
 volume_widget:update_master()
 volume_widget:set_master_control()
-
-volume_icon = wibox.widget.imagebox()
-volume_icon:set_image(base_cfg .. "theme/icons/volume.png")
 
 -- Net widget
 local intr
@@ -275,12 +284,11 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
 	right_layout:add(mem_icon)
-	right_layout:add(mem_graph)
+	right_layout:add(mem_widget)
 	right_layout:add(cpu_icon)
-	right_layout:add(cpu_graph)
-	right_layout:add(spacer)
-	right_layout:add(musicicon)
-	right_layout:add(musicdata)
+	right_layout:add(cpu_widget)
+	right_layout:add(music_icon)
+	right_layout:add(music_widget)
 	right_layout:add(spacer)
 
 	if hostname == "uranus" then 
