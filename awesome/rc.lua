@@ -202,6 +202,13 @@ net_widget:set_graph_color("#00ff00")
 bat_widget = wibox.widget.textbox()
 vicious.register(bat_widget, vicious.widgets.bat, '<span foreground="#ffaaff">BAT: $2% $1</span>', 12, "BAT0")
 
+-- Pacman widget
+pkg_widget = wibox.widget.textbox()
+vicious.register(pkg_widget, vicious.widgets.pkg, 
+	function(widget, args) 
+		return '<span foreground="#ffaaff">Pkg updates: ' .. args[1] .. '</span>'
+	end, 180, "Arch")
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -283,6 +290,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
+	right_layout:add(pkg_widget)
 	right_layout:add(mem_icon)
 	right_layout:add(mem_widget)
 	right_layout:add(cpu_icon)
