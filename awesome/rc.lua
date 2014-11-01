@@ -235,7 +235,8 @@ vicious.register(pkg_widget, vicious.widgets.pkg,
 	end, 180, "Arch")
 
 -- Create a wibox for each screen and add it
-mywibox = {}
+topbar = {}
+bottombar = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -284,7 +285,6 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
-statusbar = {}
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
@@ -304,8 +304,8 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", align = "center", screen = s })
-    statusbar[s] = awful.wibox({ position = "bottom", align = "center", screen = s })
+    topbar[s] = awful.wibox({ position = "top", align = "center", screen = s })
+    bottombar[s] = awful.wibox({ position = "bottom", align = "center", screen = s })
 
     -- Widgets that are aligned to the left
     local tag_layout = wibox.layout.fixed.horizontal()
@@ -350,8 +350,8 @@ for s = 1, screen.count() do
 	local bottomlayout = wibox.layout.align.horizontal()
 	bottomlayout:set_middle(widget_layout)
 
-    mywibox[s]:set_widget(toplayout)
-	statusbar[s]:set_widget(bottomlayout)
+    topbar[s]:set_widget(toplayout)
+	bottombar[s]:set_widget(bottomlayout)
 end
 -- }}}
 
