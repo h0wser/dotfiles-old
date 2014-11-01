@@ -115,15 +115,14 @@ music_widget = wibox.widget.textbox()
 vicious.register(music_widget, vicious.widgets.mpd,
 	function (widget, args)
 		local ret_text = ""
-		if args["{state}"] == "Stop" then 
-			ret_text = "" 
-			music_icon:set_image(theme.stop_icon)
-		elseif args["{state}"] == "Pause" then
+		if args["{state}"] == "Pause" then
 			ret_text = '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
 			music_icon:set_image(theme.pause_icon)
-		else 
+		elseif args["{state}"] == "Play" then
 			ret_text = '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
 			music_icon:set_image(theme.play_icon)
+		else
+			music_icon:set_image(theme.stop_icon)
 		end
 		return ret_text	
 	end)
@@ -225,10 +224,14 @@ bat_widget = wibox.widget.textbox()
 vicious.register(bat_widget, vicious.widgets.bat, '<span foreground="#ffaaff">BAT: $2% $1</span>', 12, "BAT0")
 
 -- Pacman widget
+pkg_icon = wibox.widget.imagebox()
+pkg_icon:set_resize(false)
+pkg_icon:set_image(beautiful.pacman_icon)
+
 pkg_widget = wibox.widget.textbox()
 vicious.register(pkg_widget, vicious.widgets.pkg, 
 	function(widget, args) 
-		return '<span foreground="#ffaaff">Pkg updates: ' .. args[1] .. '</span>'
+		return '<span foreground="#ffaaff">Updates: ' .. args[1] .. ' </span>'
 	end, 180, "Arch")
 
 -- Create a wibox for each screen and add it
@@ -281,6 +284,7 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+statusbar = {}
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
@@ -301,46 +305,53 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", align = "center", screen = s })
+    statusbar[s] = awful.wibox({ position = "bottom", align = "center", screen = s })
 
     -- Widgets that are aligned to the left
-    local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mytaglist[s])
-	left_layout:add(spacer)
-    left_layout:add(mylayoutbox[s])
-	left_layout:add(spacer)
-    left_layout:add(mypromptbox[s])
+    local tag_layout = wibox.layout.fixed.horizontal()
+    tag_layout:add(mytaglist[s])
+	tag_layout:add(spacer)
+    tag_layout:add(mylayoutbox[s])
+	tag_layout:add(spacer)
+    tag_layout:add(mypromptbox[s])
 
     -- Widgets that are aligned to the right
-    local right_layout = wibox.layout.fixed.horizontal()
-	right_layout:add(pkg_widget)
-	right_layout:add(mem_icon)
-	right_layout:add(mem_widget)
-	right_layout:add(cpu_icon)
-	right_layout:add(cpu_widget)
-	right_layout:add(cputemp_icon)
-	right_layout:add(cputemp_widget)
-	right_layout:add(music_icon)
-	right_layout:add(music_widget)
-	right_layout:add(spacer)
+    local widget_layout = wibox.layout.fixed.horizontal()
+	widget_layout:add(pkg_icon)
+	widget_layout:add(spacer)
+	widget_layout:add(pkg_widget)
+	widget_layout:add(mem_icon)
+	widget_layout:add(mem_widget)
+	widget_layout:add(cpu_icon)
+	widget_layout:add(cpu_widget)
+	widget_layout:add(cputemp_icon)
+	widget_layout:add(cputemp_widget)
+	widget_layout:add(music_icon)
+	widget_layout:add(music_widget)
+	widget_layout:add(spacer)
 
 	if hostname == "uranus" then 
-		right_layout:add(bat_widget) 
-		right_layout:add(spacer)
+		widget_layout:add(bat_widget) 
+		widget_layout:add(spacer)
 	end
 
-	right_layout:add(volume_icon)
-	right_layout:add(volume_widget)
-	right_layout:add(spacer)
-	right_layout:add(net_widget)
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(mytextclock)
+	widget_layout:add(volume_icon)
+	widget_layout:add(volume_widget)
+	widget_layout:add(spacer)
+	widget_layout:add(net_widget)
+    if s == 1 then widget_layout:add(wibox.widget.systray()) end
+    widget_layout:add(mytextclock)
 
     -- Now bring it all together (with the tasklist in the middle)
-    local layout = wibox.layout.align.horizontal()
-    layout:set_left(left_layout)
-    layout:set_right(right_layout)
+    local toplayout = wibox.layout.align.horizontal()
+    -- layout:set_left(left_layout)
+    toplayout:set_middle(tag_layout)
 
-    mywibox[s]:set_widget(layout)
+	local bottomlayout = wibox.layout.align.horizontal()
+	bottomlayout:set_middle(widget_layout)
+
+    mywibox[s]:set_widget(toplayout)
+	statusbar[s]:set_widget(bottomlayout)
 end
 -- }}}
 
