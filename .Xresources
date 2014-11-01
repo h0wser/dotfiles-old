@@ -6,7 +6,7 @@ xterm*faceName: Inconsolata:size=9:antialias=false
 xterm*borderWidth: 1
 xterm*cursorColor: #ffffff
 
-*background: rgb:10/10/10
+*background: rgb:0/0/0
 *foreground: rgb:ff/ff/ff
 *color0: rgb:01/0f/13
 *color1: rgb:c1/00/66

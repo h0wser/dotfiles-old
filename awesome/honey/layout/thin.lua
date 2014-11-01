@@ -1,20 +1,25 @@
 local math = math
-local ipair = ipair
+local ipairs = ipairs
 
-honey = {}
+local awful = require("awful")
+local beautiful = require("beautiful")
 
-honey.layout = {}
+beautiful.init("~/.config/awesome/themes/pluto/theme.lua")
 
+module("honey.layout.thin")
+
+local gap = beautiful.honey.gap
 -- Layout that organizes windows in a "thin" fashion
 -- Centers windows with a maximum width and organizes them in 
 -- columns, if there are more windows than columns they
 -- will be tiled vertically
-honey.layout.thin = { name = "honey_thin" }
-function honey.layout.thin.arrange(p) 
+
+name = "honey_thin"
+
+function arrange(p) 
 	local area = p.workarea
 	local clients = p.clients
-	local gap = 30
-	local max_cols = 3
+	local max_cols = beautiful.honey.thin_nr_columns
 	local cols = math.min(#clients, max_cols)
 	local max_width = math.min((area.width - gap * cols) / cols, 600)
 
@@ -29,8 +34,12 @@ function honey.layout.thin.arrange(p)
 		y_offset = (area.height / rows)
 	end
 
+	local max_fullscreen_height = max_height * 2 + gap
+
 	local current_row = 0
 	local current_col = 0
+	local extra_clients = #clients % cols
+	if extra_clients == 0 then extra_clients = rows + 10 end -- So that clients dont be wierd
 
 	for i, c in ipairs(p.clients) do
 		
@@ -40,6 +49,11 @@ function honey.layout.thin.arrange(p)
 			width = max_width,
 			height = max_height
 		}
+
+		if current_row == rows - 2 and current_col > extra_clients - 1 then
+			g.height = max_fullscreen_height
+		end
+		
 		c:geometry(g)
 
 		current_col = current_col + 1
@@ -50,4 +64,3 @@ function honey.layout.thin.arrange(p)
 	end
 
 end
-return honey

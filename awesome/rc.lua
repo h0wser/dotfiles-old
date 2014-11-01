@@ -9,15 +9,16 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
 -- Widgets
 local vicious = require("vicious")
-local blingbling = require("blingbling")
-local bashets = require("bashets")
---Sexy stuff
 local revelation = require("revelation")
 
 local honey = require("honey")
+
+beautiful.init("~/.config/awesome/themes/pluto/theme.lua")
+revelation.init()
+
+local blingbling = require("blingbling")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -50,13 +51,8 @@ local base_cfg = "/home/h0wser/.config/awesome/"
 local hostname = io.popen("uname -n"):read()
 
 --- bashets config
-bashets.set_script_path("~/.config/awesome/")
+-- bashets.set_script_path("~/.config/awesome/")
 
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/theme/theme.lua")
-
-revelation.init()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -75,12 +71,10 @@ local layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
     awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-	honey.layout.thin
+	honey.layout.thin,
+	honey.layout.focus
 }
 -- }}}
 
@@ -101,22 +95,6 @@ tags[s] = awful.tag({ "01", "02", "03", "04", "05", "06", "07", "08", "09" }, s,
 end
 -- }}}
 
--- {{{ Menu
--- Create a laucher widget and a main menu
-myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
-}
-
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon })
-
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
-
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
@@ -129,38 +107,71 @@ spacer = wibox.widget.textbox()
 spacer:set_text(" ")
 
 -- Player thingy
-musicicon = wibox.widget.imagebox()
-musicicon:set_image(base_cfg .. "theme/icons/spotify.png")
+music_icon = wibox.widget.imagebox()
+music_icon:set_image(theme.stop_icon)
+music_icon:set_resize(false)
 
-musicdata = wibox.widget.textbox()
-vicious.register(musicdata, vicious.widgets.mpd,
+music_widget = wibox.widget.textbox()
+vicious.register(music_widget, vicious.widgets.mpd,
 	function (widget, args)
-		if args["{state}"] == "Stop" then return ""
-		elseif args["{state}"] == "Pause" then return '<span foreground="#FFA347">(paused) ' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
-		else return '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
-	
+		local ret_text = ""
+		if args["{state}"] == "Stop" then 
+			ret_text = "" 
+			music_icon:set_image(theme.stop_icon)
+		elseif args["{state}"] == "Pause" then
+			ret_text = '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
+			music_icon:set_image(theme.pause_icon)
+		else 
+			ret_text = '<span foreground="#FFA347">' .. args["{Artist}"] .. " - " .. args["{Title}"] .. '</span>'
+			music_icon:set_image(theme.play_icon)
 		end
+		return ret_text	
 	end)
 
--- CPU graph
-cpu_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
-cpu_graph:set_background_color("#0D98BA")
-cpu_graph:set_graph_line_color("#C9FFE5")
-cpu_graph:set_show_text(true)
-cpu_graph:set_h_margin(2)
-cpu_graph:set_label("CPU: $percent %")
-vicious.register(cpu_graph, vicious.widgets.cpu, '$1', 0.5)
+--CPU widget
+cpu_icon = wibox.widget.imagebox()
+cpu_icon:set_resize(false)
+cpu_icon:set_image(beautiful.cpu_icon)
 
--- RAM graph
-ram_graph = blingbling.line_graph({ width = 100, height = 20, font="Inconsolata", font_size = 12})
-ram_graph:set_background_color("#660066")
-ram_graph:set_graph_line_color("#A366A3")
-ram_graph:set_show_text(true)
-ram_graph:set_h_margin(2)
-ram_graph:set_label("RAM: $percent %")
-vicious.register(ram_graph, vicious.widgets.mem, '$1', 0.5)
+cpu_widget = awful.widget.progressbar()
+cpu_widget:set_width(85)
+cpu_widget:set_ticks(true)
+cpu_widget:set_ticks_size(10)
+cpu_widget:set_color("#a366a3")
+vicious.register(cpu_widget, vicious.widgets.cpu, '$1')
+
+cpu_margin = wibox.layout.margin(cpu_widget, 7, 12)
+cpu_margin:set_top(7)
+cpu_margin:set_bottom(8)
+
+cpu_widget = wibox.widget.background(cpu_margin)
+cpu_widget:set_bgimage(beautiful.cpu_bg)
+
+-- mem widget
+mem_icon = wibox.widget.imagebox()
+mem_icon:set_resize(false)
+mem_icon:set_image(beautiful.mem_icon)
+
+mem_widget = awful.widget.progressbar()
+mem_widget:set_width(85)
+mem_widget:set_height(5)
+mem_widget:set_ticks(true)
+mem_widget:set_ticks_size(10)
+mem_widget:set_color("#4bcdd2")
+vicious.register(mem_widget, vicious.widgets.mem, '$1')
+
+mem_margin = wibox.layout.margin(mem_widget, 7, 12)
+mem_margin:set_top(7)
+mem_margin:set_bottom(8)
+
+mem_widget = wibox.widget.background(mem_margin)
+mem_widget:set_bgimage(beautiful.mem_bg)
 
 -- Volume widget
+volume_icon = wibox.widget.imagebox()
+volume_icon:set_resize(false)
+volume_icon:set_image(theme.volume_icon)
+
 volume_widget = blingbling.volume({
 	bar = true, 
 	show_text = true,
@@ -170,12 +181,9 @@ volume_widget = blingbling.volume({
 	font="Inconsolata", 
 	font_size = 12
 	})
-volume_widget:set_graph_color("#66bb33")
+volume_widget:set_graph_color("#943561")
 volume_widget:update_master()
 volume_widget:set_master_control()
-
-volume_icon = wibox.widget.imagebox()
-volume_icon:set_image(base_cfg .. "theme/icons/volume.png")
 
 -- Net widget
 local intr
@@ -193,6 +201,13 @@ net_widget:set_graph_color("#00ff00")
 -- dont know why this doesn't work with other stuff
 bat_widget = wibox.widget.textbox()
 vicious.register(bat_widget, vicious.widgets.bat, '<span foreground="#ffaaff">BAT: $2% $1</span>', 12, "BAT0")
+
+-- Pacman widget
+pkg_widget = wibox.widget.textbox()
+vicious.register(pkg_widget, vicious.widgets.pkg, 
+	function(widget, args) 
+		return '<span foreground="#ffaaff">Pkg updates: ' .. args[1] .. '</span>'
+	end, 180, "Arch")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -275,12 +290,13 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-	right_layout:add(ram_graph)
-	right_layout:add(spacer)
-	right_layout:add(cpu_graph)
-	right_layout:add(spacer)
-	right_layout:add(musicicon)
-	right_layout:add(musicdata)
+	right_layout:add(pkg_widget)
+	right_layout:add(mem_icon)
+	right_layout:add(mem_widget)
+	right_layout:add(cpu_icon)
+	right_layout:add(cpu_widget)
+	right_layout:add(music_icon)
+	right_layout:add(music_widget)
 	right_layout:add(spacer)
 
 	if hostname == "uranus" then 
@@ -369,8 +385,6 @@ globalkeys = awful.util.table.join(
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
               end),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end),
 	
 	-- Lock screen
 	awful.key({modkey, "Control"}, "l", function() awful.util.spawn("xscreensaver-command -lock") end) 
@@ -475,7 +489,14 @@ awful.rules.rules = {
 			floating = true,
 			fullscreen = true
 		} },
-    -- Set Firefox to always map on tags number 2 of screen 1.
+	{ rule = { class = "Chromium" },
+		properties = {
+			tag = tags[mouse.screen][2]
+		} },
+	{ rule = { class = "Skype" },
+		properties = {
+			tag = tags[mouse.screen][3]
+		} },
 }
 -- }}}
 
@@ -508,4 +529,3 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal  end)
 -- }}}
 
-bashets.start()
