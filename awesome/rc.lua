@@ -307,16 +307,28 @@ for s = 1, screen.count() do
     topbar[s] = awful.wibox({ position = "top", align = "center", screen = s })
     bottombar[s] = awful.wibox({ position = "bottom", align = "center", screen = s })
 
-    -- Widgets that are aligned to the left
+    -- Widgets that have to do with tagging
     local tag_layout = wibox.layout.fixed.horizontal()
     tag_layout:add(mytaglist[s])
 	tag_layout:add(spacer)
     tag_layout:add(mylayoutbox[s])
-	tag_layout:add(spacer)
-    tag_layout:add(mypromptbox[s])
 
-    -- Widgets that are aligned to the right
-    local widget_layout = wibox.layout.fixed.horizontal()
+	local topleft_layout = wibox.layout.fixed.horizontal()
+    topleft_layout:add(mypromptbox[s])
+
+	local topright_layout = wibox.layout.fixed.horizontal()
+	if hostname == "uranus" then 
+		topright_layout:add(bat_widget) 
+		topright_layout:add(spacer)
+	end
+	topright_layout:add(net_widget)
+	topright_layout:add(volume_icon)
+	topright_layout:add(volume_widget)
+    if s == 1 then topright_layout:add(wibox.widget.systray()) end
+    topright_layout:add(mytextclock)
+
+    -- Widgets that belong on the bottom statusbar
+	local widget_layout = wibox.layout.fixed.horizontal()
 	widget_layout:add(pkg_icon)
 	widget_layout:add(spacer)
 	widget_layout:add(pkg_widget)
@@ -329,23 +341,12 @@ for s = 1, screen.count() do
 	widget_layout:add(music_icon)
 	widget_layout:add(music_widget)
 	widget_layout:add(spacer)
-
-	if hostname == "uranus" then 
-		widget_layout:add(bat_widget) 
-		widget_layout:add(spacer)
-	end
-
-	widget_layout:add(volume_icon)
-	widget_layout:add(volume_widget)
-	widget_layout:add(spacer)
-	widget_layout:add(net_widget)
-    if s == 1 then widget_layout:add(wibox.widget.systray()) end
-    widget_layout:add(mytextclock)
-
+	
     -- Now bring it all together (with the tasklist in the middle)
     local toplayout = wibox.layout.align.horizontal()
-    -- layout:set_left(left_layout)
+	toplayout:set_left(topleft_layout)
     toplayout:set_middle(tag_layout)
+	toplayout:set_right(topright_layout)
 
 	local bottomlayout = wibox.layout.align.horizontal()
 	bottomlayout:set_middle(widget_layout)
