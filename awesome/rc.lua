@@ -13,6 +13,8 @@ local naughty = require("naughty")
 local vicious = require("vicious")
 local revelation = require("revelation")
 
+local center = require("center")
+
 local honey = require("honey")
 
 beautiful.init("~/.config/awesome/themes/pluto/theme.lua")
@@ -314,6 +316,7 @@ for s = 1, screen.count() do
     tag_layout:add(mylayoutbox[s])
 
 	local topleft_layout = wibox.layout.fixed.horizontal()
+	topleft_layout:fill_space(true)
     topleft_layout:add(mypromptbox[s])
 
 	local topright_layout = wibox.layout.fixed.horizontal()
@@ -343,7 +346,7 @@ for s = 1, screen.count() do
 	widget_layout:add(spacer)
 	
     -- Now bring it all together (with the tasklist in the middle)
-    local toplayout = wibox.layout.align.horizontal()
+    local toplayout = center.horizontal() --wibox.layout.align.horizontal()
 	toplayout:set_left(topleft_layout)
     toplayout:set_middle(tag_layout)
 	toplayout:set_right(topright_layout)
