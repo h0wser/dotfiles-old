@@ -119,6 +119,8 @@ theme.volume_icon = confdir .. "icons/volume.png"
 theme.play_icon = confdir .. "icons/play.png"
 theme.pause_icon = confdir .. "icons/pause.png"
 theme.stop_icon = confdir .. "icons/stop.png"
+theme.temp_icon = confdir .. "icons/temp.png"
+theme.pacman_icon = confdir .. "icons/pacman.png"
 
 theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 
