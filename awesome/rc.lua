@@ -157,7 +157,9 @@ cputemp_timer:connect_signal("timeout", function()
 	local f = io.popen("sensors | grep 'Core'")
 	local colors = { "#ff9900", "#33ccff", "#66ff66", "#cc33ff" }
 	local widget_string = ""
-	for i=1,4,1 do
+	local count = 4
+	if hostname == "uranus" then count = 2 end
+	for i=1,count,1 do
 		local output = f:read()
 		local value = string.match(output, "%+(%d+%.%d)")
 		widget_string = widget_string .. "<span foreground='" .. colors[i] .. "'>"  .. value .. "°C </span>"
