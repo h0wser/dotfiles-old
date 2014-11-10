@@ -47,6 +47,7 @@ inoremap Ä ]
 " Switching between header and source quickly
 source ~/dotfiles/a.vim
 nnoremap ö :w<CR>:A<CR>
+nnoremap Ö :split %<CR><C-w><C-w>:A<CR>
 
 " Rust syntax m8
 au BufRead,BufNewFile *.rs,*.rc set filetype=rust
