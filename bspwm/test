@@ -1,6 +1,0 @@
-#!/bin/bash
-
-var="YOLO"
-
-res=${var#Y}
-echo $res

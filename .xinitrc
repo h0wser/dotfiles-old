@@ -27,5 +27,5 @@ xset b 0 0 0
 
 sxhkd &
 compton &
-feh --bg-fill ~/Pictures/abstract mountain.png
+feh --bg-fill ~/Pictures/abstract\ mountain.png
 exec bspwm

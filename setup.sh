@@ -8,12 +8,16 @@ set -e
 
 rm -f ~/.vim
 rm -f ~/.config/awesome
+rm -f ~/.config/bspwm
+rm -f ~/.config/sxhkd
 ln -fs ~/dotfiles/.vim ~/.vim
 ln -fs ~/dotfiles/.dir_colors ~/.dir_colors
 ln -fs ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -fs ~/dotfiles/.vimrc ~/.vimrc
 ln -fs ~/dotfiles/.zshrc ~/.zshrc
 ln -fs ~/dotfiles/awesome/ ~/.config/awesome
+ln -fs ~/dotfiles/bspwm/ ~/.config/bspwm
+ln -fs ~/dotfiles/sxhkd/ ~/.config/sxhkd
 ln -fs ~/dotfiles/.Xresources ~/.Xresources
 ln -fs ~/dotfiles/.compton.conf ~/.compton.conf
 ln -fs ~/dotfiles/.xinitrc ~/.xinitrc
