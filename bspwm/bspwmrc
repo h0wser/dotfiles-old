@@ -1,5 +1,10 @@
 #! /bin/sh
 
+## DEPENDENCIES
+# feh
+# sutils
+# 
+
 cd ~/.config/bspwm
 
 bspc config border_width        2
