@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# This script gathers info and pipes it into a second script
+# The second script processes information, formats it and sends it to the bar
+
+# Pipe for all communication
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO" 
+mkfifo "$PANEL_FIFO"
+
+# Kill the bar if it's already running
+BARPID="$(pidof bar)"
+if (($? == 0)); then
+	kill $BARPID
+fi
+
+clock -sf "C%a %b %d %H:%M" > "$PANEL_FIFO" &
+while true; do echo "B Battery:$(acpi -b | awk -F, '{print $2}')" > "$PANEL_FIFO"; sleep 10; done &
+bspc control --subscribe > "$PANEL_FIFO" &
+
+cat "$PANEL_FIFO" | ./panel_bar | bar &
+
+wait

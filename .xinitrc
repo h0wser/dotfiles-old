@@ -22,11 +22,10 @@ nvidia-settings --load-config-only
 xset b off
 xset b 0 0 0 
 
-# awesome window manager
-# Not sure if the --no-argb arg is helping or not..
-# It's used to prevent screen tearing
-compton &
-xscreensaver -nosplash &
-exec awesome --no-argb
+#xscreensaver -nosplash &
+#exec awesome --no-argb
 
-# exec startxfce4
+sxhkd &
+compton &
+feh --bg-fill ~/Pictures/abstract mountain.png
+exec bspwm

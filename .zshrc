@@ -97,4 +97,9 @@ zstyle :compinstall filename '/home/h0wser/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
+
+# bspwm
+export PANEL_FIFO="/tmp/panel-fifo"
 # End of lines added by compinstall

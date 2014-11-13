@@ -1,0 +1,41 @@
+#!/bin/bash
+
+FG_COLOR="#ff948b82"
+BG_COLOR="#ff000000"
+FG_OCCUPIED_COLOR="#ffffc285"
+FG_SELECTED_COLOR="#ff993d00"
+BG_SELECTED_COLOR="#ff1a1a1a"
+
+while read line; do
+	case $line in
+		C*)
+			CLOCK=${line#?}
+			;;
+		B*)
+			BATTERY=${line#?}
+			;;
+		W*)
+			WM_INFO=""
+			data=$(echo $line | awk -F: '{ for(i=2;i<12;i++) printf "%s:",$i; }')
+			IFS=':' read -a array <<< $data
+			for i in {0..10}
+			do
+				case ${array[i]} in
+					o*)
+						WM_INFO+="%{F$FG_OCCUPIED_COLOR}%{B$BG_COLOR} * "
+						;;
+					O*)
+						WM_INFO+="%{F$FG_SELECTED_COLOR}%{B$BG_SELECTED_COLOR} * "
+						;;
+					f*)
+						WM_INFO+="%{F$FG_COLOR}%{B$BG_COLOR} * "
+						;;
+					F*) 
+						WM_INFO+="%{F$FG_SELECTED_COLOR}%{B$BG_SELECTED_COLOR} * "
+						;;
+				esac
+			done
+	esac
+
+	printf "%s\n" "%{F$FG_COLOR}%{l}$CLOCK%{c}$WM_INFO%{F$FG_COLOR} %{r}$BATTERY"
+done
