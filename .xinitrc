@@ -25,7 +25,7 @@ xset b 0 0 0
 #xscreensaver -nosplash &
 #exec awesome --no-argb
 
-sxhkd &
+sxhkd -f 100&
 compton &
 feh --bg-fill ~/Pictures/abstract\ mountain.png
 exec bspwm

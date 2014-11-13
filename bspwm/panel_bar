@@ -37,5 +37,5 @@ while read line; do
 			done
 	esac
 
-	printf "%s\n" "%{F$FG_COLOR}%{l}$CLOCK%{c}$WM_INFO%{F$FG_COLOR} %{r}$BATTERY"
+	printf "%s\n" "%{S+}%{F$FG_COLOR}%{l}$CLOCK%{c}$WM_INFO%{F$FG_COLOR} %{r}$BATTERY"
 done
