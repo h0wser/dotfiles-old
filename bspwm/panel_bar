@@ -35,7 +35,11 @@ while read line; do
 						;;
 				esac
 			done
+			;;
+		V*)
+			VOLUME="Volume: ${line#?}%"
+			;;
 	esac
 
-	printf "%s\n" "%{S+}%{F$FG_COLOR}%{l}$CLOCK%{c}$WM_INFO%{F$FG_COLOR} %{r}$BATTERY"
+	printf "%s\n" "%{S+}%{F$FG_COLOR}%{l}$CLOCK%{c}$WM_INFO%{F$FG_COLOR} %{r}$VOLUME $BATTERY"
 done
