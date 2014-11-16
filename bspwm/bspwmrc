@@ -25,5 +25,7 @@ bspc rule -a mplayer2 floating=on
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
-./panel &
+cd statusbar
+
+./panel&
 

@@ -1,4 +1,13 @@
 #1/bin/bash
 
+case $1 in
+	'+')
+		amixer set Master 5%+
+	;;
+	'-')
+		amixer set Master 5%-
+	;;
+esac
+
 VOLUME=$(amixer get Master | grep -m 1 "%" | awk -F'[][]' '{print $2}')
 echo "V"$VOLUME > "/tmp/panel-fifo"
