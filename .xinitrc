@@ -13,8 +13,6 @@ fi
 
 # set keymap to SWEDISH KEYBOARD
 setxkbmap se
- 
-nvidia-settings --load-config-only
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
@@ -27,5 +25,5 @@ xset b 0 0 0
 
 sxhkd -f 100&
 compton &
-feh --bg-fill ~/Pictures/abstract\ mountain.png
+feh --bg-fill ~/wallpaper.png
 exec bspwm
