@@ -20,10 +20,11 @@ setxkbmap se
 xset b off
 xset b 0 0 0 
 
-#xscreensaver -nosplash &
+xscreensaver -nosplash &
 #exec awesome --no-argb
 
 sxhkd -f 100&
 compton &
-feh --bg-fill ~/wallpaper.png
+eval $(cat ~/.fegbg)
+mopidy -q&
 exec bspwm
