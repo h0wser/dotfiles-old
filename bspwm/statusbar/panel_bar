@@ -1,10 +1,6 @@
 #!/bin/bash
 
-FG_COLOR="#ff948b82"
-BG_COLOR="#ff000000"
-FG_OCCUPIED_COLOR="#ffffc285"
-FG_SELECTED_COLOR="#ff993d00"
-BG_SELECTED_COLOR="#ff1a1a1a"
+. config
 
 while read line; do
 	case $line in
@@ -12,10 +8,10 @@ while read line; do
 			CLOCK=${line#?}
 			;;
 		B*)
-			BATTERY=${line#?}
+			BATTERY="%{F$FG_ICON_COLOR}$BATTERY_FULL_ICON%{F$FG_COLOR}${line#?}%"
 			;;
 		T*) 
-			TEMP=${line#?}
+			TEMP="%{F$FG_ICON_COLOR}$TEMP_ICON %{F$FG_COLOR}${line#?}"
 			;;
 		W*)
 			WM_INFO=""
@@ -25,22 +21,22 @@ while read line; do
 			do
 				case ${array[i]} in
 					o*)
-						WM_INFO+="%{F$FG_OCCUPIED_COLOR}%{B$BG_COLOR} * "
+						WM_INFO+="%{F$FG_OCCUPIED_COLOR}%{B$BG_COLOR} $USED_DESKTOP_ICON "
 						;;
 					O*)
-						WM_INFO+="%{F$FG_SELECTED_COLOR}%{B$BG_SELECTED_COLOR} * "
+						WM_INFO+="%{F$FG_SELECTED_COLOR}%{B$BG_SELECTED_COLOR} $USED_DESKTOP_ICON "
 						;;
 					f*)
-						WM_INFO+="%{F$FG_COLOR}%{B$BG_COLOR} * "
+						WM_INFO+="%{F$FG_COLOR}%{B$BG_COLOR} $FREE_DESKTOP_ICON "
 						;;
 					F*) 
-						WM_INFO+="%{F$FG_SELECTED_COLOR}%{B$BG_SELECTED_COLOR} * "
+						WM_INFO+="%{F$FG_SELECTED_COLOR}%{B$BG_SELECTED_COLOR} $FREE_DESKTOP_ICON "
 						;;
 				esac
 			done
 			;;
 		V*)
-			VOLUME="Volume: ${line#?}%"
+			VOLUME="%{F$FG_ICON_COLOR}$VOLUME_FULL_ICON%{F$FG_COLOR} ${line#?}%"
 			;;
 	esac
 
