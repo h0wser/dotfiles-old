@@ -14,6 +14,9 @@ while read line; do
 		B*)
 			BATTERY=${line#?}
 			;;
+		T*) 
+			TEMP=${line#?}
+			;;
 		W*)
 			WM_INFO=""
 			data=$(echo $line | awk -F: '{ for(i=2;i<12;i++) printf "%s:",$i; }')
@@ -41,5 +44,5 @@ while read line; do
 			;;
 	esac
 
-	printf "%s\n" "%{S+}%{F$FG_COLOR}%{l}$CLOCK%{c}$WM_INFO%{F$FG_COLOR} %{r}$VOLUME $BATTERY"
+	printf "%s\n" "%{S+}%{F$FG_COLOR}%{l}$CLOCK%{c}$WM_INFO%{F$FG_COLOR} %{r}$TEMP $VOLUME $BATTERY"
 done

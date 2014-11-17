@@ -16,6 +16,7 @@ fi
 clock -sf "C%A %B %d %H:%M" > "$PANEL_FIFO" &
 while true; do echo "B Battery:$(acpi -b | awk -F, '{print $2}')" > "$PANEL_FIFO"; sleep 10; done &
 while true; do ./volume_control; sleep 3; done &
+while true; do echo "T Temp: $(acpi -t | awk '{print $4}')C" > "$PANEL_FIFO"; sleep 2; done &
 bspc control --subscribe > "$PANEL_FIFO" &
 
 cat "$PANEL_FIFO" | ./panel_bar | bar &
