@@ -13,7 +13,7 @@ set number
 set autoindent
 set scrolloff=10
 set cursorline
-set wrap
+set nowrap
 set linebreak
 " set autochdir
 
