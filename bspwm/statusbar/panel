@@ -22,6 +22,5 @@ bspc control --subscribe > "$PANEL_FIFO" &
 MAIN_FONT="-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1"
 ICON_FONT="-misc-stlarch-medium-r-normal-*-10-100-75-75-c-80-iso10646-1"
 
-cat "$PANEL_FIFO" | ./panel_bar | bar -f "$ICON_FONT,$MAIN_FONT" &
-
+cat "$PANEL_FIFO" | ./panel_bar | bar -f "$ICON_FONT,$MAIN_FONT" -g 1900x20+10+10 & 
 wait

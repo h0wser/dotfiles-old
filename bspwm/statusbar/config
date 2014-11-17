@@ -7,8 +7,9 @@ VOLUME_FULL_ICON=$(echo -e "\ue0e0")
 
 # colors
 FG_COLOR="#ffbfbca1"
-BG_COLOR="#ff000000"
+BG_COLOR="#bb000000"
 FG_OCCUPIED_COLOR="#ffd4a287"
 FG_SELECTED_COLOR="#ffc4661a"
 BG_SELECTED_COLOR="#ff1a1a1a"
 FG_ICON_COLOR="#ffc4657c"
+U_COLOR="#fff9897f"
