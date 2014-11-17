@@ -97,7 +97,7 @@ XF86MonBrightnessDown
 #
 
 super + Return
-	xterm
+	uxterm
 
 super + space
 	dmenu_run -b -nb '#000000' -nf '#948b82' -sb '#993d00'
