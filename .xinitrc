@@ -20,11 +20,14 @@ setxkbmap se
 xset b off
 xset b 0 0 0 
 
+xset +fp /usr/share/fonts/local/
+xset fp rehash
+
 xscreensaver -nosplash &
 #exec awesome --no-argb
 
 sxhkd -f 100&
 compton &
-eval $(cat ~/.fegbg)
+eval $(cat ~/.fehbg)
 mopidy -q&
 exec bspwm
