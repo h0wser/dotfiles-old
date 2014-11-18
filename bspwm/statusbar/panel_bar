@@ -22,6 +22,21 @@ while read line; do
 				WIFI="$WIFI${line#?}"
 			fi
 			;;
+		M*)
+			len=${#line}
+			if [[ $len -eq 1 ]]
+			then 
+				MUSIC="%{F$FG_ICON_COLOR}$MUSIC_ICON%{F$FG_COLOR} Not playing.. "
+			elif [[ "${line: -1}" == "+" ]]
+			then
+				(( len -= 2 ))
+				MUSIC="%{F$FG_ICON_COLOR}$MUSIC_ICON$MUSIC_PLAY_ICON%{F$FG_COLOR} ${line:1:$len}"
+			elif [[ "${line: -1}" == "-" ]]
+			then
+				(( len -= 2 ))
+				MUSIC="%{F$FG_ICON_COLOR}$MUSIC_ICON$MUSIC_PAUSE_ICON%{F$FG_COLOR} ${line:1:$len}"
+			fi
+			;;
 		W*)
 			WM_INFO=""
 			data=$(echo $line | awk -F: '{ for(i=2;i<12;i++) printf "%s:",$i; }')
@@ -49,5 +64,5 @@ while read line; do
 			;;
 	esac
 
-	printf "%s\n" "%{F$FG_COLOR}%{U$BG_COLOR}%{l+u-o} %{U$U_COLOR} $CLOCK%%{c+o}$WM_INFO%{F$FG_COLOR} %{r-o}$WIFI $TEMP $VOLUME $BATTERY "
+	printf "%s\n" "%{F$FG_COLOR}%{U$BG_COLOR}%{l+u-o} %{U$U_COLOR} $CLOCK%%{c+o}$WM_INFO%{F$FG_COLOR} %{r-o}$MUSIC $WIFI $TEMP $VOLUME $BATTERY "
 done

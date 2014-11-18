@@ -6,6 +6,10 @@ TEMP_ICON=$(echo -e "\ue01b")
 VOLUME_FULL_ICON=$(echo -e "\ue0e0")
 WIFI_ICON=$(echo -e "\ue048")
 
+MUSIC_ICON=$(echo -e "\ue05c")
+MUSIC_PLAY_ICON=$(echo -e "\ue058")
+MUSIC_PAUSE_ICON=$(echo -e "\ue059")
+
 # colors
 FG_COLOR="#ffbfbca1"
 BG_COLOR="#bb000000"
