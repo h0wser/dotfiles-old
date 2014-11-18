@@ -1,6 +1,6 @@
 # Icons
 FREE_DESKTOP_ICON=$(echo -e "\ue0f6")
-USED_DESKTOP_ICON=$(echo -e "\ue0e6")
+USED_DESKTOP_ICON=$(echo -e "\ue098")
 BATTERY_FULL_ICON=$(echo -e "\ue086")
 TEMP_ICON=$(echo -e "\ue01b")
 VOLUME_FULL_ICON=$(echo -e "\ue0e0")
