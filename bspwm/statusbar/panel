@@ -17,6 +17,7 @@ clock -sf "C%A %B %d %H:%M" > "$PANEL_FIFO" &
 while true; do echo "B$(acpi -b | awk -F, '{print $2}')" > "$PANEL_FIFO"; sleep 10; done &
 while true; do ./volume_control; sleep 3; done &
 while true; do echo "T$(acpi -t | awk '{print $4}')C" > "$PANEL_FIFO"; sleep 2; done &
+while true; do echo "N$(nmcli con show --active | grep wlp3s0 | awk '{print $1}')" > "$PANEL_FIFO"; sleep 10; done &
 bspc control --subscribe > "$PANEL_FIFO" &
 
 MAIN_FONT="-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1"

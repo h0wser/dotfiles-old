@@ -4,6 +4,7 @@ USED_DESKTOP_ICON=$(echo -e "\ue098")
 BATTERY_FULL_ICON=$(echo -e "\ue086")
 TEMP_ICON=$(echo -e "\ue01b")
 VOLUME_FULL_ICON=$(echo -e "\ue0e0")
+WIFI_ICON=$(echo -e "\ue048")
 
 # colors
 FG_COLOR="#ffbfbca1"

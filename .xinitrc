@@ -33,5 +33,5 @@ xscreensaver -nosplash &
 sxhkd -f 100&
 compton &
 eval $(cat ~/.fehbg)
-mopidy -q&
+mopidy -q --config ~/.confg/mopidy/ &
 exec bspwm
