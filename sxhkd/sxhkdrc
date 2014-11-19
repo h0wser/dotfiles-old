@@ -99,11 +99,17 @@ XF86MonBrightnessDown
 super + ctrl + alt + l
 	xscreensaver-command --lock
 
+Print
+	scrot -e 'mv $f ~/picture/screenshots/'
+
 super + Return
 	uxterm
 
 super + space
 	dmenu_run -p "Run: " -l 20 -b -nb '#000000' -nf '#948b82' -sb '#993d00'
+
+XF86AudioPlay
+	mpc toggle
 
 # make sxhkd reload its configuration files:
 super + Escape
