@@ -4,8 +4,10 @@
 umask 022
 
 # Set our default path
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/h0wser/.local/bin"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/h0wser/.local/bin:/home/h0wser/go/bin"
 export PATH
+
+export GOPATH="/home/h0wser/go"
 
 # Load profiles from /etc/profile.d
 if test -d /etc/profile.d/; then
