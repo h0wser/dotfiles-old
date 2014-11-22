@@ -1,6 +1,19 @@
 " h0wser's extremely cool and awesome .vimrc file
 " most of it is copied...
 
+"----- VUNDLE --------
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#rc()
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
+filetype plugin indent on
+
 " ------------- MISC -----------"
 syntax on
 set tabstop=4
@@ -12,7 +25,7 @@ set ruler
 set number
 set autoindent
 set scrolloff=10
-set cursorline
+" set cursorline
 set nowrap
 set linebreak
 " set autochdir
@@ -56,7 +69,9 @@ au BufRead,BufNewFile *.rs,*.rc set filetype=rust
 " YouCompleteMe need python 2, not 3
 let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_keep_logfiles = 1
 
 filetype plugin indent on
 set grepprg=grep\ -nH\ $*

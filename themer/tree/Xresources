@@ -1,0 +1,35 @@
+
+*faceName: Envypn
+*faceSize: 13
+*font: xft:Envypn:13
+*.cursorColor: #a06c31
+
+*background: #000000
+*foreground: #ffffff
+! black
+*color0: #201409
+*color8: #c07026
+! red
+*color1: #a07519
+*color9: #fcae20
+! green
+*color2: #9ca020
+*color10: #c88e30
+! yellow
+*color3: #a0761e
+*color11: #c8762a
+! blue
+*color4: #a0642b
+*color12: #c88a3d
+! magenta
+*color5: #e07e21
+*color13: #c8c432
+! cyan
+*color6: #e0d121
+*color14: #e27e26
+! white
+*color7: #a06c31
+*color15: #c88841
+! underline when default
+*colorUL: #a06c31
+! vim: set ft=xdefaults:

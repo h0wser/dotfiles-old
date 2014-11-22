@@ -34,4 +34,11 @@ sxhkd -f 100&
 compton &
 eval $(cat ~/.fehbg)
 mopidy -q --config ~/.confg/mopidy/ &
+
+synclient AccelFactor=0
+synclient MaxSpeed=4 
+synclient MinSpeed=2
+synclient PalmDetect=1
+synclient PalmMinWidth=5
+
 exec bspwm

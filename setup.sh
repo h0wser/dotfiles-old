@@ -11,6 +11,7 @@ rm -f ~/.config/awesome
 rm -f ~/.config/bspwm
 rm -f ~/.config/sxhkd
 rm -f ~/.config/dunst
+rm -f ~/.config/themer
 ln -fs ~/dotfiles/.vim ~/.vim
 ln -fs ~/dotfiles/.dir_colors ~/.dir_colors
 ln -fs ~/dotfiles/.tmux.conf ~/.tmux.conf
@@ -23,3 +24,4 @@ ln -fs ~/dotfiles/.Xresources ~/.Xresources
 ln -fs ~/dotfiles/.compton.conf ~/.compton.conf
 ln -fs ~/dotfiles/.xinitrc ~/.xinitrc
 ln -fs ~/dotfiles/dunst ~/.config/dunst
+ln -fs ~/dotfiles/themer ~/.config/themer

@@ -11,10 +11,10 @@ MUSIC_PLAY_ICON=$(echo -e "\ue058")
 MUSIC_PAUSE_ICON=$(echo -e "\ue059")
 
 # colors
-FG_COLOR="#ffe0bb90"
+FG_COLOR="#ff{{ red }}"
 BG_COLOR="#bb000000"
-FG_OCCUPIED_COLOR="#ffc846b0"
-FG_SELECTED_COLOR="#ffa22633"
-BG_SELECTED_COLOR="#ff051720"
-FG_ICON_COLOR="#ffa08b87"
-U_COLOR="#ffc85f68"
+FG_OCCUPIED_COLOR="#ff{{alt_red}}"
+FG_SELECTED_COLOR="#ff{{blue}}"
+BG_SELECTED_COLOR="#ff{{black}}"
+FG_ICON_COLOR="#ff{{cyan}}"
+U_COLOR="#ff{{alt_cyan}}"

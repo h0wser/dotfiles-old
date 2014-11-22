@@ -83,6 +83,8 @@ alias title="printf '\033];%s\07\n'"
 alias start="sudo systemctl start "
 alias status="sudo systemctl status "
 
+alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > /dev/null &"
+
 export EDITOR=vim
 export BROWSER=chromium
 

@@ -1,0 +1,12 @@
+variables:
+    primary: red
+    secondary: blue
+    tertiary: cyan
+    special: green
+    transparency: 85
+    fontName: envypn
+    fontSize: 13
+files:
+    xresources.tpl: Xresources
+    index.tpl: index.html
+    config.tpl: config

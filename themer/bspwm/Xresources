@@ -1,0 +1,35 @@
+
+*faceName: Tewi
+*faceSize: 12
+*font: xft:Tewi:12
+*.cursorColor: #886ea0
+
+*background: #000000
+*foreground: #ffffff
+! black
+*color0: #20161d
+*color8: #566398
+! red
+*color1: #1a3ea0
+*color9: #122dc8
+! green
+*color2: #485ca0
+*color10: #8683c8
+! yellow
+*color3: #0000a0
+*color11: #c893ac
+! blue
+*color4: #3049a0
+*color12: #ec966c
+! magenta
+*color5: #3755a0
+*color13: #af92c8
+! cyan
+*color6: #3552a0
+*color14: #687bc8
+! white
+*color7: #886ea0
+*color15: #9e8bc8
+! underline when default
+*colorUL: #886ea0
+! vim: set ft=xdefaults:
