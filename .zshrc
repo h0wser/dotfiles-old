@@ -88,6 +88,12 @@ alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > 
 export EDITOR=vim
 export BROWSER=chromium
 
+ssh() {
+	[ -t 2 ] && xtermcontrol --fg green
+	command ssh "$@"
+	[ -t 2 ] && xtermcontrol --fg white
+}
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000

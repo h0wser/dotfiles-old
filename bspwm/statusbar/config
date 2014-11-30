@@ -5,16 +5,16 @@ BATTERY_FULL_ICON=$(echo -e "\ue086")
 TEMP_ICON=$(echo -e "\ue01b")
 VOLUME_FULL_ICON=$(echo -e "\ue0e0")
 WIFI_ICON=$(echo -e "\ue048")
-
 MUSIC_ICON=$(echo -e "\ue05c")
 MUSIC_PLAY_ICON=$(echo -e "\ue058")
 MUSIC_PAUSE_ICON=$(echo -e "\ue059")
 
 # colors
 FG_COLOR="#ffe0bb90"
-BG_COLOR="#bb000000"
-FG_OCCUPIED_COLOR="#ffc846b0"
-FG_SELECTED_COLOR="#ffa22633"
+BG_COLOR="#ff000000"
+FG_OCCUPIED_COLOR="#ffaa4422"
+FG_UNOCCUPIED_COLOR="#ffaa4422"
+FG_SELECTED_COLOR="#ffffcc44"
 BG_SELECTED_COLOR="#ff051720"
-FG_ICON_COLOR="#ffa08b87"
-U_COLOR="#ffc85f68"
+FG_ICON_COLOR="#ffee7722"
+U_COLOR="#ffee7722"

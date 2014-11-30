@@ -97,7 +97,7 @@ XF86MonBrightnessDown
 #
 
 super + ctrl + alt + l
-	xscreensaver-command --lock
+	xtrlock
 
 Print
 	scrot -e 'mv $f ~/picture/screenshots/'
