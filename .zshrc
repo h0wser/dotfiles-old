@@ -54,7 +54,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 alias ls='ls -F --format=single-column --color=always --group-directories-first'
 eval `dircolors -b ~/.dir_colors`
 
-alias fucking='sudo'
 alias please='sudo $(history -p !!)'
 alias sudo='sudo '
 
@@ -87,6 +86,12 @@ alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > 
 
 export EDITOR=vim
 export BROWSER=chromium
+
+ssh() {
+	[ -t 2 ] && xtermcontrol --fg green
+	command ssh "$@"
+	[ -t 2 ] && xtermcontrol --fg white
+}
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
