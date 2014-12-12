@@ -31,14 +31,19 @@ xscreensaver -nosplash &
 #exec awesome --no-argb
 
 sxhkd -f 100&
-compton &
+#compton &
 eval $(cat ~/.fehbg)
-mopidy -q --config ~/.confg/mopidy/ &
+#mopidy --config ~/.config/mopidy/ > /dev/null &
 
 synclient AccelFactor=0
 synclient MaxSpeed=4 
 synclient MinSpeed=2
 synclient PalmDetect=1
 synclient PalmMinWidth=5
+
+redshift -l 56.046467:12.694512 &
+dunst&
+
+xsnow -nosanta -nokeepsnowonwindows -nokeepsnowonscreen -notrees -nowind -delay 75&
 
 exec bspwm

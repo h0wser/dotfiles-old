@@ -7,12 +7,27 @@ while read line; do
 		C*)
 			CLOCK=${line#?}
 			;;
+		X*)
+			if [ ${#line} -ge 2 ]
+			then
+				TITLE="| ${line#?} |"
+			else 
+				TITLE=""
+			fi
+			;;
 		B*)
 			BATTERY="%{F$FG_ICON_COLOR}$BATTERY_FULL_ICON%{F$FG_COLOR}${line#?}%"
 			;;
 		T*) 
 			TEMP="%{F$FG_ICON_COLOR}$TEMP_ICON %{F$FG_COLOR}${line#?}"
 			;;
+		Q*)
+			MEM="%{F$FG_ICON_COLOR}$MEM_ICON %{F$FG_COLOR}${line#?}"
+			;;
+		E*)
+			CPU="%{F$FG_ICON_COLOR}$CPU_ICON %{F$FG_COLOR}${line#?}%"
+			;;
+
 		N*)
 			WIFI="%{F$FG_ICON_COLOR}$WIFI_ICON %{F$FG_COLOR}"
 			if [[ -z ${line#?} ]]
@@ -38,25 +53,63 @@ while read line; do
 			fi
 			;;
 		W*)
+			# this is getto
 			WM_INFO=""
-			data=$(echo $line | awk -F: '{ for(i=2;i<12;i++) printf "%s:",$i; }')
+			max_count=$(($(bspc query -D | wc -l)+2))
+			data=$(echo $line | awk -F: max=$max_count'{ for(i=1;i<max;i++) printf "%s:",$i; }')
+			data=${data:1}
+
 			IFS=':' read -a array <<< $data
-			for i in {0..10}
+
+			BG_SEL=$BG_SELECTED_COLOR
+
+			for (( i=0; i<$max_count; i++ ))
 			do
+				name=${array[i]#?}
 				case ${array[i]} in
 					o*)
-						WM_INFO+="%{F$FG_OCCUPIED_COLOR}%{B$BG_COLOR} $USED_DESKTOP_ICON "
+						FG=$FG_OCCUPIED_COLOR
+						BG=$BG_COLOR
 						;;
 					O*)
-						WM_INFO+="%{F$FG_SELECTED_COLOR}%{B$BG_SELECTED_COLOR} $USED_DESKTOP_ICON "
+						FG=$FG_SELECTED_COLOR
+						BG=$BG_SEL
 						;;
 					f*)
-						WM_INFO+="%{F$FG_COLOR}%{B$BG_COLOR} $FREE_DESKTOP_ICON "
+						FG=$FG_COLOR
+						BG=$BG_COLOR
 						;;
 					F*) 
-						WM_INFO+="%{F$FG_SELECTED_COLOR}%{B$BG_SELECTED_COLOR} $FREE_DESKTOP_ICON "
+						FG=$FG_SELECTED_COLOR
+						BG=$BG_SEL
+						;;
+					u*)
+						FG=$FG_OCCUPIED_COLOR
+						BG=$BG_COLOR
+						;;
+					U*)
+						FG=$FG_SELECTED_COLOR
+						BG=$BG_SEL
+						;;
+					m*)
+						FG=$FG_COLOR
+						BG=$BG_COLOR
+						BG_SEL=$BG_INACTIVE_COLOR
+						name="$name:"
+						;;
+					M*)
+						FG=$FG_COLOR
+						BG=$BG_COLOR
+						BG_SEL=$BG_SELECTED_COLOR
+						name="$name:"
+						;;
+					L*)
+						name=""
 						;;
 				esac
+				WM_INFO+="%{F$FG}%{B$BG} $name "
+				FG=$FG_COLOR
+				BG=$BG_COLOR
 			done
 			;;
 		V*)
@@ -64,5 +117,5 @@ while read line; do
 			;;
 	esac
 
-	printf "%s\n" "%{F$FG_COLOR}%{U$BG_COLOR}%{l+u-o} %{U$U_COLOR} $CLOCK %{c+o}$WM_INFO%{F$FG_COLOR} %{r-o}$MUSIC $WIFI $TEMP $VOLUME $BATTERY "
+	printf "%s\n" "%{l}$WM_INFO%{F- B-}$TITLE%{c}$CLOCK %{r}$MUSIC $MEM $CPU $WIFI $TEMP $VOLUME $BATTERY %{F- B-}"
 done

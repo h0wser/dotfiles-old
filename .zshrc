@@ -41,7 +41,7 @@ precmd() {
 
 bindkey -v
 
-PROMPT="%{$fg[red]%}%n@%M %{$reset_color%}- %{$fg[red]%}[%3~]%{$reset_color%} > "
+PROMPT="%{$fg[green]%}%n@%M %{$reset_color%}- %{$fg[green]%}[%3~]%{$reset_color%} > "
 
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP
@@ -102,7 +102,7 @@ zstyle :compinstall filename '/home/h0wser/.zshrc'
 autoload -Uz compinit
 compinit
 
-[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
+# [ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
 
 # bspwm
 export PANEL_FIFO="/tmp/panel-fifo"

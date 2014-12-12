@@ -1,35 +1,35 @@
+*faceName: Terminus
+*faceSize: 10
+!*font: xft:Envypn:13
 
-*faceName: Envypn
-*faceSize: 13
-*font: xft:Envypn:13
-*.cursorColor: #be765d
+XTerm*saveLines: 10000
 
-*background: #000000
-*foreground: #ffffff
+*foreground: #6e8f98
+*background: #3b3b3b
 ! black
-*color0: #051720
-*color8: #c04e3e
+*color0: #000000
+*color8: #393939
 ! red
-*color1: #e0bb90
-*color9: #c846b0
+*color1: #ce333a
+*color9: #d13e45
 ! green
-*color2: #e08e50
-*color10: #80b3c8
+*color2: #3bc738
+*color10: #46cb43
 ! yellow
-*color3: #a02e5c
-*color11: #aca1c8
+*color3: #cec538
+*color11: #d1c943
 ! blue
-*color4: #a22633
-*color12: #ebe5db
+*color4: #367f93
+*color12: #4440d0
 ! magenta
-*color5: #4685a1
-*color13: #c82744
+*color5: #cc33cc
+*color13: #cf3ed0
 ! cyan
-*color6: #a08b87
-*color14: #c85f68
+*color6: #39c7ca
+*color14: #33cbce
 ! white
-*color7: #be765d
-*color15: #c83452
+*color7: #d9d9d9
+*color15: #ffffff
 ! underline when default
 *colorUL: #be765d
 ! vim: set ft=xdefaults:
