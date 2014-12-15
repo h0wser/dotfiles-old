@@ -4,8 +4,10 @@
 
 XTerm*saveLines: 10000
 
+*cursorBlink: true
 *foreground: #6e8f98
 *background: #3b3b3b
+*cursorColor: #46cb43
 ! black
 *color0: #000000
 *color8: #393939

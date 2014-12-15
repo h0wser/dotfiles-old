@@ -1,11 +1,10 @@
 " h0wser's extremely cool and awesome .vimrc file
 " most of it is copied...
-
-"----- VUNDLE --------
+" -------------- VUNDLE -----------"
 set nocompatible
 filetype off
+
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
@@ -71,10 +70,11 @@ let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_server_use_vim_stdout = 1
+let g:ycm_server_log_level = 'debug'
 let g:ycm_server_keep_logfiles = 1
 
 filetype plugin indent on
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
-set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after

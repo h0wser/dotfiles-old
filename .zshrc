@@ -88,9 +88,9 @@ export EDITOR=vim
 export BROWSER=chromium
 
 ssh() {
-	[ -t 2 ] && xtermcontrol --fg green
+	[ -t 2 ] && xtermcontrol --fg "#ffaaff"
 	command ssh "$@"
-	[ -t 2 ] && xtermcontrol --fg white
+	[ -t 2 ] && xtermcontrol --fg "#6e8f98"
 }
 
 # Lines configured by zsh-newuser-install
