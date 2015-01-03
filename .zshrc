@@ -80,9 +80,16 @@ alias prev="playerctl previous"
 alias title="printf '\033];%s\07\n'"
 
 alias start="sudo systemctl start "
+alias restart="sudo systemctl restart "
 alias status="sudo systemctl status "
 
+alias swe="setxkbmap se"
+
+alias donken="top"
+
 alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > /dev/null &"
+
+p() { cd "/home/h0wser/projects/$1"; }
 
 export EDITOR=vim
 export BROWSER=chromium
@@ -107,7 +114,7 @@ zstyle :compinstall filename '/home/h0wser/.zshrc'
 autoload -Uz compinit
 compinit
 
-# [ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
+[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
 
 # bspwm
 export PANEL_FIFO="/tmp/panel-fifo"

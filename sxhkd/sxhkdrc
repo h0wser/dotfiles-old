@@ -112,7 +112,7 @@ super + ctrl + alt + l
 	xscreensaver-command --lock
 
 Print
-	scrot -e 'mv $f ~/picture/screenshots/'
+	scrot -e 'mv $f ~/pictures/screenshots/'
 
 super + Return
 	uxterm

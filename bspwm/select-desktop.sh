@@ -8,7 +8,7 @@ if [[ $nr_of_monitors == 1 ]] || [[ $3 == "override" ]]
 then
 	desktop=$1
 else
-	if [[ $selected_monitor == "laptop" ]]
+	if [[ $selected_monitor == "eDP1" ]]
 	then
 		desktop=$1
 	else 

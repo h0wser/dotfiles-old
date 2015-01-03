@@ -31,8 +31,7 @@ xscreensaver -nosplash &
 #exec awesome --no-argb
 
 sxhkd -f 100&
-#compton &
-eval $(cat ~/.fehbg)
+compton &
 #mopidy --config ~/.config/mopidy/ > /dev/null &
 
 synclient AccelFactor=0
@@ -44,6 +43,15 @@ synclient PalmMinWidth=5
 redshift -l 56.046467:12.694512 &
 dunst&
 
-xsnow -nosanta -nokeepsnowonwindows -nokeepsnowonscreen -notrees -nowind -delay 75&
+envfile="$HOME/.gnupg/gpg-agent.env"
+if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
+	eval "$(cat "$envfile")"
+else
+	eval "$(gpg-agent --daemon --enable-ssh-support --write-env-file "$envfile")"
+fi
+export GPG_AGENT_INFO  # the env file does not contain the export statement
+export SSH_AUTH_SOCK   # enable gpg-agent for ssh
+
+# xsnow -nosanta -nokeepsnowonwindows -nokeepsnowonscreen -notrees -nowind -delay 75&
 
 exec bspwm

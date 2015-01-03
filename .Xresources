@@ -1,12 +1,14 @@
-*faceName: Terminus
-*faceSize: 10
+!*faceName: Terminus
+!*faceSize: 10
 !*font: xft:Envypn:13
 
 XTerm*saveLines: 10000
 
+xterm*font: -*-gohufont-bold-r-normal-*-14-100-*-*-c-80-iso10646-*
+
 *cursorBlink: true
 *foreground: #6e8f98
-*background: #3b3b3b
+*background: #000000
 *cursorColor: #46cb43
 ! black
 *color0: #000000

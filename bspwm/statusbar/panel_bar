@@ -55,7 +55,7 @@ while read line; do
 		W*)
 			# this is getto
 			WM_INFO=""
-			max_count=$(($(bspc query -D | wc -l)+2))
+			max_count=$(($(bspc query -D | wc -l)+1+$(bspc query -M | wc -l)))
 			data=$(echo $line | awk -F: max=$max_count'{ for(i=1;i<max;i++) printf "%s:",$i; }')
 			data=${data:1}
 

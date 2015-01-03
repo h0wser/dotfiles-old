@@ -7,15 +7,13 @@
 
 cd ~/.config/bspwm
 
-bspc config border_width        2
-bspc config window_gap         14
-bspc config top_padding		   26
+bspc config border_width        1
 
 bspc config split_ratio         0.52
 bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config focus_by_distance   true
-bspc config normal_border_color "#555555"
+bspc config normal_border_color "#000000"
 
 ./monitor.sh
 
