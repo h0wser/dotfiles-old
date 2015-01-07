@@ -62,13 +62,13 @@ super + ctrl + {1-9}
 	bspc window -r 0.{1-9}
 
 super + {1-9,0}
-	~/.config/bspwm/select-desktop.sh {1-9,10} switch
+	~/scripts/select-desktop {1-9,10} switch
 
 super + shift + {1-9,0}
-	~/.config/bspwm/select-desktop.sh {1-9,10} send
+	~/scripts/select-desktop {1-9,10} send
 
 super + shift + ctrl + {1-9,0}
-	~/.config/bspwm/select-desktop.sh {1-9,10} send override
+	~/scripts/select-desktop {1-9,10} send override
 
 super + {e,r}
 	bspc desktop -R {270,90}
@@ -93,10 +93,10 @@ super + shift + s
 
 # Volume keys
 XF86AudioRaiseVolume
-	~/.config/bspwm/statusbar/volume_control +
+	~/scripts/volume +
 
 XF86AudioLowerVolume
-	~/.config/bspwm/statusbar/volume_control -
+	~/scripts/volume -
 
 # Backlight keys
 XF86MonBrightnessUp

@@ -15,12 +15,11 @@ bspc config gapless_monocle     true
 bspc config focus_by_distance   true
 bspc config normal_border_color "#000000"
 
-./monitor.sh
+~/scripts/monitor
 
 bspc rule -a Gimp follow=on floating=on
 bspc rule -a heimdallr-client floating=on
 
-cd statusbar
+cd ~/scripts/
 
-./panel&
-
+./dzen2-out | dzen2 -fn "-*-gohufont-bold-r-normal-*-14-100-100-100-*-80-iso10646-1" -h 20 -ta l

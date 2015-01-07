@@ -69,7 +69,7 @@ while read line; do
 				case ${array[i]} in
 					o*)
 						FG=$FG_OCCUPIED_COLOR
-						BG=$BG_COLOR
+						BG=$BG_OCCUPIED_COLOR
 						;;
 					O*)
 						FG=$FG_SELECTED_COLOR
@@ -85,7 +85,7 @@ while read line; do
 						;;
 					u*)
 						FG=$FG_OCCUPIED_COLOR
-						BG=$BG_COLOR
+						BG=$BG_OCCUPIED_COLOR
 						;;
 					U*)
 						FG=$FG_SELECTED_COLOR
@@ -117,5 +117,5 @@ while read line; do
 			;;
 	esac
 
-	printf "%s\n" "%{l}$WM_INFO%{F- B-}$TITLE%{c}$CLOCK %{r}$MUSIC $MEM $CPU $WIFI $TEMP $VOLUME $BATTERY %{F- B-}"
+	printf "%s\n" "%{Sl}%{l}$WM_INFO%{F- B-}$TITLE%{c}$CLOCK %{r}$MUSIC $MEM $CPU $WIFI $TEMP $VOLUME $BATTERY %{F- B-}"
 done

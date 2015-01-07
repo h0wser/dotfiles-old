@@ -39,11 +39,11 @@ EIGHTBIT 1
 # 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 NORMAL 00 
 FILE 00 # normal file
-DIR 04;01;36 # directory
+DIR  00 # directory
 LINK 01;36 # symbolic link
 FIFO 40;31 # pipe
 SOCK 01;35 # socket
-EXEC 00;32 # executable files
+EXEC 01;35 # executable files
 
 # Colors specific to file type are below here
 

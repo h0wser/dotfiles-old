@@ -24,10 +24,11 @@ while true; do echo "E$(mpstat 2 1 | awk '$13 ~ /[0-9.]+/ { print 100 - $13"%" }
 while true; do ./music_control > "$PANEL_FIFO"; sleep 2; done &
 bspc control --subscribe > "$PANEL_FIFO" &
 
-MAIN_FONT="-*-gohufont-bold-*-normal-*-11-80-100-100-c-60-iso10646-1"
+#MAIN_FONT="-*-gohufont-bold-*-normal-*-11-80-100-100-c-60-iso10646-1"
+MAIN_FONT="-*-gohufont-bold-r-normal-*-14-100-100-100-*-80-iso10646-1"
 ICON_FONT="-misc-stlarch-medium-r-normal-*-10-100-75-75-c-80-iso10646-1"
 
 source config
 
-cat "$PANEL_FIFO" | ./panel_bar | bar -f "$ICON_FONT,$MAIN_FONT" -g 1920x20+0+0 -u 0 -F "$FG_COLOR" -B "$BG_COLOR" & 
+cat "$PANEL_FIFO" | ./panel_bar | bar -f "$ICON_FONT,$MAIN_FONT" -g x20+0+0 -u 0 -F "$FG_COLOR" -B "$BG_COLOR" & 
 wait

@@ -41,7 +41,7 @@ precmd() {
 
 bindkey -v
 
-PROMPT="%{$fg[green]%}%n@%M %{$reset_color%}- %{$fg[green]%}[%3~]%{$reset_color%} > "
+PROMPT="%{$fg[magenta]%}%n@%M %{$reset_color%}- %{$fg[green]%}[%3~]%{$reset_color%} > "
 
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP
@@ -91,13 +91,15 @@ alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > 
 
 p() { cd "/home/h0wser/projects/$1"; }
 
+alias sdcard="sudo mount /dev/mmcblk0p1 ~/media/sdcard"
+
 export EDITOR=vim
 export BROWSER=chromium
 
 ssh() {
 	[ -t 2 ] && xtermcontrol --fg "#ffaaff"
 	command ssh "$@"
-	[ -t 2 ] && xtermcontrol --fg "#6e8f98"
+	[ -t 2 ] && xtermcontrol --fg "#00ff00"
 }
 
 # Lines configured by zsh-newuser-install
@@ -114,7 +116,7 @@ zstyle :compinstall filename '/home/h0wser/.zshrc'
 autoload -Uz compinit
 compinit
 
-[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
+#[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
 
 # bspwm
 export PANEL_FIFO="/tmp/panel-fifo"

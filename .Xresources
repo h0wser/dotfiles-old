@@ -7,7 +7,7 @@ XTerm*saveLines: 10000
 xterm*font: -*-gohufont-bold-r-normal-*-14-100-*-*-c-80-iso10646-*
 
 *cursorBlink: true
-*foreground: #6e8f98
+*foreground: #00ff00
 *background: #000000
 *cursorColor: #46cb43
 ! black
