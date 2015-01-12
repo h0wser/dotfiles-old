@@ -24,3 +24,5 @@ BG_INACTIVE_COLOR="#006600"
 FG_ICON_COLOR="#c643fa"
 U_COLOR="#c85f68"
 
+BAR_FONT="-*-gohufont-bold-r-normal-*-14-100-100-100-*-80-iso10646-1" 
+BAR_GEOMETRY="1920x20"
