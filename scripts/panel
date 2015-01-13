@@ -30,10 +30,10 @@
 # 
 
 cd ~/scripts/
-source config
+source ./config
 
 # cat "$PANEL_FIFO" | ./panel_bar | bar -f "$ICON_FONT,$MAIN_FONT" -g x20+0+0 -u 0 -F "$FG_COLOR" -B "$BG_COLOR" & 
 
-killall panel-dzen
+killall panel_dzen
 ./panel_dzen | dzen2 -fn "-*-gohufont-bold-r-normal-*-14-100-100-100-*-80-iso10646-1" -h 20 -ta l -geometry 1920x20
 wait

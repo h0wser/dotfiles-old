@@ -118,7 +118,7 @@ super + Return
 	uxterm
 
 super + space
-	dmenu_run -p "Run: " -l 20 -b -nb '#000000' -nf '#948b82' -sb '#993d00'
+	dmenu_run -p "Run: " -l 20 -b -nb '#000000' -nf '#ffffff' -sb '#00ff00' -sf '#000000'
 
 XF86AudioPlay
 	mpc toggle

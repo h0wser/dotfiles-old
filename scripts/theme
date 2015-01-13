@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ "$#" -eq 0 ]]
+then
+	echo "Usage: $0 <theme-name>"
+	echo "Themes are stored in ~/themes"
+fi
+
+cd ~/scripts/
+rm -f ./config
+
+ln -s ../themes/$1 ./config
