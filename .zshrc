@@ -4,7 +4,7 @@
 umask 022
 
 # Set our default path
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/h0wser/.local/bin:/home/h0wser/go/bin"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/h0wser/.local/bin:/home/h0wser/go/bin:/home/h0wser/scripts/:/home/h0wser/.gem/ruby/2.2.0/bin/"
 export PATH
 
 export GOPATH="/home/h0wser/go"
@@ -41,7 +41,7 @@ precmd() {
 
 bindkey -v
 
-PROMPT="%{$fg[magenta]%}%n@%M %{$reset_color%}- %{$fg[green]%}[%3~]%{$reset_color%} > "
+PROMPT="%{$fg[red]%}%n@%M %{$reset_color%}- %{$fg[red]%}[%3~]%{$reset_color%}"$'\n'"> "
 
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP
@@ -96,11 +96,11 @@ alias sdcard="sudo mount /dev/mmcblk0p1 ~/media/sdcard"
 export EDITOR=vim
 export BROWSER=chromium
 
-ssh() {
-	[ -t 2 ] && xtermcontrol --fg "#ffaaff"
-	command ssh "$@"
-	[ -t 2 ] && xtermcontrol --fg "#00ff00"
-}
+#ssh() {
+#	[ -t 2 ] && xtermcontrol --fg "#ffaaff"
+#	command ssh "$@"
+#	[ -t 2 ] && xtermcontrol --fg "#dddddd"
+#}
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -116,7 +116,7 @@ zstyle :compinstall filename '/home/h0wser/.zshrc'
 autoload -Uz compinit
 compinit
 
-#[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
+[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
 
 # bspwm
 export PANEL_FIFO="/tmp/panel-fifo"

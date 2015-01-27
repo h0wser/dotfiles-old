@@ -24,7 +24,7 @@ set backspace=indent,eol,start
 set laststatus=2
 set ruler
 set number
-set autoindent
+"set autoindent
 set scrolloff=10
 " set cursorline
 set nowrap

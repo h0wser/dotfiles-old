@@ -13,8 +13,6 @@ else
 	state=$(cat /tmp/batstate)
 fi
 
-echo $state
-
 if [ $BAT -le 5 ] && [ $state != "critnotified" ] && [ $STATUS == "Discharging" ]
 then
 	notify-send -u critical Battery "Critical battery: $BAT%";
@@ -30,4 +28,3 @@ then
 fi
 
 echo $state > "/tmp/batstate"
-echo "B$BAT%"

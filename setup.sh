@@ -27,3 +27,4 @@ ln -fs ~/dotfiles/.xinitrc ~/.xinitrc
 ln -fs ~/dotfiles/dunst ~/.config/dunst
 ln -fs ~/dotfiles/themer ~/.config/themer
 ln -fs ~/dotfiles/scripts ~/scripts
+ln -fs ~/dotfiles/.gmrunrc ~/.gmrunrc

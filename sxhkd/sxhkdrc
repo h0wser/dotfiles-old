@@ -115,10 +115,10 @@ Print
 	scrot -e 'mv $f ~/pictures/screenshots/'
 
 super + Return
-	uxterm
+	urxvt
 
 super + space
-	dmenu_run -p "Run: " -l 20 -b -nb '#000000' -nf '#ffffff' -sb '#00ff00' -sf '#000000'
+	dmenu_run -p "Run: " -l 20 -b -nb '#000000' -nf '#ffffff' -sb '#3333aa' -sf '#ffffff'
 
 XF86AudioPlay
 	mpc toggle

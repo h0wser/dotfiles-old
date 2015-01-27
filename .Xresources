@@ -5,11 +5,22 @@
 XTerm*saveLines: 10000
 
 xterm*font: -*-gohufont-bold-r-normal-*-14-100-*-*-c-80-iso10646-*
+urxvt*font: -*-proggyclean-*-*-*-*-13-*-*-*-*-*-iso8859-*
+urxvt.depth: 32
+urxvt.scrollBar: false
+urxvt.secondaryScreen: 1
+urxvt.secondaryScroll: 0
 
-*cursorBlink: true
-*foreground: #00ff00
+urxvt.perl-ext-common: default,matcher
+urxvt.url-launcher: /usr/bin/chromium
+urxvt.match.button: 1
+
+
+*cursorBlink: false
+*foreground: #dddddd
 *background: #000000
-*cursorColor: #46cb43
+urxvt.background: [80]#000000
+*cursorColor: #dddddd
 ! black
 *color0: #000000
 *color8: #393939

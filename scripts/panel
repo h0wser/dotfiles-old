@@ -1,39 +1,16 @@
 #!/bin/bash
 
-# This script gathers info and pipes it into a second script
-# The second script processes information, formats it and sends it to the bar
-
-# Pipe for all communication
-# [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO" 
-# mkfifo "$PANEL_FIFO"
-# 
-# # Kill the bar if it's already running
-# BARPID="$(pidof bar)"
-# if (($? == 0)); then
-# 	kill $BARPID
-# fi
-# 
-# clock -sf "C%A %B %d %H:%M" > "$PANEL_FIFO" &
-# xtitle -sf "X%s" -t 50 > "$PANEL_FIFO" &
-# while true; do ./battery_control > "$PANEL_FIFO"; sleep 10; done &
-# while true; do ./volume_control; sleep 3; done &
-# while true; do echo "T$(acpi -t | awk '{print $4}')C" > "$PANEL_FIFO"; sleep 2; done &
-# while true; do echo "N$(nmcli con show --active | grep wlp3s0 | awk '{print $1}')" > "$PANEL_FIFO"; sleep 10; done &
-# while true; do echo "Q$(free -h | sed -n '2p' | awk '{print $3}')" > "$PANEL_FIFO"; sleep 5; done &
-# while true; do echo "E$(mpstat 2 1 | awk '$13 ~ /[0-9.]+/ { print 100 - $13"%" }')" > "$PANEL_FIFO"; sleep 1; done & # totally running out of letters..
-# while true; do ./music_control > "$PANEL_FIFO"; sleep 2; done &
-# bspc control --subscribe > "$PANEL_FIFO" &
-# 
-# #MAIN_FONT="-*-gohufont-bold-*-normal-*-11-80-100-100-c-60-iso10646-1"
-# MAIN_FONT="-*-gohufont-bold-r-normal-*-14-100-100-100-*-80-iso10646-1"
-# ICON_FONT="-misc-stlarch-medium-r-normal-*-10-100-75-75-c-80-iso10646-1"
-# 
-
 cd ~/scripts/
 source ./config
 
-# cat "$PANEL_FIFO" | ./panel_bar | bar -f "$ICON_FONT,$MAIN_FONT" -g x20+0+0 -u 0 -F "$FG_COLOR" -B "$BG_COLOR" & 
 
-killall panel_dzen
-./panel_dzen | dzen2 -fn "-*-gohufont-bold-r-normal-*-14-100-100-100-*-80-iso10646-1" -h 20 -ta l -geometry 1920x20
+while true 
+do
+	./battery 
+	sleep 120
+done &
+
+killall panel_bar
+./panel_bar | bar -f "$BAR_FONT" -g "$BAR_GEOMETRY" -F "$FG_COLOR" -B "$BG_COLOR"
+
 wait

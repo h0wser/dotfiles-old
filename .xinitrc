@@ -52,6 +52,4 @@ fi
 export GPG_AGENT_INFO  # the env file does not contain the export statement
 export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 
-# xsnow -nosanta -nokeepsnowonwindows -nokeepsnowonscreen -notrees -nowind -delay 75&
-
 exec bspwm
