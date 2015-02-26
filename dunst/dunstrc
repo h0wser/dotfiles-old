@@ -117,10 +117,10 @@
     separator_height = 0
     
     # Padding between text and separator.
-    padding = 7
+    padding = 2
     
     # Horizontal padding.
-    horizontal_padding = 7
+    horizontal_padding = 2
     
     # Define a color for the separator.
     # possible values are:
@@ -148,7 +148,7 @@
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
-    width = 5
+    width = 2
     color = "#aaaaaa"
 
 [shortcuts]

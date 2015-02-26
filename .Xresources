@@ -12,39 +12,39 @@ urxvt.secondaryScreen: 1
 urxvt.secondaryScroll: 0
 
 urxvt.perl-ext-common: default,matcher
-urxvt.url-launcher: /usr/bin/chromium
+urxvt.url-launcher: /usr/bin/vimb
 urxvt.match.button: 1
 
-
-*cursorBlink: false
-*foreground: #dddddd
-*background: #000000
-urxvt.background: [80]#000000
-*cursorColor: #dddddd
+*cursorBlink: true
+*foreground: #fbffd1
+*background: #222222
+urxvt*background: [100]#222222
+*cursorColor: #fbffd1
 ! black
 *color0: #000000
 *color8: #393939
 ! red
-*color1: #ce333a
-*color9: #d13e45
+*color1: #f55200
+*color9: #ca2700
 ! green
-*color2: #3bc738
-*color10: #46cb43
+*color2: #00d644
+*color10: #00ac26
 ! yellow
-*color3: #cec538
-*color11: #d1c943
+*color3: #fffc42
+*color11: #e5e32a
 ! blue
-*color4: #367f93
-*color12: #4440d0
+*color4: #80b5ff
+*color12: #6D9EAC
 ! magenta
-*color5: #cc33cc
-*color13: #cf3ed0
+*color5: #ff8aeb
+*color13: #d53acd
 ! cyan
-*color6: #39c7ca
-*color14: #33cbce
+*color6: #80fdff
+*color14: #6af6b5
 ! white
 *color7: #d9d9d9
 *color15: #ffffff
 ! underline when default
 *colorUL: #be765d
 ! vim: set ft=xdefaults:
+

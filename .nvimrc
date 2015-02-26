@@ -4,14 +4,16 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.nvim/bundle/Vundle.vim
+call vundle#begin('~/.nvim/bundle')
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'vim-scripts/Align'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-scripts/a.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -24,26 +26,24 @@ set shiftwidth=4
 set backspace=indent,eol,start
 set laststatus=2
 set ruler
-set number
+set autoindent
 set scrolloff=10
-set cursorline
 set nowrap
 set linebreak
-"
+set relativenumber
+set number
+
+set incsearch
+set hlsearch
 
 highlight! link MatchParens StatusLine
 
 " ---------------- COLOR SETTINGS -----------"
 set t_Co=256
-colorscheme molokai
+colorscheme darth
 set t_ut=
 
 " ----------------- KEY MAPPINGS ---------------
-"	matching braces/parens etc...
-" not using this atm cuz it's annoyying
-"inoremap { {}<Esc>i
-"inoremap ( ()<Esc>i
-"inoremap [ []<Esc>i
 
 inoremap <NL> <CR><CR><Esc>ki<Tab>
 
@@ -60,15 +60,14 @@ inoremap Ä ]
 
 " Switching between header and source quickly
 nnoremap ö :w<CR>:A<CR>
-nnoremap Ö :split %<CR><C-w><C-w>:A<CR>
+nnoremap Ö :AS<CR>
 
 " Rust syntax m8
 au BufRead,BufNewFile *.rs,*.rc set filetype=rust
 
 " -------------- YOUCOMPLETEME SETTINGS -------------
 " YouCompleteMe need python 2, not 3
-"let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_server_use_vim_stdout = 1
 let g:ycm_server_log_level = 'debug'
@@ -78,4 +77,4 @@ filetype plugin indent on
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
-set runtimepath+=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+set runtimepath+=~/.nvim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.nvim/after

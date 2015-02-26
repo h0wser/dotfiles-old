@@ -36,12 +36,12 @@ zstyle ':vcs_info:git*'	formats "%{$fg[yellow]%}(%b) %{$reset_color%}"
 
 precmd() {
 	vcs_info
-	RPROMPT="${vcs_info_msg_0_}[%?] %*"
+	RPROMPT="${vcs_info_msg_0_}[%?]" 
 }
 
 bindkey -v
 
-PROMPT="%{$fg[red]%}%n@%M %{$reset_color%}- %{$fg[red]%}[%3~]%{$reset_color%}"$'\n'"> "
+PROMPT="%{$fg[red]%}[%n@%M] %{$reset_color%}- %{$fg[red]%}[%6~]%{$reset_color%} - %{$fg[red]%}[%*]%{$reset_color%}"$'\n'"> "
 
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP
@@ -57,7 +57,7 @@ eval `dircolors -b ~/.dir_colors`
 alias please='sudo $(history -p !!)'
 alias sudo='sudo '
 
-alias r='vim ~/.zshrc && source ~/.zshrc'
+alias r='nvim ~/.zshrc && source ~/.zshrc'
 
 alias py2='python2'
 alias py3='python'
@@ -83,17 +83,18 @@ alias start="sudo systemctl start "
 alias restart="sudo systemctl restart "
 alias status="sudo systemctl status "
 
-alias swe="setxkbmap se"
-
+alias swe="setxkbmap se && xset r rate 200 60"
 alias donken="top"
 
 alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > /dev/null &"
+
+alias vim="nvim"
 
 p() { cd "/home/h0wser/projects/$1"; }
 
 alias sdcard="sudo mount /dev/mmcblk0p1 ~/media/sdcard"
 
-export EDITOR=vim
+export EDITOR=nvim
 export BROWSER=chromium
 
 #ssh() {
