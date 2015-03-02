@@ -39,9 +39,19 @@ precmd() {
 	RPROMPT="${vcs_info_msg_0_}[%?]" 
 }
 
-bindkey -v
+function zle-line-init zle-keymap-select {
+	VIM_PROMPT="%{$fg[red]%} [% NORMAL]% %{$reset_color%}"
+	RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} ${vcs_info_msg_0_}[%?]" 
+	zle reset-prompt
+}
 
-PROMPT="%{$fg[red]%}[%n@%M] %{$reset_color%}- %{$fg[red]%}[%6~]%{$reset_color%} - %{$fg[red]%}[%*]%{$reset_color%}"$'\n'"> "
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+bindkey -v
+export KEYTIMEOUT=1
+
+PROMPT="%{$fg[red]%}[%n@%M] %{$reset_color%}- %{$fg[red]%}[%6~]%{$reset_color%}"$'\n'"> "
 
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP
@@ -118,7 +128,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd
 unsetopt beep
-bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/h0wser/.zshrc'
