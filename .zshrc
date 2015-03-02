@@ -95,13 +95,22 @@ p() { cd "/home/h0wser/projects/$1"; }
 alias sdcard="sudo mount /dev/mmcblk0p1 ~/media/sdcard"
 
 export EDITOR=nvim
-export BROWSER=chromium
+export BROWSER=vimb
 
-#ssh() {
-#	[ -t 2 ] && xtermcontrol --fg "#ffaaff"
-#	command ssh "$@"
-#	[ -t 2 ] && xtermcontrol --fg "#dddddd"
-#}
+DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+	dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+	[[ -d $dirs[1] ]] && cd $dirstack[1]
+fi
+chpwd() {
+	print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+}
+
+DIRSTACKSIZE=20
+
+setopt autopushd pushdsilent pushdtohome
+setopt pushdignoredups
+setopt pushdminus
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -117,8 +126,4 @@ zstyle :compinstall filename '/home/h0wser/.zshrc'
 autoload -Uz compinit
 compinit
 
-[ -n "$XTERM_VERSION" ] && transset-df -a >/dev/null
-
-# bspwm
-export PANEL_FIFO="/tmp/panel-fifo"
 # End of lines added by compinstall
