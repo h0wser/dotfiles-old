@@ -5,14 +5,16 @@
 XTerm*saveLines: 10000
 
 xterm*font: -*-gohufont-bold-r-normal-*-14-100-*-*-c-80-iso10646-*
-urxvt*font: -*-proggyclean-*-*-*-*-13-*-*-*-*-*-iso8859-*
+!urxvt.font: -*-proggyclean-*-*-*-*-13-*-*-*-*-*-iso8859-*
+urxvt.font: xft:source code pro:size=9:antialias=false
 urxvt.depth: 32
 urxvt.scrollBar: false
 urxvt.secondaryScreen: 1
 urxvt.secondaryScroll: 0
+urxvt.letterSpace: -2
 
 urxvt.perl-ext-common: default,matcher
-urxvt.url-launcher: /usr/bin/vimb
+urxvt.url-launcher: /usr/bin/chromium
 urxvt.match.button: 1
 
 *cursorBlink: true

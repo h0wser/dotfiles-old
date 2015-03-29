@@ -19,10 +19,10 @@ Print
 	scrot -e 'mv $f ~/pictures/screenshots/'
 
 super + space
-	dmenu_run -p "Run: " -b -nb '#000000' -nf '#ffffff' -sb '#333333' -sf '#ffffff'
+	dmenu_run -p "Run: " -fn "Source Code Pro-20" -nb '#333333' -nf '#ffffff' -sb '#333333' -sf '#f55200' -dim 0.7 -w 960 -x 480 -y 300 -l 1
 
 super + v
-	tabbed -c vimb -e
+	luakit
 
 XF86AudioPlay
 	mpc toggle

@@ -80,7 +80,6 @@ alias pac='yaourt'
 alias runescape='java -jar ~/Orion/OSBuddy.jar > /dev/null 2>&1 &'
 
 alias tmux="tmux -2" # forces 256 colors in tmux :) 
-alias tmux-dev="~/dotfiles/tmux-dev.sh"
 
 # media control via command line
 alias play="playerctl play-pause"
@@ -101,11 +100,12 @@ alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > 
 alias vim="nvim"
 
 p() { cd "/home/h0wser/projects/$1"; }
+s() { cd "/home/h0wser/Dropbox/Skola/$1"; }
 
 alias sdcard="sudo mount /dev/mmcblk0p1 ~/media/sdcard"
 
 export EDITOR=nvim
-export BROWSER=vimb
+export BROWSER=luakit
 
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then

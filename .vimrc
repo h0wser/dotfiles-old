@@ -61,6 +61,7 @@ inoremap Ä ]
 " Switching between header and source quickly
 nnoremap ö :w<CR>:A<CR>
 nnoremap Ö :split %<CR><C-w><C-w>:A<CR>
+nnoremap å :noh<CR>
 
 " Rust syntax m8
 au BufRead,BufNewFile *.rs,*.rc set filetype=rust

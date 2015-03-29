@@ -30,7 +30,6 @@ xset +fp /usr/share/fonts/local/
 xset fp rehash
 
 sxhkd -f 100&
-compton &
 
 synclient AccelFactor=0
 synclient MaxSpeed=4 

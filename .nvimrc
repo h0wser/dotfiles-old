@@ -61,6 +61,13 @@ inoremap Ä ]
 " Switching between header and source quickly
 nnoremap ö :w<CR>:A<CR>
 nnoremap Ö :AS<CR>
+nnoremap å :noh<CR>
+
+nnoremap - ddp
+nnoremap _ ddkp
+
+inoremap <c-u> <esc>viwUea
+nnoremap <c-u> viwU
 
 " Rust syntax m8
 au BufRead,BufNewFile *.rs,*.rc set filetype=rust
@@ -68,10 +75,6 @@ au BufRead,BufNewFile *.rs,*.rc set filetype=rust
 " -------------- YOUCOMPLETEME SETTINGS -------------
 " YouCompleteMe need python 2, not 3
 let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
-let g:ycm_enable_diagnostic_signs = 1
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_server_log_level = 'debug'
-let g:ycm_server_keep_logfiles = 1
 
 filetype plugin indent on
 set grepprg=grep\ -nH\ $*
