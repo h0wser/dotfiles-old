@@ -12,6 +12,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'vim-scripts/Align'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-scripts/a.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -29,21 +31,20 @@ set scrolloff=10
 set cursorline
 set nowrap
 set linebreak
-"
+set relativenumber
+
+set incsearch
+set hlsearch
 
 highlight! link MatchParens StatusLine
 
 " ---------------- COLOR SETTINGS -----------"
 set t_Co=256
-colorscheme molokai
+colorscheme native 
 set t_ut=
 
 " ----------------- KEY MAPPINGS ---------------
 "	matching braces/parens etc...
-" not using this atm cuz it's annoyying
-"inoremap { {}<Esc>i
-"inoremap ( ()<Esc>i
-"inoremap [ []<Esc>i
 
 inoremap <NL> <CR><CR><Esc>ki<Tab>
 
@@ -63,17 +64,25 @@ nnoremap ö :w<CR>:A<CR>
 nnoremap Ö :split %<CR><C-w><C-w>:A<CR>
 nnoremap å :noh<CR>
 
+nnoremap - ddp
+nnoremap _ ddkp
+
+inoremap <c-u> <esc>viwUea
+nnoremap <c-u> viwU
+
+
 " Rust syntax m8
 au BufRead,BufNewFile *.rs,*.rc set filetype=rust
 
+" --------------GUI----------------------------------
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+
 " -------------- YOUCOMPLETEME SETTINGS -------------
 " YouCompleteMe need python 2, not 3
-"let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_enable_diagnostic_signs = 1
-let g:ycm_server_use_vim_stdout = 1
-let g:ycm_server_log_level = 'debug'
-let g:ycm_server_keep_logfiles = 1
+let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 
 filetype plugin indent on
 set grepprg=grep\ -nH\ $*

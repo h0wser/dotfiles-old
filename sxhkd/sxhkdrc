@@ -1,9 +1,9 @@
 # Volume keys
 XF86AudioRaiseVolume
-	~/scripts/volume +
+	~/scripts/volume + && play -q ~/audio/soundpack/audio/ui/TW_Volume_control.ogg
 
 XF86AudioLowerVolume
-	~/scripts/volume -
+	~/scripts/volume - && play -q ~/audio/soundpack/audio/ui/TW_Volume_control.ogg
 
 # Backlight keys
 XF86MonBrightnessUp
@@ -13,7 +13,8 @@ XF86MonBrightnessDown
 	xbacklight -dec 5
 
 super + ctrl + alt + l
-	xtrlock
+	xtrlock & \
+	play -q ~/audio/soundpack/audio/ui/TW_Silent_mode_off.ogg
 	
 Print
 	scrot -e 'mv $f ~/pictures/screenshots/'

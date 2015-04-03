@@ -40,6 +40,10 @@ synclient PalmMinWidth=5
 redshift -l 56.046467:12.694512 &
 dunst&
 
+~/scripts/irssi-notify.sh&
+
+compton -b
+
 eval $(cat ~/.fehbg)
 
 envfile="$HOME/.gnupg/gpg-agent.env"
