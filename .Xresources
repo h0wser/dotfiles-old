@@ -30,8 +30,8 @@ urxvt.fading: 20
 *color0: #000000
 *color8: #393939
 ! red
-*color1: #fb4634
-*color9: #ca2700
+*color1: #bb5655
+*color9: #fb4934
 ! green
 *color2: #b8bb26
 *color10: #22ac26
@@ -48,7 +48,7 @@ urxvt.fading: 20
 *color6: #8ec07c
 *color14: #6af6b5
 ! white
-*color7: #d9d9d9
+*color7: #a89984
 *color15: #ffffff
 ! underline when default
 *colorUL: #be765d
