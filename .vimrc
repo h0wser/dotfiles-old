@@ -14,6 +14,7 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'vim-scripts/Align'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/a.vim'
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
@@ -42,6 +43,13 @@ highlight! link MatchParens StatusLine
 set t_Co=256
 colorscheme native 
 set t_ut=
+
+" ------------------AIR LINE----------------"
+function! AirlineInit()
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline_powerline_fonts = 1
+endfunction
+autocmd VimEnter * call AirlineInit()
 
 " ----------------- KEY MAPPINGS ---------------
 "	matching braces/parens etc...

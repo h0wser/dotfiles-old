@@ -81,11 +81,6 @@ alias runescape='java -jar ~/Orion/OSBuddy.jar > /dev/null 2>&1 &'
 
 alias tmux="tmux -2" # forces 256 colors in tmux :) 
 
-# media control via command line
-alias play="playerctl play-pause"
-alias next="playerctl next"
-alias prev="playerctl previous"
-
 alias title="printf '\033];%s\07\n'"
 
 alias start="sudo systemctl start "
@@ -96,6 +91,8 @@ alias swe="setxkbmap se && xset r rate 200 60"
 alias donken="top"
 
 alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > /dev/null &"
+
+alias textopdf="latex *tex && dvipdf *dvi"
 
 alias vim="nvim"
 

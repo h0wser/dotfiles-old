@@ -4,9 +4,7 @@
 
 XTerm*saveLines: 10000
 
-xterm*font: -*-gohufont-bold-r-normal-*-14-100-*-*-c-80-iso10646-*
-!urxvt.font: -*-proggyclean-*-*-*-*-13-*-*-*-*-*-iso8859-*
-urxvt.font: xft:source code pro:size=9:antialias=false
+urxvt.font: xft:Sauce Code Powerline:size=9:antialias=false
 urxvt.depth: 32
 urxvt.scrollBar: false
 urxvt.secondaryScreen: 1
@@ -19,9 +17,15 @@ urxvt.match.button: 1
 
 *cursorBlink: true
 *foreground: #fbffd1
-*background: #222222
-urxvt*background: [100]#222222
 *cursorColor: #fbffd1
+*background: #222222
+
+urxvt.background: #222222
+urxvt.transparent: true
+urxvt.shading: 30
+urxvt.blurRadius: 5
+urxvt.fading: 20
+
 ! black
 *color0: #000000
 *color8: #393939
@@ -29,8 +33,8 @@ urxvt*background: [100]#222222
 *color1: #f55200
 *color9: #ca2700
 ! green
-*color2: #00d644
-*color10: #00ac26
+*color2: #22d644
+*color10: #22ac26
 ! yellow
 *color3: #fffc42
 *color11: #e5e32a

@@ -14,6 +14,7 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'vim-scripts/Align'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/a.vim'
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
@@ -36,12 +37,18 @@ set number
 set incsearch
 set hlsearch
 
+set background=dark
+
 highlight! link MatchParens StatusLine
 
 " ---------------- COLOR SETTINGS -----------"
 set t_Co=256
-colorscheme darth
+colorscheme gruvbox
 set t_ut=
+
+" ------------------AIR LINE----------------"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " ----------------- KEY MAPPINGS ---------------
 
