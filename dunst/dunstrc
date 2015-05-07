@@ -210,8 +210,8 @@
 # to find fitting options for rules.
 
 #[espeak]
-#    summary = "*"
-#    script = dunst_espeak.sh
+#    category = "irc"
+#    script = irc_speak.sh
 
 #[script-test]
 #    summary = "*script*"

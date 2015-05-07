@@ -18,7 +18,7 @@ while true; do
 		SUMMARY="$(echo $LINE | awk '{print $2}')"
 		BODY="$(echo $LINE | cut -d " " -f 3- | sed 's/:> h0wser:/:/g')"
 		play -q "$NOTIFICATION_SOUND" &
-		notify-send "$SUMMARY" "$BODY"
+		notify-send -c irc "$SUMMARY" "$BODY"
 	fi
 done
 

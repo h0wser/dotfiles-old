@@ -34,8 +34,12 @@ set linebreak
 set relativenumber
 set number
 
+let &colorcolumn=join(range(81,999),",")
+
 set incsearch
 set hlsearch
+
+set listchars=tab:<=,trail:*
 
 set background=dark
 
@@ -47,6 +51,7 @@ colorscheme gruvbox
 set t_ut=
 
 " ------------------AIR LINE----------------"
+let g:airline_theme='hybrid'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
@@ -75,6 +80,14 @@ nnoremap _ ddkp
 
 inoremap <c-u> <esc>viwUea
 nnoremap <c-u> viwU
+
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
+" Escape for different modes
+inoremap jk <esc>
 
 " Rust syntax m8
 au BufRead,BufNewFile *.rs,*.rc set filetype=rust
