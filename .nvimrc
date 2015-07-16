@@ -15,6 +15,7 @@ Plugin 'vim-scripts/Align'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/a.vim'
 Plugin 'bling/vim-airline'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -34,14 +35,12 @@ set linebreak
 set relativenumber
 set number
 
-let &colorcolumn=join(range(81,999),",")
-
 set incsearch
 set hlsearch
 
 set listchars=tab:<=,trail:*
 
-set background=dark
+set background=light
 
 highlight! link MatchParens StatusLine
 

@@ -1,0 +1,74 @@
+#! /bin/sh
+#
+# Example panel for LemonBoy's bar
+
+WORKSPACE_ICON=$(echo -e "\uf0c8")
+SELECTED_WORKSPACE_ICON=$(echo -e "\uf004")
+
+WORKSPACE_FREE_COLOR="#ff02b5ff"
+WORKSPACE_OCCUPIED_COLOR="#ff029cff"
+
+
+num_mon=$(bspc query -M | wc -l)
+
+while read -r line ; do
+	case $line in
+		S*)
+			# clock output
+			clock=" ${line#?}"
+			;;
+		W*)
+			# bspwm internal state
+			wm_infos=""
+			IFS=':'
+			set -- ${line#?}
+			while [ $# -gt 0 ] ; do
+				item=$1
+				name=${item#?}
+				case $item in
+					M*)
+						# active monitor
+						if [ $num_mon -gt 1 ] ; then
+							wm_infos="$wm_infos"
+						fi
+						;;
+					m*)
+						# inactive monitor
+						if [ $num_mon -gt 1 ] ; then
+							wm_infos="$wm_infos"
+						fi
+						;;
+					O*)
+						# focused occupied desktop
+						wm_infos="$wm_infos %{F$WORKSPACE_OCCUPIED_COLOR}$SELECTED_WORKSPACE_ICON"
+						;;
+					F*)
+						# focused free desktop
+						wm_infos="$wm_infos %{F$WORKSPACE_FREE_COLOR}$SELECTED_WORKSPACE_ICON"
+						;;
+					U*)
+						# focused urgent desktop
+						wm_infos="$wm_infos %{F$WORKSPACE_OCCUPIED_COLOR}$SELECTED_WORKSPACE_ICON"
+						;;
+					o*)
+						# occupied desktop
+						wm_infos="$wm_infos %{F$WORKSPACE_OCCUPIED_COLOR}$WORKSPACE_ICON"
+						;;
+					f*)
+						# free desktop
+						wm_infos="$wm_infos %{F$WORKSPACE_FREE_COLOR}$WORKSPACE_ICON"
+						;;
+					u*)
+						# urgent desktop
+						wm_infos="$wm_infos %{F$WORKSPACE_OCCUPIED_COLOR}$WORKSPACE_ICON"
+						;;
+					L*)
+						# layout
+						;;
+				esac
+				shift
+			done
+			;;
+	esac
+	printf "%s\n" "%{l}${wm_infos}%{c}%{F-}${clock}"
+done

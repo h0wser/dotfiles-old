@@ -1,0 +1,24 @@
+#! /bin/sh
+
+cd ~/.config/bspwm/
+
+PANEL_FIFO="/tmp/bar-fifo"
+
+if [ $(pgrep -cx panel) -gt 1 ] ; then
+	printf "%s\n" "The panel is already running." >&2
+	exit 1
+fi
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+bspc control --subscribe > "$PANEL_FIFO" &
+clock -i 1 -sf 'S%H:%M:%S' > "$PANEL_FIFO" &
+
+#. panel_colors
+
+cat "$PANEL_FIFO" | ./panel_bar | lemonbar -g 1920x32 -f "Tamsyn-20" -f "Icons" -B "#84b9c1" &
+
+wait

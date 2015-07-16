@@ -9,7 +9,9 @@ set -e
 rm -f ~/.config/sxhkd
 rm -f ~/.config/dunst
 rm -f ~/.config/herbstluftwm
+rm -f ~/.config/bspwm
 rm -f ~/scripts
+rm -f ~/.config/tint3
 
 ln -fs ~/dotfiles/.dir_colors ~/.dir_colors
 ln -fs ~/dotfiles/.tmux.conf ~/.tmux.conf
@@ -23,3 +25,5 @@ ln -fs ~/dotfiles/.xinitrc ~/.xinitrc
 ln -fs ~/dotfiles/dunst ~/.config/dunst
 ln -fs ~/dotfiles/herbstluftwm ~/.config/herbstluftwm
 ln -fs ~/dotfiles/scripts ~/scripts
+ln -fs ~/dotfiles/bspwm ~/.config/bspwm
+ln -fs ~/dotfiles/tint3 ~/.config/tint3

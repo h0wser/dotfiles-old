@@ -16,41 +16,46 @@ urxvt.url-launcher: /usr/bin/chromium
 urxvt.match.button: 1
 
 *cursorBlink: true
-*cursorColor: #ebdbb2
+*cursorColor: #222222
 
-urxvt.background: #282828
 urxvt.transparent: false
-urxvt.shading: 30
 urxvt.blurRadius: 5
-urxvt.fading: 20
 
-! hard contrast: *background: #1d2021
-*background: #282828
-! soft contrast: *background: #32302f
-*foreground: #ebdbb2
-! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
-! DarkRed + Red
-*color1:  #fb4934
-*color9:  #cc241d
-! DarkGreen + Green
-*color2:  #b8bb26
-*color10: #98971a
-! DarkYellow + Yellow
-*color3:  #fabd2f
-*color11: #d79921
-! DarkBlue + Blue
-*color4:  #83a598
-*color12: #458588
-! DarkMagenta + Magenta
-*color5:  #d3869b
-*color13: #b16286
-! DarkCyan + Cyan
-*color6:  #8ec07c
-*color14: #689d6a
-! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+! special
+*.foreground:   #000000
+*.background:   #f3d7a8
+*.cursorColor:  #000000
 
-! vim: set ft=xdefaults:
+! black
+*.color0:       #fdf2e5
+*.color8:       #838383
+
+! red
+*.color1:       #ff5959
+*.color9:       #b52a48
+
+! green
+*.color2:       #91c55d
+*.color10:      #5e9c4a
+
+! yellow
+*.color3:       #eaa835
+*.color11:      #bfb96a
+
+! blue
+*.color4:       #1aadc3
+*.color12:      #408cf3
+
+! magenta
+*.color5:       #f55cf8
+*.color13:      #563680
+
+! cyan
+*.color6:       #419651
+*.color14:      #216775
+
+! white
+*.color7:       #1c1818
+*.color15:      #070302
+
+!! vim: set ft=xdefaults:

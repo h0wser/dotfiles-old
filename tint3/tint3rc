@@ -1,0 +1,32 @@
+[active]
+id text
+source window_title
+foreground #00ff00
+background #000000
+
+[desktops]
+id radio
+source workspaces
+foreground #aa00aa
+background #000000
+
+[time]
+id text
+source clock
+format %T
+foreground #00ff00
+background #000000
+
+[[bar]]
+bordercolor #00ff00
+background #000000
+borderwidth 1
+padding 1
+margin 5
+location top
+left 1
+ active
+center 1
+ desktops
+right 1
+ time

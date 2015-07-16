@@ -42,9 +42,9 @@ dunst&
 
 ~/scripts/irssi-notify.sh&
 
-compton -b
+#compton -b
 
-eval $(cat ~/.fehbg)
+eval "$(cat ~/.fehbg)"
 
 envfile="$HOME/.gnupg/gpg-agent.env"
 if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
@@ -55,4 +55,4 @@ fi
 export GPG_AGENT_INFO  # the env file does not contain the export statement
 export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 
-exec herbstluftwm --locked
+exec bspwm -c ~/.config/bspwm/bspwmrc
