@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get screenshot and edit it
+scrot /tmp/screenshot.png
+convert /tmp/screenshot.png -grayscale rec709luma -blur 0x5 /tmp/lockscreen.png
+
+# Show picture and lock
+feh /tmp/lockscreen.png &
+FEH_PID="$!"
+# Play our little sound aswell
+play -q ~/audio/soundpack/audio/ui/TW_Silent_mode_off.ogg &
+xtrlock
+
+# cleanup
+kill $FEH_PID
+rm /tmp/screenshot.png /tmp/lockscreen.png

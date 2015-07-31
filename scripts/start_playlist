@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source ~/.config/bspwm/config
+
+PLAYLISTS=$(mpc lsplaylists)
+
+SELECTED_PLAYLIST=$(echo "$PLAYLISTS" | dmenu -i -p "Play: " -l 20 $DMENU_FLAGS )
+
+if [ -n "$SELECTED_PLAYLIST" ]
+then
+	mpc clear
+	mpc load "$SELECTED_PLAYLIST"
+	mpc play
+fi

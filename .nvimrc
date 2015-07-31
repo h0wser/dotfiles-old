@@ -40,7 +40,7 @@ set hlsearch
 
 set listchars=tab:<=,trail:*
 
-set background=light
+"set background=light
 
 highlight! link MatchParens StatusLine
 
@@ -49,7 +49,7 @@ set t_Co=256
 colorscheme gruvbox
 set t_ut=
 
-" ------------------AIR LINE----------------"
+" ------------------AIRLINE----------------"
 let g:airline_theme='hybrid'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1

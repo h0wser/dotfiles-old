@@ -8,12 +8,6 @@ super + alt + Escape
 super + w
 	bspc window -c
 
-super + t
-	bspc desktop -l next
-
-super + b
-	bspc desktop -B
-
 super + {s,f}
 	bspc window -t {floating,fullscreen}
 
@@ -33,6 +27,10 @@ super + y
 
 super + m
 	bspc window -s biggest
+
+super + {_,shift +} t
+	bspc desktop -R {90, 270}
+	
 
 super + {_,shift + }{h,j,k,l}
 	bspc window -{f,s} {left,down,up,right}
@@ -68,7 +66,10 @@ super + {_,shift + }{1-9,0}
 	bspc pointer -g focus
 
 super + button{1-3}
-	; bspc pointer -g {move,resize_side,resize_corner}
+	bspc pointer -g {move,resize_side,resize_corner}
+
+super + !button{1-3}
+	bspc pointer -t %i %i
 
 super + @button{1-3}
 	bspc pointer -u
@@ -90,23 +91,24 @@ XF86MonBrightnessDown
 	xbacklight -dec 5
 
 super + ctrl + alt + l
-	xtrlock & \
-	play -q ~/audio/soundpack/audio/ui/TW_Silent_mode_off.ogg
-
+	lock
 Print
 	scrot -e 'mv $f ~/pictures/screenshots/'
 
 super + space
-	dmenu_run -p "Run: " -fn "Tamsyn-20" -nb '#02c8ff' -nf '#ffffff' -sf '#02c8ff' -sb '#ffffff'  -w 1920 -h 32
+	dmenu_wrapper
 
-super + v
-	luakit
+super + p
+	start_playlist
 
 XF86AudioPlay
 	mpc toggle
 
 super + Return
 	urxvt
+
+super + r
+	urxvt -e ranger
 
 # make sxhkd reload its configuration files:
 super + Escape

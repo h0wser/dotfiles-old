@@ -12,7 +12,7 @@ urxvt.secondaryScroll: 0
 urxvt.letterSpace: -2
 
 urxvt.perl-ext-common: default,matcher
-urxvt.url-launcher: /usr/bin/chromium
+urxvt.url-launcher: /usr/bin/firefox
 urxvt.match.button: 1
 
 *cursorBlink: true

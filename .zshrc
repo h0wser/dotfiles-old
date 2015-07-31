@@ -104,7 +104,7 @@ s() { cd "/home/h0wser/Dropbox/Skola/$1"; }
 alias sdcard="sudo mount /dev/mmcblk0p1 ~/media/sdcard"
 
 export EDITOR=nvim
-export BROWSER=luakit
+export BROWSER=firefox
 
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then

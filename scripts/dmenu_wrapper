@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ~/.config/bspwm/config
+
+dmenu_run -p "Run: " $DMENU_FLAGS

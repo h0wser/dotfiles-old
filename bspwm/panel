@@ -16,9 +16,10 @@ mkfifo "$PANEL_FIFO"
 
 bspc control --subscribe > "$PANEL_FIFO" &
 clock -i 1 -sf 'S%H:%M:%S' > "$PANEL_FIFO" &
+mpc idleloop > "$PANEL_FIFO"&
 
 #. panel_colors
 
-cat "$PANEL_FIFO" | ./panel_bar | lemonbar -g 1920x32 -f "Tamsyn-20" -f "Icons" -B "#84b9c1" &
+cat "$PANEL_FIFO" | ./panel_bar | lemonbar -g 1920x32 -f "Tamsyn-20" -f "Icons" -B "#84b9c1" | sh &
 
 wait
