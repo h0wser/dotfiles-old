@@ -40,11 +40,11 @@ set hlsearch
 
 set listchars=tab:<=,trail:*
 
-"set background=light
 
 highlight! link MatchParens StatusLine
 
 " ---------------- COLOR SETTINGS -----------"
+set background=dark
 set t_Co=256
 colorscheme gruvbox
 set t_ut=

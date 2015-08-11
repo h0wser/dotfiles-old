@@ -34,9 +34,20 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*'	formats "%{$fg[yellow]%}(%b) %{$reset_color%}"
 
+PROMPT_COLORS="red
+blue
+green
+cyan
+yellow
+magenta"
+
 precmd() {
 	vcs_info
 	RPROMPT="%{$reset_color%}${vcs_info_msg_0_}[%?]" 
+
+	P_COLOR=$(echo $PROMPT_COLORS | sort -R | tail -n 1)
+
+	PROMPT="%{$fg[black]%}%{$bg[$P_COLOR]%} %6d "$'\n'" %M %{$reset_color%} "
 }
 
 function zle-line-init zle-keymap-select {
@@ -51,7 +62,6 @@ zle -N zle-keymap-select
 bindkey -v
 export KEYTIMEOUT=1
 
-PROMPT="%{$fg[black]%}%{$bg[blue]%} %6d "$'\n'" %# %{$reset_color%} "
 
 # Termcap is outdated, old, and crusty, kill it.
 unset TERMCAP

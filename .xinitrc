@@ -36,7 +36,7 @@ synclient MinSpeed=2
 synclient PalmDetect=1
 synclient PalmMinWidth=5
 
-redshift -l 56.046467:12.694512 &
+redshift&
 dunst&
 
 compton -b

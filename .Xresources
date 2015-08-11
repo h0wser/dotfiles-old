@@ -16,15 +16,14 @@ urxvt.url-launcher: /usr/bin/firefox
 urxvt.match.button: 1
 
 *cursorBlink: true
-*cursorColor: #222222
 
 urxvt.transparent: false
 urxvt.blurRadius: 5
 
 ! special
-*.foreground:   #000000
-*.background:   #f3d7a8
-*.cursorColor:  #000000
+*.foreground:   #f3d7a8
+*.background:   #292621
+*cursorColor:	#f3d7a8
 
 ! black
 *.color0:       #fdf2e5
@@ -57,5 +56,9 @@ urxvt.blurRadius: 5
 ! white
 *.color7:       #1c1818
 *.color15:      #070302
+
+urxvt.colorIT:	#ff5959
+urxvt.colorBD:	#eaa835
+urxvt.colorUL:	#f55cf8
 
 !! vim: set ft=xdefaults:
