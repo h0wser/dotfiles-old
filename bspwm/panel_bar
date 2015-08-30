@@ -86,5 +86,7 @@ while read -r line ; do
 			;;
 	esac
 
-	printf "%s\n" "%{l}${wm_infos}%{c}%{F-}${clock}%{r}$MUSIC    "
+	BATTERY="$(battery)%"
+
+	printf "%s\n" "%{l}${wm_infos}%{c}%{F-}${clock}%{r}$MUSIC    $BATTERY"
 done
