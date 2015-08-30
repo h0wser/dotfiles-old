@@ -72,6 +72,7 @@ unset MANPATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 alias ls='ls -F --format=single-column --color=always --group-directories-first'
+alias ll='ls -l'
 eval `dircolors -b ~/.dir_colors`
 
 alias grep='grep --color=auto'

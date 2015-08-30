@@ -36,7 +36,7 @@ super + {_,shift + }{h,j,k,l}
 	bspc window -{f,s} {left,down,up,right}
 
 super + {_,shift + }c
-	bspc window -f {next,prev}
+	bspc window focused -t {sticky, pseudo_tiled}
 
 super + {comma,period}
 	bspc desktop -C {backward,forward}
@@ -85,13 +85,14 @@ XF86AudioLowerVolume
 
 # Backlight keys
 XF86MonBrightnessUp
-	xbacklight -inc 5
+	xbacklight -inc 5 && notify-send -t 2 "Brightness:" -h int:value:$(xbacklight -get)
 
 XF86MonBrightnessDown
-	xbacklight -dec 5
+	xbacklight -dec 5 && notify-send -t 2 "Brightness:" -h int:value:$(xbacklight -get)
 
 super + ctrl + alt + l
 	lock
+
 Print
 	scrot -e 'mv $f ~/pictures/screenshots/'
 

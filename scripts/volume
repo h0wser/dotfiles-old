@@ -1,4 +1,4 @@
-#1/bin/bash
+#!/bin/bash
 
 case $1 in
 	'+')
@@ -8,3 +8,5 @@ case $1 in
 		amixer set Master 5%-
 	;;
 esac
+
+notify-send "Volume: " -t 2 -h int:value:$(amixer get Master | grep "Front Left:" | awk -F "[" '{print substr($2, 0, length($2)-3)}')
