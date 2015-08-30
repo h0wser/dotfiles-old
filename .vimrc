@@ -14,7 +14,6 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'vim-scripts/Align'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/a.vim'
-Plugin 'bling/vim-airline'
 
 call vundle#end()
 filetype plugin indent on

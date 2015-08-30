@@ -14,7 +14,6 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'vim-scripts/Align'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/a.vim'
-Plugin 'bling/vim-airline'
 Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
@@ -47,11 +46,6 @@ set background=dark
 set t_Co=256
 colorscheme gruvbox
 set t_ut=
-
-" ------------------AIRLINE----------------"
-let g:airline_theme='hybrid'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
 
 " ----------------- KEY MAPPINGS ---------------
 
