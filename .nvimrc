@@ -15,6 +15,7 @@ Plugin 'vim-scripts/Align'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/a.vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()
 filetype plugin indent on
@@ -49,6 +50,8 @@ set t_ut=
 
 " ----------------- KEY MAPPINGS ---------------
 
+let mapleader = " "
+
 inoremap <NL> <CR><CR><Esc>ki<Tab>
 
 "	Escaping braces and stuff
@@ -67,18 +70,16 @@ nnoremap ö :w<CR>:A<CR>
 nnoremap Ö :AS<CR>
 nnoremap å :noh<CR>
 
-nnoremap - ddp
-nnoremap _ ddkp
-
-inoremap <c-u> <esc>viwUea
-nnoremap <c-u> viwU
-
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 
 tnoremap <Esc> <C-\><C-n>
+
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>e :Ex<cr>
 
 " Escape for different modes
 inoremap jk <esc>
@@ -94,4 +95,5 @@ filetype plugin indent on
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor = "latex"
 
+" this might need cleaning
 set runtimepath+=~/.nvim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.nvim/after

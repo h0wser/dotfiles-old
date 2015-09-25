@@ -1,15 +1,11 @@
-!*faceName: Terminus
-!*faceSize: 10
-!*font: xft:Envypn:13
-
 XTerm*saveLines: 10000
 
-urxvt.font: xft:Sauce Code Powerline:size=9:antialias=false
+urxvt.font: xft:Inconsolata:size=10
 urxvt.depth: 32
 urxvt.scrollBar: false
 urxvt.secondaryScreen: 1
 urxvt.secondaryScroll: 0
-urxvt.letterSpace: -2
+urxvt.letterSpace: -1
 
 urxvt.perl-ext-common: default,matcher
 urxvt.url-launcher: /usr/bin/firefox
@@ -17,17 +13,14 @@ urxvt.match.button: 1
 
 *cursorBlink: true
 
-urxvt.transparent: false
-urxvt.blurRadius: 5
-
 ! special
 *.foreground:   #f3d7a8
 *.background:   #292621
 *cursorColor:	#f3d7a8
 
 ! black
-*.color0:       #fdf2e5
-*.color8:       #838383
+*.color0:       #1c1818
+*.color8:       #070302
 
 ! red
 *.color1:       #ff5959
@@ -54,8 +47,8 @@ urxvt.blurRadius: 5
 *.color14:      #216775
 
 ! white
-*.color7:       #1c1818
-*.color15:      #070302
+*.color7:       #fdf2e5
+*.color15:      #838383
 
 urxvt.colorIT:	#ff5959
 urxvt.colorBD:	#eaa835

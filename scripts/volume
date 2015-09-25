@@ -9,4 +9,4 @@ case $1 in
 	;;
 esac
 
-notify-send "Volume: " -t 2 -h int:value:$(amixer get Master | grep "Front Left:" | awk -F "[" '{print substr($2, 0, length($2)-3)}')
+notify-send "Volume: " -t 2 -h int:value:$(amixer get Master | grep "%" | awk -F "[" '{print substr($2, 0, length($2)-3)}')
