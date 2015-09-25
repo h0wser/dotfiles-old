@@ -9,8 +9,8 @@ PAUSE_ICON=$(echo -e "\uf04c")
 NEXT_ICON=$(echo -e "\uf04e")
 PREV_ICON=$(echo -e "\uf04a")
 
-WORKSPACE_FREE_COLOR="#ff02b5ff"
-WORKSPACE_OCCUPIED_COLOR="#ff029cff"
+WORKSPACE_FREE_COLOR="#ff02b566"
+WORKSPACE_OCCUPIED_COLOR="#ff029c66"
 
 
 num_mon=$(bspc query -M | wc -l)
@@ -87,6 +87,7 @@ while read -r line ; do
 	esac
 
 	BATTERY="$(battery)%"
+	WIFI="Wifi: $(nmcli con show --active | grep wlp3s0 | awk '{print $1}')"
 
-	printf "%s\n" "%{l}${wm_infos}%{c}%{F-}${clock}%{r}$MUSIC    $BATTERY"
+	printf "%s\n" "%{l}${wm_infos}%{c}%{F-}${clock}%{r}$MUSIC    $WIFI $BATTERY"
 done

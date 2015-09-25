@@ -16,6 +16,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/a.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'unblevable/quick-scope'
 
 call vundle#end()
 filetype plugin indent on
@@ -23,6 +24,7 @@ filetype plugin indent on
 " ------------- MISC -----------"
 syntax on
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set backspace=indent,eol,start
 set laststatus=2
@@ -45,8 +47,17 @@ highlight! link MatchParens StatusLine
 " ---------------- COLOR SETTINGS -----------"
 set background=dark
 set t_Co=256
-colorscheme gruvbox
+colorscheme 0x7A69_dark
 set t_ut=
+
+" Highlight over 80 chars
+highlight OverLength ctermbg=cyan ctermfg=white guibg=#592929
+
+" Haskell tab settings
+autocmd FileType haskell match OverLength /\%81v.\+/
+autocmd FileType haskell set expandtab
+
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " ----------------- KEY MAPPINGS ---------------
 
@@ -56,7 +67,7 @@ inoremap <NL> <CR><CR><Esc>ki<Tab>
 
 "	Escaping braces and stuff
 inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")" 
+inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 
 " Easier braces/brackets on nordic keyboard
