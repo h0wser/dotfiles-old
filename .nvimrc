@@ -51,9 +51,9 @@ set t_ut=
 
 " Highlight over 80 chars
 highlight OverLength ctermbg=cyan ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
 
 " Haskell tab settings
+autocmd FileType haskell match OverLength /\%81v.\+/
 autocmd FileType haskell set expandtab
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
