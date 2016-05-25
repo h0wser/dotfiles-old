@@ -41,11 +41,11 @@ cyan
 yellow
 magenta"
 
+P_COLOR=$(echo $PROMPT_COLORS | sort -R | tail -n 1)
+
 precmd() {
 	vcs_info
 	RPROMPT="%{$reset_color%}${vcs_info_msg_0_}[%?]" 
-
-	P_COLOR=$(echo $PROMPT_COLORS | sort -R | tail -n 1)
 
 	PROMPT="%{$fg[black]%}%{$bg[$P_COLOR]%} %6d "$'\n'" %M %{$reset_color%} "
 }
