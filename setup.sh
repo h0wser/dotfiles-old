@@ -8,6 +8,7 @@ set -e
 
 rm -f ~/.config/sxhkd
 rm -f ~/.config/bspwm
+rm -f ~/.config/lemonbuddy
 rm -f ~/scripts
 
 ln -fs ~/dotfiles/.dir_colors ~/.dir_colors

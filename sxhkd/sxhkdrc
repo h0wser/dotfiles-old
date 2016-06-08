@@ -121,17 +121,18 @@ super +  {_,shift + } r
 
 # Volume keys
 XF86AudioRaiseVolume
-	~/scripts/volume + && play -q ~/audio/soundpack/audio/ui/TW_Volume_control.ogg
+	amixer set Master 10+
 
 XF86AudioLowerVolume
-	~/scripts/volume - && play -q ~/audio/soundpack/audio/ui/TW_Volume_control.ogg
+	amixer set Master 10-
+
 
 # Backlight keys
-XF86MonBrightnessUp
-	xbacklight -inc 5 && notify-send -t 2 "Brightness:" -h int:value:$(xbacklight -get)
-
-XF86MonBrightnessDown
-	xbacklight -dec 5 && notify-send -t 2 "Brightness:" -h int:value:$(xbacklight -get)
+#XF86MonBrightnessUp
+#	xbacklight -inc 5
+#
+#XF86MonBrightnessDown
+#	xbacklight -dec 5
 
 super + ctrl + alt + l
 	sflock -f "-*-clean-*-*-*-*-17-*-*-*-*-*-*-*" -c "SnoopDaawg"
