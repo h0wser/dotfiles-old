@@ -34,12 +34,7 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*'	formats "%{$fg[yellow]%}(%b) %{$reset_color%}"
 
-PROMPT_COLORS="red
-blue
-green
-cyan
-yellow
-magenta"
+PROMPT_COLORS="yellow"
 
 P_COLOR=$(echo $PROMPT_COLORS | sort -R | tail -n 1)
 
@@ -68,6 +63,8 @@ unset TERMCAP
 
 # Man is much better than us at figuring this out
 unset MANPATH
+
+unset VIM
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
