@@ -1,0 +1,152 @@
+[settings]
+; Limit the amount of events sent to lemonbar within a set timeframe:
+; - "Allow <throttle_limit> updates within <throttle_ms> of time"
+; Default values:
+;throttle_limit = 5
+;throttle_ms = 50
+
+[bar/top]
+width = 100%
+height = 32
+bottom = false
+dock = false
+
+background = #44ffffff
+foreground = #fff
+
+lineheight = 1
+padding_left = 0
+padding_right = 0
+module_margin_left = 0
+module_margin_right = 0
+
+font:0 = Lucida Mac:size=14:style=bold;0
+font:1 = fontawesome:size=16:weight=heavy;0
+font:2 = MaterialIcons:size=16;0
+
+modules:left = clock
+modules:center = bspwm
+modules:right = volume battery
+
+[bar/bot]
+width = 100%
+height = 32
+bottom = true
+dock = false
+
+background = #44ffffff
+foreground = #fff
+
+lineheight = 1
+padding_left = 0
+padding_right = 0
+module_margin_left = 0
+module_margin_right = 0
+
+font:0 = Lucida Mac:size=14;0
+font:1 = fontawesome:size=16:weight=heavy;0
+font:2 = MaterialIcons:size=18;0
+
+modules:left = temp
+modules:center = mpd
+modules:right = cpu ram
+
+[module/bspwm]
+type = internal/bspwm
+label:active = 
+label:active:padding = 1
+label:active:foreground = #5591e0
+label:occupied = 
+label:occupied:padding = 1
+label:occupied:foreground = #5591e0
+label:empty = 
+label:empty:padding = 1
+label:empty:foreground = #5591e0
+
+[module/cpu]
+type = internal/cpu
+label = CPU: %percentage%
+format:foreground = #79d8f7
+format:padding = 2
+
+[module/ram]
+type = internal/memory
+label = RAM: %percentage_used%
+format:foreground = #79d8f7
+format:padding = 2
+
+[module/clock]
+type = internal/date
+date =  %H:%M:%S
+format:foreground = #5591e0
+format:padding = 2
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+
+format:charging = <animation:charging> <label:charging>
+format:charging:foreground = #5591e0
+format:charging:padding = 2
+
+format:discharging = <ramp:capacity> <label:discharging>
+format:discharging:foreground = #5591e0
+format:discharging:padding = 2
+
+animation:charging:0 = 
+animation:charging:1 = 
+animation:charging:2 = 
+animation:charging:3 = 
+animation:charging:4 = 
+animation:charging:framerate_ms = 750
+
+ramp:capacity:0 = 
+ramp:capacity:1 = 
+ramp:capacity:2 = 
+ramp:capacity:3 = 
+ramp:capacity:4 = 
+
+[module/temp]
+type = custom/script
+
+exec = temp=$(acpi -t | awk '{print $4}') && echo "TEMP: $temp°"
+format:foreground = #79d8f7
+format:padding = 2
+
+[module/mpd]
+type = internal/mpd
+format:online = <icon:prev> <toggle> <icon:next> | <label:song> | <icon:random> <icon:repeat>
+format:online:foreground = #79d8f7
+
+icon:play = 
+icon:pause = 
+icon:next =  
+icon:prev = 
+icon:random = 
+icon:repeat = 
+
+toggle_on:foreground = #45c23e
+toggle_off:foreground = #79d8f7
+
+[module/volume]
+type = internal/volume
+speaker_mixer = Speaker
+headphone_mixer = Headphone
+headphone_control_numid = 13
+
+format:volume =  <bar:volume> <label:volume>
+format:volume:foreground = #5591e0
+
+label:volume = 
+label:volume:foreground = #5591e0
+label:muted = 
+label:muted:foreground = #5591e0
+
+bar:volume:width = 12
+bar:volume:fill = 
+bar:volume:empty = 
+bar:volume:indicator = 
+
+
+; vim:ft=dosini
