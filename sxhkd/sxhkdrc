@@ -141,7 +141,7 @@ Print
 	scrot -e 'mv $f ~/pictures/screenshots/'
 
 super + space
-	dmenu_run -i -z -x 150 -y 2 -w 300 -fn "Lucida Mac:size=14" -nb "#f3b57b" -nf "#5591e0" -sb "#5591e0" -sf "#f3b57b" -l 10 -p "RUN: "
+	dmenu_run -i -x 150 -y 2 -w 300 -fn "Lucida Mac:size=14" -nb "#f3b57b" -nf "#5591e0" -sb "#5591e0" -sf "#f3b57b" -l 10 -p "RUN: "
 
 super + p
 	start_playlist
