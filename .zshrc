@@ -34,7 +34,12 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*'	formats "%{$fg[yellow]%}(%b) %{$reset_color%}"
 
-PROMPT_COLORS="yellow"
+PROMPT_COLORS="yellow
+green
+red
+blue
+magenta
+cyan"
 
 P_COLOR=$(echo $PROMPT_COLORS | sort -R | tail -n 1)
 
