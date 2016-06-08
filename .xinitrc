@@ -41,6 +41,8 @@ dunst&
 
 compton -b
 
+cbatticon &
+
 eval "$(cat ~/.fehbg)"
 
 envfile="$HOME/.gnupg/gpg-agent.env"

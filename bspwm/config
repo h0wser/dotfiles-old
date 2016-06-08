@@ -1,4 +1,0 @@
-#### Config file for theme
-
-DMENU_FONT="Tamsyn-20"
-DMENU_FLAGS="-fn $DMENU_FONT -dim 0.7 -nb #292621 -nf #f3d7a8 -sb #02c8ff -sf #ffffff -w 1920 -h 32"

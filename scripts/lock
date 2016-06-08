@@ -8,7 +8,7 @@ convert /tmp/screenshot.png -grayscale rec709luma -blur 0x5 /tmp/lockscreen.png
 feh /tmp/lockscreen.png &
 FEH_PID="$!"
 # Play our little sound aswell
-play -q ~/audio/soundpack/audio/ui/TW_Silent_mode_off.ogg &
+#play -q ~/audio/soundpack/audio/ui/TW_Silent_mode_off.ogg &
 xtrlock
 
 # cleanup

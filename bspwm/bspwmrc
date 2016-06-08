@@ -9,9 +9,13 @@ bspc config borderless_monocle  true
 bspc config gapless_monocle     true
 bspc config focus_by_distance   true
 bspc config top_padding 32
+bspc config bottom_padding 32
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
-bspc rule -a feh fullscreen=true
+bspc rule -a feh state=floating border=off
 
-~/.config/bspwm/panel &
+pgrep -f '(lemonbuddy_wrapper.sh|^lemonb(uddy|ar))' | xargs kill -9 >/dev/null 2>&1
+
+lemonbuddy_wrapper.sh top &
+lemonbuddy_wrapper.sh bot &

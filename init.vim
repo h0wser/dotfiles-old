@@ -4,8 +4,8 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.nvim/bundle/Vundle.vim
-call vundle#begin('~/.nvim/bundle')
+set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#begin('~/.config/nvim/bundle')
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -60,8 +60,6 @@ autocmd FileType haskell set expandtab
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " ----------------- KEY MAPPINGS ---------------
-
-let mapleader = " "
 
 inoremap <NL> <CR><CR><Esc>ki<Tab>
 

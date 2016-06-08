@@ -1,6 +1,6 @@
 XTerm*saveLines: 10000
 
-urxvt.font: xft:Inconsolata:size=10
+urxvt.font: xft:hack:size=12
 urxvt.depth: 32
 urxvt.scrollBar: false
 urxvt.secondaryScreen: 1
@@ -8,7 +8,7 @@ urxvt.secondaryScroll: 0
 urxvt.letterSpace: -1
 
 urxvt.perl-ext-common: default,matcher
-urxvt.url-launcher: /usr/bin/firefox
+urxvt.url-launcher: /usr/bin/chromium
 urxvt.match.button: 1
 
 *cursorBlink: true
