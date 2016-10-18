@@ -14,9 +14,9 @@ urxvt.match.button: 1
 *cursorBlink: true
 
 ! special
-*.foreground:   #f3d7a8
-*.background:   #292621
-*cursorColor:	#f3d7a8
+*.foreground:   #f5ebe1
+*.background:   #343434
+*cursorColor:	#f5ebe1
 
 ! black
 *.color0:       #1c1818

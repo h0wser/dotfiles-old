@@ -45,14 +45,14 @@ P_COLOR=$(echo $PROMPT_COLORS | sort -R | tail -n 1)
 
 precmd() {
 	vcs_info
-	RPROMPT="%{$reset_color%}${vcs_info_msg_0_}[%?]" 
+	RPROMPT="%{$reset_color%}${vcs_info_msg_0_}[%?]"
 
 	PROMPT="%{$fg[black]%}%{$bg[$P_COLOR]%} %6d "$'\n'" %M %{$reset_color%} "
 }
 
 function zle-line-init zle-keymap-select {
 	VIM_PROMPT="%{$fg[red]%} [% NORMAL]% %{$reset_color%}"
-	RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} ${vcs_info_msg_0_}[%?]" 
+	RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} ${vcs_info_msg_0_}[%?]"
 	zle reset-prompt
 }
 
@@ -82,8 +82,6 @@ alias grep='grep --color=auto'
 alias please='sudo $(history -p !!)'
 alias sudo='sudo '
 
-alias r='nvim ~/.zshrc && source ~/.zshrc'
-
 alias py2='python2'
 alias py3='python'
 
@@ -94,7 +92,7 @@ alias pac='yaourt'
 
 alias runescape='java -jar ~/Orion/OSBuddy.jar > /dev/null 2>&1 &'
 
-alias tmux="tmux -2" # forces 256 colors in tmux :) 
+alias tmux="tmux -2" # forces 256 colors in tmux :)
 
 alias title="printf '\033];%s\07\n'"
 
@@ -116,8 +114,8 @@ s() { cd "/home/h0wser/Dropbox/Skola/$1"; }
 
 alias sdcard="sudo mount /dev/mmcblk0p1 ~/media/sdcard"
 
-export EDITOR=nvim
-export BROWSER=firefox
+export VISUAL=emacsclient
+export BROWSER=chromium
 
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then

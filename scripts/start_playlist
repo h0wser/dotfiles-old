@@ -1,10 +1,8 @@
 #!/bin/bash
 
-source ~/.config/bspwm/config
-
 PLAYLISTS=$(mpc lsplaylists)
 
-SELECTED_PLAYLIST=$(echo "$PLAYLISTS" | dmenu -i -p "Play: " -l 20 $DMENU_FLAGS )
+SELECTED_PLAYLIST=$(echo "$PLAYLISTS" | dmenu -i -x 150 -y 2 -w 300 -fn "Lucida Mac:size=14" -nb "#f3b57b" -nf "#5591e0" -sb "#5591e0" -sf "#f3b57b" -l 10 -p "PLAY: "  )
 
 if [ -n "$SELECTED_PLAYLIST" ]
 then

@@ -70,7 +70,7 @@ super + {_,shift + }{1-9,0}
 
 super + button1
 	bspc pointer -g move
-	
+
 super + button3
 	bspc pointer -g resize_corner
 
@@ -114,7 +114,7 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 super +  {_,shift + } r
-	bspc node @focused:/ --rotate {90,270} 
+	bspc node @focused:/ --rotate {90,270}
 
 
 # WM independent hotkeys
@@ -144,11 +144,11 @@ Print
 super + space
 	dmenu_run -i -x 150 -y 2 -w 300 -fn "Lucida Mac:size=14" -nb "#f3b57b" -nf "#5591e0" -sb "#5591e0" -sf "#f3b57b" -l 10 -p "RUN: "
 
-super + p
-	start_playlist
-
-XF86AudioPlay
+super + ctrl + p
 	mpc toggle
+
+super + alt + p
+      	start_playlist
 
 super + Return
 	urxvt
