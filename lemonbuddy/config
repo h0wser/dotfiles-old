@@ -7,12 +7,12 @@
 
 [bar/top]
 width = 100%
-height = 32
+height = 24
 bottom = false
 dock = false
 
-background = #44ffffff
-foreground = #fff
+background = #222222
+foreground = #ffffcc
 
 lineheight = 1
 padding_left = 0
@@ -20,79 +20,62 @@ padding_right = 0
 module_margin_left = 0
 module_margin_right = 0
 
-font-0 = Lucida Mac:size=14:style=bold;0
-font-1 = fontawesome:size=16:weight=heavy;0
-font-2 = MaterialIcons:size=16;0
+font-0 = Verdana:size=12:style=regular0
+font-1 = fontawesome:size=14:weight=heavy;0
+font-2 = MaterialIcons:size=14;0
 
-modules-left = clock
-modules-center = bspwm
+modules-left = wifi
+modules-center = clock
 modules-right = volume battery
 
-[bar/bot]
-width = 100%
-height = 32
-bottom = true
-dock = false
+[module/wifi]
+type = internal/network
+interface = wlp1s0
 
-background = #44ffffff
-foreground = #fff
+interval = 0.5
 
-lineheight = 1
-padding_left = 0
-padding_right = 0
-module_margin_left = 0
-module_margin_right = 0
+format-connected =   <label-connected>
+format-disconnected =  <label-disconnected>
+format-padding = 2
 
-font-0 = Lucida Mac:size=14;0
-font-1 = fontawesome:size=16:weight=heavy;0
-font-2 = MaterialIcons:size=18;0
-
-modules-left = temp
-modules-right = cpu ram
-
-[module/bspwm]
-type = internal/bspwm
-label-active = 
-label-active-padding = 1
-label-active-foreground = #5591e0
-label-occupied = 
-label-occupied-padding = 1
-label-occupied-foreground = #5591e0
-label-empty = 
-label-empty-padding = 1
-label-empty-foreground = #5591e0
+label-connected = %essid% %signal%    %downspeed%  %upspeed%
+label-disconnected =  Not connected
 
 [module/cpu]
 type = internal/cpu
 label = CPU: %percentage%
-format-foreground = #79d8f7
+format-foreground = #ffffcc
 format-padding = 2
 
 [module/ram]
 type = internal/memory
 label = RAM: %percentage_used%
-format-foreground = #79d8f7
+format-foreground = #ffffcc
 format-padding = 2
 
 [module/clock]
 type = internal/date
-date =  %H:%M:%S
-format-foreground = #5591e0
+date = %A %b %d - %H:%M:%S
+format-foreground = #ffffcc
 format-padding = 2
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC0
-full_at = 98
+full_at = 97
 
 format-charging = <animation-charging> <label-charging>
-format-charging-foreground = #5591e0
+format-charging-foreground = #ffffcc
 format-charging-padding = 2
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = #5591e0
+format-discharging-foreground = #ffffcc
 format-discharging-padding = 2
+
+format-full = <ramp-capacity> <label-full>
+format-full-foreground = #ffffcc
+format-full-padding = 2
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -111,7 +94,7 @@ ramp-capacity-4 = 
 type = custom/script
 
 exec = temp=$(acpi -t | awk '{print $4}') && echo "TEMP: $temp°"
-format-foreground = #79d8f7
+format-foreground = #ffffcc
 format-padding = 2
 
 [module/volume]
@@ -120,18 +103,17 @@ speaker_mixer = Speaker
 headphone_mixer = Headphone
 headphone_control_numid = 13
 
-format-volume =  <bar-volume> <label-volume>
-format-volume-foreground = #5591e0
+format-volume = <ramp-volume> <label-volume>
+format-volume-foreground = #ffffcc
 
-label-volume = 
-label-volume-foreground = #5591e0
+label-volume = %percentage%
+label-volume-foreground = #ffffcc
 label-muted = 
-label-muted-foreground = #5591e0
+label-muted-foreground = #ffffcc
 
-bar-volume-width = 12
-bar-volume-fill = 
-bar-volume-empty = 
-bar-volume-indicator = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 
 ; vim:ft=dosini
