@@ -17,9 +17,13 @@
 	async
 	helm
 	white-sand-theme
+	moe-theme
 	rainbow-mode
 	latex-preview-pane
 	auctex
+	projectile
+	helm-projectile
+	exwm
 ))
 
 (dolist (p my-packages)
@@ -27,8 +31,11 @@
     (package-install p)))
 
 ;; Themes
+(require 'moe-theme)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'white-sand t)
+(moe-theme-set-color 'green)
+(setq moe-theme-highlight-buffer-id nil)
+(moe-dark)
 
 ;; Font
 (add-to-list 'default-frame-alist '(font . "Hack-12"))
@@ -74,9 +81,6 @@
 (define-key evil-normal-state-map "K" (lambda () (interactive) (forward-line -5)))
 (global-set-key (kbd "M-b") 'mode-line-other-buffer)
 
-(require 'latex-mode)
-(define-key LaTeX-mode-map (kbd "C-c +") 'TeX-next-error)
-
 ;; Stop littering everywhere with save file, put them somewhere
 (setq backup-directory-alist '(("." . "~/emacs-backups")))
 
@@ -96,14 +100,52 @@
 (setq helm-mode-fuzzy-match t
 	helm-completion-in-region-fuzzy-match t
 	helm-buffers-fuzzy-matching t
+	helm-recentf-fuzzy-match t
 	helm-locate-fuzzy-match t
 	helm-M-x-fuzzy-match t
 	)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 
 ;; Latex
-(latex-preview-pane-enable t)
-(setq TeX-PDF-mode t)
-(setq TeX-auto-save t)
-(setq-default TeX-master nil)
+;(latex-preview-pane-enable t)
+;(setq TeX-PDF-mode t)
+;(setq TeX-auto-save t)
+;(setq-default TeX-master nil)
+;(setq-default TeX-save-query nil)
+
+;; Org
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+(setq org-agenda-files (list "~/projects/orgfiles/"
+			     "~/projects/orgfiles/courses"
+			     "~/projects/orgfiles/projects"))
+
+;; Exwm
+(require 'exwm)
+(require 'exwm-config)
+(exwm-config-default)
+
+(setq exwm-workspace-show-all-buffers t)
+(setq exwm-layout-show-all-buffers t)
+
+
+;; Modeline
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+	(jdee white-sand-theme relative-line-numbers rainbow-mode project-explorer moe-theme latex-preview-pane helm-projectile exwm evil ess company auto-complete auctex))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
