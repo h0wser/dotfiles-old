@@ -19,7 +19,7 @@ ln -fs ~/dotfiles/.zshrc ~/.zshrc
 ln -fs ~/dotfiles/sxhkd/ ~/.config/sxhkd
 ln -fs ~/dotfiles/.Xresources ~/.Xresources
 ln -fs ~/dotfiles/.compton.conf ~/.compton.conf
-ln -fs ~/dotfiles/emacs.xinitrc ~/.xinitrc
+ln -fs ~/dotfiles/.xinitrc ~/.xinitrc
 ln -fs ~/dotfiles/scripts ~/scripts
 ln -fs ~/dotfiles/bspwm ~/.config/bspwm
 ln -fs ~/dotfiles/lemonbuddy ~/.config/lemonbuddy

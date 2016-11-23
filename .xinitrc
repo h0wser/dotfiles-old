@@ -20,18 +20,18 @@ setxkbmap se
 
 # Turns off system beep.. don't like that thing..
 xset b off
-xset b 0 0 0 
+xset b 0 0 0
 
 xset r rate 200 60
 
 xset +fp /usr/share/fonts/local/
 xset fp rehash
 
-sxhkd -f 100&
+sxhkd &
 
 # laptop touchpad
 synclient AccelFactor=0
-synclient MaxSpeed=4 
+synclient MaxSpeed=4
 synclient MinSpeed=2
 synclient PalmDetect=1
 synclient PalmMinWidth=5
@@ -40,8 +40,6 @@ redshift&
 dunst&
 
 compton -b
-
-cbatticon &
 
 eval "$(cat ~/.fehbg)"
 
