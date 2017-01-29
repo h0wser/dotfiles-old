@@ -37,7 +37,6 @@ synclient PalmDetect=1
 synclient PalmMinWidth=5
 
 redshift&
-dunst&
 
 compton -b
 
@@ -53,3 +52,4 @@ export GPG_AGENT_INFO  # the env file does not contain the export statement
 export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 
 exec bspwm -c ~/.config/bspwm/bspwmrc
+#exec xmonad

@@ -23,7 +23,13 @@
 	auctex
 	projectile
 	helm-projectile
-	exwm
+	magit
+	evil-magit
+	haskell-mode
+	git-gutter+
+	git-gutter-fringe+
+	ample-theme
+	haskell-mode
 ))
 
 (dolist (p my-packages)
@@ -31,18 +37,16 @@
     (package-install p)))
 
 ;; Themes
-(require 'moe-theme)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(moe-theme-set-color 'green)
-(setq moe-theme-highlight-buffer-id nil)
-(moe-dark)
+(load-theme 'ample t t)
+(enable-theme 'ample)
 
 ;; Font
-(add-to-list 'default-frame-alist '(font . "Hack-12"))
+(add-to-list 'default-frame-alist '(font . "Source Code Pro-12"))
 
 ;; Custom dirs
 (let ((default-directory "~/.emacs.d/lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; TODO
 ;; custom pe/project-root-function
@@ -55,6 +59,19 @@
 (require 'evil)
 (evil-mode 1)
 
+;; Magit
+(require 'magit)
+(magit-file-mode)
+
+(require 'evil-magit)
+
+;; Git gutter
+(global-git-gutter+-mode)
+;(git-gutter:linum-setup)
+
+(require 'git-gutter-fringe+)
+
+;; Remove crap
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
@@ -92,6 +109,9 @@
 (add-to-list 'c-mode-common-hook
 	     (lambda () (setq c-syntactic-indentation nil)))
 
+;; Enable java mode in .java files
+(add-to-list 'auto-mode-alist '("\\.java\\'" . java-mode))
+
 ;; Helm
 (require 'helm)
 (require 'helm-config)
@@ -125,24 +145,18 @@
 			     "~/projects/orgfiles/courses"
 			     "~/projects/orgfiles/projects"))
 
-;; Exwm
-(require 'exwm)
-(require 'exwm-config)
-(exwm-config-default)
-
-(setq exwm-workspace-show-all-buffers t)
-(setq exwm-layout-show-all-buffers t)
-
-
-;; Modeline
+(projectile-mode)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+	("60d4556ebff0dc94849f177b85dcb6956fe9bd394c18a37e339c0fcd7c83e4a9" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "32e3693cd7610599c59997fee36a68e7dd34f21db312a13ff8c7e738675b6dfc" "a25c42c5e2a6a7a3b0331cad124c83406a71bc7e099b60c31dc28a1ff84e8c04" default)))
  '(package-selected-packages
    (quote
-	(jdee white-sand-theme relative-line-numbers rainbow-mode project-explorer moe-theme latex-preview-pane helm-projectile exwm evil ess company auto-complete auctex))))
+	(ample-theme avk-emacs-themes git-gutter-fringe+ git-gutter+ haskell-mode evil-magit magit white-sand-theme relative-line-numbers rainbow-mode project-explorer moe-theme latex-preview-pane jdee helm-projectile exwm evil ess company auto-complete auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

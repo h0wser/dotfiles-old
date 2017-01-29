@@ -23,3 +23,4 @@ ln -fs ~/dotfiles/.xinitrc ~/.xinitrc
 ln -fs ~/dotfiles/scripts ~/scripts
 ln -fs ~/dotfiles/bspwm ~/.config/bspwm
 ln -fs ~/dotfiles/lemonbuddy ~/.config/lemonbuddy
+ln -fs ~/dotfiles/.emacs ~/.emacs
