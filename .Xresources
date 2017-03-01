@@ -15,7 +15,7 @@ urxvt.match.button: 1
 
 ! special
 *.foreground:   #f5ebe1
-*.background:   #343434
+*.background:   #242424
 *cursorColor:	#f5ebe1
 
 ! black
