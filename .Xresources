@@ -1,6 +1,6 @@
 XTerm*saveLines: 10000
 
-urxvt.font: xft:Source Code Pro:size=12
+urxvt.font: xft:Source Code Pro:size=12,xft:Noto Emoji
 urxvt.depth: 32
 urxvt.scrollBar: false
 urxvt.secondaryScreen: 1

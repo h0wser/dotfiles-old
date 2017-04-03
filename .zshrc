@@ -4,7 +4,7 @@
 umask 022
 
 # Set our default path
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/h0wser/.local/bin:/home/h0wser/go/bin:/home/h0wser/scripts/:/home/h0wser/.gem/ruby/2.2.0/bin/"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/h0wser/.local/bin:/home/h0wser/go/bin:/home/h0wser/scripts/:/home/h0wser/.gem/ruby/2.2.0/bin/:/home/h0wser/.cabal/bin/"
 export PATH
 
 export GOPATH="/home/h0wser/go"

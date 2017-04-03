@@ -15,7 +15,6 @@ bspc config bottom_padding 0
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc rule -a feh state=floating border=off
-bspc rule -a qemu-pebble state=floating
 
 pgrep -f '(lemonbuddy_wrapper.sh|^lemonb(uddy|ar))' | xargs kill -9 >/dev/null 2>&1
 
