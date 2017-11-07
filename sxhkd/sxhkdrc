@@ -127,15 +127,15 @@ XF86AudioLowerVolume
 	amixer set Master 10-
 
 
-# Backlight keys
-#XF86MonBrightnessUp
-#	xbacklight -inc 5
-#
-#XF86MonBrightnessDown
-#	xbacklight -dec 5
+ Backlight keys
+ctrl + XF86AudioRaiseVolume
+	xbacklight -inc 5
+
+ctrl + XF86AudioLowerVolume
+	xbacklight -dec 5
 
 super + ctrl + alt + l
-	sflock -f "-*-clean-*-*-*-*-17-*-*-*-*-*-*-*" -c "SnoopDaawg"
+	sflock -c "h4kt3pln3t"
 	# lock
 
 Print

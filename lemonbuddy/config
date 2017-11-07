@@ -12,7 +12,7 @@ bottom = false
 dock = false
 
 background = #222222
-foreground = #ffffcc
+foreground = #82b1ff
 
 lineheight = 1
 padding_left = 0
@@ -20,13 +20,13 @@ padding_right = 0
 module_margin_left = 0
 module_margin_right = 0
 
-font-0 = Verdana:size=12:style=regular0
+font-0 = Monaco:size=12:style=regular0
 font-1 = fontawesome:size=14:weight=heavy;0
 font-2 = MaterialIcons:size=14;0
 
 modules-left = wifi
 modules-center = clock
-modules-right = volume battery
+modules-right = temp volume battery
 
 [module/wifi]
 type = internal/network
@@ -44,19 +44,19 @@ label-disconnected =  Not connected
 [module/cpu]
 type = internal/cpu
 label = CPU: %percentage%
-format-foreground = #ffffcc
+format-foreground = #82b1ff
 format-padding = 2
 
 [module/ram]
 type = internal/memory
 label = RAM: %percentage_used%
-format-foreground = #ffffcc
+format-foreground = #82b1ff
 format-padding = 2
 
 [module/clock]
 type = internal/date
 date = %A %b %d - %H:%M:%S
-format-foreground = #ffffcc
+format-foreground = #82b1ff
 format-padding = 2
 
 [module/battery]
@@ -66,15 +66,15 @@ adapter = AC0
 full_at = 97
 
 format-charging = <animation-charging> <label-charging>
-format-charging-foreground = #ffffcc
+format-charging-foreground = #82b1ff
 format-charging-padding = 2
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = #ffffcc
+format-discharging-foreground = #82b1ff
 format-discharging-padding = 2
 
 format-full = <ramp-capacity> <label-full>
-format-full-foreground = #ffffcc
+format-full-foreground = #82b1ff
 format-full-padding = 2
 
 animation-charging-0 = 
@@ -93,8 +93,8 @@ ramp-capacity-4 = 
 [module/temp]
 type = custom/script
 
-exec = temp=$(acpi -t | awk '{print $4}') && echo "TEMP: $temp°"
-format-foreground = #ffffcc
+exec = temp=$(acpi -t | awk '{print $4}') && echo "temp: $temp°"
+format-foreground = #82b1ff
 format-padding = 2
 
 [module/volume]
@@ -104,12 +104,12 @@ headphone_mixer = Headphone
 headphone_control_numid = 13
 
 format-volume = <ramp-volume> <label-volume>
-format-volume-foreground = #ffffcc
+format-volume-foreground = #82b1ff
 
 label-volume = %percentage%
-label-volume-foreground = #ffffcc
+label-volume-foreground = #82b1ff
 label-muted = 
-label-muted-foreground = #ffffcc
+label-muted-foreground = #82b1ff
 
 ramp-volume-0 = 
 ramp-volume-1 = 

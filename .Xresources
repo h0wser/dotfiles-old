@@ -1,6 +1,6 @@
 XTerm*saveLines: 10000
 
-urxvt.font: xft:Source Code Pro:size=12,xft:Noto Emoji
+urxvt.font: xft:Monaco:size=12,xft:Noto Emoji
 urxvt.depth: 32
 urxvt.scrollBar: false
 urxvt.secondaryScreen: 1
@@ -17,6 +17,8 @@ urxvt.match.button: 1
 *.foreground:   #f5ebe1
 *.background:   #242424
 *cursorColor:	#f5ebe1
+
+urxvt*background: rgba:0000/0000/0011/c800
 
 ! black
 *.color0:       #1c1818
