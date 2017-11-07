@@ -30,6 +30,7 @@
 	git-gutter-fringe+
 	ample-theme
 	haskell-mode
+	rust-mode
 ))
 
 (dolist (p my-packages)
@@ -41,7 +42,7 @@
 (enable-theme 'ample)
 
 ;; Font
-(add-to-list 'default-frame-alist '(font . "Source Code Pro-12"))
+(add-to-list 'default-frame-alist '(font . "Monaco-12"))
 
 ;; Custom dirs
 (let ((default-directory "~/.emacs.d/lisp/"))
@@ -131,6 +132,7 @@
 ;; Latex
 ;(latex-preview-pane-enable t)
 ;(setq TeX-PDF-mode t)
+(setq latex-run-command "pdflatex")
 ;(setq TeX-auto-save t)
 ;(setq-default TeX-master nil)
 ;(setq-default TeX-save-query nil)
@@ -146,3 +148,18 @@
 			     "~/projects/orgfiles/projects"))
 
 (projectile-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(LaTeX-command "latex")
+ '(package-selected-packages
+   (quote
+	(mips-mode rust-mode white-sand-theme relative-line-numbers rainbow-mode project-explorer moe-theme latex-preview-pane jdee helm-projectile haskell-mode git-gutter-fringe+ exwm evil-magit ess company avk-emacs-themes auto-complete auctex ample-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
