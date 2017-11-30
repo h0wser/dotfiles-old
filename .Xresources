@@ -1,11 +1,11 @@
 XTerm*saveLines: 10000
 
-urxvt.font: xft:Monaco:size=12,xft:Noto Emoji
+urxvt.font: -*-profont-medium-*-*-*-15-*-*-*-*-*-*-*
 urxvt.depth: 32
 urxvt.scrollBar: false
 urxvt.secondaryScreen: 1
 urxvt.secondaryScroll: 0
-urxvt.letterSpace: -1
+urxvt.letterSpace: 0
 
 urxvt.perl-ext-common: default,matcher
 urxvt.url-launcher: /usr/bin/chromium

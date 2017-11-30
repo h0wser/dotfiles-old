@@ -42,7 +42,7 @@
 (enable-theme 'ample)
 
 ;; Font
-(add-to-list 'default-frame-alist '(font . "Monaco-12"))
+(add-to-list 'default-frame-alist '(font . "-*-profont-medium-*-*-*-15-*-*-*-*-*-*-*"))
 
 ;; Custom dirs
 (let ((default-directory "~/.emacs.d/lisp/"))

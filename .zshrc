@@ -103,6 +103,8 @@ alias status="sudo systemctl status "
 alias swe="setxkbmap se && xset r rate 200 60"
 alias donken="top"
 
+alias matlab='~/.matlab/bin/matlab > /dev/null 2>&1 &' # :(
+
 alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > /dev/null &"
 
 alias textopdf="latex *tex && dvipdf *dvi"

@@ -7,11 +7,11 @@
 
 [bar/top]
 width = 100%
-height = 24
+height = 20
 bottom = false
 dock = false
 
-background = #222222
+background = #000000
 foreground = #82b1ff
 
 lineheight = 1
@@ -20,9 +20,9 @@ padding_right = 0
 module_margin_left = 0
 module_margin_right = 0
 
-font-0 = Monaco:size=12:style=regular0
-font-1 = fontawesome:size=14:weight=heavy;0
-font-2 = MaterialIcons:size=14;0
+font-0 = -*-profont-medium-*-*-*-15-*-*-*-*-*-*-*
+font-1 = fontawesome:size=12:weight=heavy;0
+font-2 = MaterialIcons:size=12;0
 
 modules-left = wifi
 modules-center = clock
@@ -38,7 +38,7 @@ format-connected =   <label-connected>
 format-disconnected =  <label-disconnected>
 format-padding = 2
 
-label-connected = %essid% %signal%    %downspeed%  %upspeed%
+label-connected = %essid% %signal%   up: %downspeed% down: %upspeed%
 label-disconnected =  Not connected
 
 [module/cpu]
