@@ -11,8 +11,8 @@ height = 20
 bottom = false
 dock = false
 
-background = #000000
-foreground = #82b1ff
+background = #00000000
+foreground = #021122ff
 
 lineheight = 1
 padding_left = 0
@@ -44,19 +44,19 @@ label-disconnected =  Not connected
 [module/cpu]
 type = internal/cpu
 label = CPU: %percentage%
-format-foreground = #82b1ff
+format-foreground = #021122ff
 format-padding = 2
 
 [module/ram]
 type = internal/memory
 label = RAM: %percentage_used%
-format-foreground = #82b1ff
+format-foreground = #021122ff
 format-padding = 2
 
 [module/clock]
 type = internal/date
 date = %A %b %d - %H:%M:%S
-format-foreground = #82b1ff
+format-foreground = #021122ff
 format-padding = 2
 
 [module/battery]
@@ -66,15 +66,15 @@ adapter = AC0
 full_at = 97
 
 format-charging = <animation-charging> <label-charging>
-format-charging-foreground = #82b1ff
+format-charging-foreground = #021122ff
 format-charging-padding = 2
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = #82b1ff
+format-discharging-foreground = #021122ff
 format-discharging-padding = 2
 
 format-full = <ramp-capacity> <label-full>
-format-full-foreground = #82b1ff
+format-full-foreground = #021122ff
 format-full-padding = 2
 
 animation-charging-0 = 
@@ -94,7 +94,7 @@ ramp-capacity-4 = 
 type = custom/script
 
 exec = temp=$(acpi -t | awk '{print $4}') && echo "temp: $temp°"
-format-foreground = #82b1ff
+format-foreground = #021122ff
 format-padding = 2
 
 [module/volume]
@@ -104,12 +104,12 @@ headphone_mixer = Headphone
 headphone_control_numid = 13
 
 format-volume = <ramp-volume> <label-volume>
-format-volume-foreground = #82b1ff
+format-volume-foreground = #021122ff
 
 label-volume = %percentage%
-label-volume-foreground = #82b1ff
+label-volume-foreground = #021122ff
 label-muted = 
-label-muted-foreground = #82b1ff
+label-muted-foreground = #021122ff
 
 ramp-volume-0 = 
 ramp-volume-1 = 

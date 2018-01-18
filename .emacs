@@ -49,6 +49,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
+(load "~/projects/codemap/codemap")
 ;; TODO
 ;; custom pe/project-root-function
 ;; if subdir of ~/projects use highest dir under projects, else .git else default-dir
@@ -91,10 +92,6 @@
 (setq evil-replace-state-cursor '("red" bar))
 
 ;; Key bindings
-(define-key evil-insert-state-map "ö" (kbd "{"))
-(define-key evil-insert-state-map "ä" (kbd "}"))
-(define-key evil-insert-state-map "Ö" (kbd "["))
-(define-key evil-insert-state-map "Ä" (kbd "]"))
 (define-key evil-normal-state-map "J" (lambda () (interactive) (forward-line 5)))
 (define-key evil-normal-state-map "K" (lambda () (interactive) (forward-line -5)))
 (global-set-key (kbd "M-b") 'mode-line-other-buffer)
