@@ -1,25 +1,16 @@
 " h0wser's extremely cool and awesome .vimrc file
 " most of it is copied...
-" -------------- VUNDLE -----------"
 set nocompatible
 filetype off
+" -------------- vim-plug -----------"
+call plug#begin('~/local/share/nvim/plugged')
 
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin('~/.config/nvim/bundle')
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/nerdtree'
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'vim-scripts/Align'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-scripts/a.vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'unblevable/quick-scope'
-
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 " ------------- MISC -----------"
 syntax on
@@ -41,14 +32,19 @@ set hlsearch
 
 set listchars=tab:<=,trail:*
 
+" ------------------- DEOPLETE -----------
+let g:deoplete#enable_at_startup = 1
+
+let g:jedi#completions_enabled = 0
+
+let g:jedi#documentation_command = "C-K"
+let g:jedi#use_splits_not_buffers = "right"
+
+" Tab complete
+inoremap <expr><tab> pumvisible() ? "<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "<c-p>" : "\<s-tab>"
 
 highlight! link MatchParens StatusLine
-
-" ---------------- COLOR SETTINGS -----------"
-set background=dark
-set t_Co=256
-colorscheme 0x7A69_dark
-set t_ut=
 
 " Highlight over 80 chars
 highlight OverLength ctermbg=cyan ctermfg=white guibg=#592929
@@ -84,7 +80,14 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 
+nnoremap J 5j
+nnoremap K 5k
+
+inoremap <s-tab> <c-d>
+
 tnoremap <Esc> <C-\><C-n>
+
+let mapleader=" "
 
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
@@ -92,17 +95,6 @@ nnoremap <leader>e :Ex<cr>
 
 " Escape for different modes
 inoremap jk <esc>
-
-" Rust syntax m8
-au BufRead,BufNewFile *.rs,*.rc set filetype=rust
-
-" -------------- YOUCOMPLETEME SETTINGS -------------
-" YouCompleteMe need python 2, not 3
-let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
-
-filetype plugin indent on
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
 
 " this might need cleaning
 set runtimepath+=~/.nvim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.nvim/after
