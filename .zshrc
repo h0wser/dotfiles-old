@@ -1,150 +1,105 @@
-# /etc/profile
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-#Set our umask
-umask 022
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
-# Set our default path
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/h0wser/.local/bin:/home/h0wser/go/bin:/home/h0wser/scripts/:/home/h0wser/.gem/ruby/2.2.0/bin/:/home/h0wser/.cabal/bin/"
-export PATH
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="steeef"
 
-export GOPATH="/home/h0wser/go"
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Load profiles from /etc/profile.d
-if test -d /etc/profile.d/; then
-	for profile in /etc/profile.d/*.sh; do
-		test -r "$profile" && . "$profile"
-	done
-	unset profile
-fi
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Source global bash config
-if test "$PS1" && test "$BASH" && test -r /etc/bash.bashrc; then
-	. /etc/bash.bashrc
-fi
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# PROMPT N SHIT
-autoload -U colors && colors
-autoload -U promptinit
-promptinit
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-setopt prompt_subst
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
-# Set prompt
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*'	formats "%{$fg[yellow]%}(%b) %{$reset_color%}"
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-PROMPT_COLORS="yellow
-green
-red
-blue
-magenta
-cyan"
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
-P_COLOR=$(echo $PROMPT_COLORS | sort -R | tail -n 1)
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-precmd() {
-	vcs_info
-	RPROMPT="%{$reset_color%}${vcs_info_msg_0_}[%?]"
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-	PROMPT="%{$fg[black]%}%{$bg[$P_COLOR]%} %6d "$'\n'" %M %{$reset_color%} "
-}
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-function zle-line-init zle-keymap-select {
-	VIM_PROMPT="%{$fg[red]%} [% NORMAL]% %{$reset_color%}"
-	RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} ${vcs_info_msg_0_}[%?]"
-	zle reset-prompt
-}
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
 
-zle -N zle-line-init
-zle -N zle-keymap-select
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-bindkey -v
-export KEYTIMEOUT=1
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
 
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Termcap is outdated, old, and crusty, kill it.
-unset TERMCAP
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
 
-# Man is much better than us at figuring this out
-unset MANPATH
+source $ZSH/oh-my-zsh.sh
 
-unset VIM
+# User configuration
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export MANPATH="/usr/local/man:$MANPATH"
 
-alias ls='ls -F --format=single-column --color=always --group-directories-first --quoting-style=literal'
-alias ll='ls -l'
-eval `dircolors -b ~/.dir_colors`
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-alias grep='grep --color=auto'
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-alias please='sudo $(history -p !!)'
-alias sudo='sudo '
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-alias py2='python2'
-alias py3='python'
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+#
+alias vim=nvim
+alias python=python3
+alias c=clear
 
-alias :q='exit'
-alias c='clear'
-
-alias pac='yaourt'
-
-alias runescape='java -jar ~/Orion/OSBuddy.jar > /dev/null 2>&1 &'
-
-alias tmux="tmux -2" # forces 256 colors in tmux :)
-
-alias title="printf '\033];%s\07\n'"
-
-alias start="sudo systemctl start "
-alias restart="sudo systemctl restart "
-alias status="sudo systemctl status "
-
-alias swe="setxkbmap se && xset r rate 200 60"
-alias donken="top"
-
-alias matlab='~/.matlab/bin/matlab > /dev/null 2>&1 &' # :(
-
-alias restart-mopidy="killall mopidy; nohup mopidy --config ~/.config/mopidy/ > /dev/null &"
-
-alias textopdf="latex *tex && dvipdf *dvi"
-
-alias vim="nvim"
-
-p() { cd "/home/h0wser/projects/$1"; }
-s() { cd "/home/h0wser/Dropbox/Skola/$1"; }
-
-alias sdcard="sudo mount /dev/mmcblk0p1 ~/media/sdcard"
-
-export VISUAL=emacsclient
-export BROWSER=chromium
-
-DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-	dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-	[[ -d $dirs[1] ]] && cd $dirstack[1]
-fi
-chpwd() {
-	print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
-}
-
-DIRSTACKSIZE=20
-
-setopt autopushd pushdsilent pushdtohome
-setopt pushdignoredups
-setopt pushdminus
-
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd
-unsetopt beep
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/h0wser/.zshrc'
-
-autoload -Uz compinit
-compinit
-
-# End of lines added by compinstall
